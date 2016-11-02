@@ -11,8 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.prefs.Preferences;
-
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         if(item.getItemId() == R.id.preferences) {
-            Intent intent = new Intent(this, edu.uml.android.adventurersarchive.Preferences.class);
+            Intent intent = new Intent(this, Preferences.class);
             startActivity(intent);
         } else {
             Log.e(MainActivity.LOG_TAG, "Problem with action overflow menu.");
