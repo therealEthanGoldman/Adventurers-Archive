@@ -21,5 +21,8 @@
         <activity android:name=".CreateCharacterActivity"
                   android:parentActivityName=".MainActivity"
                   android:label="Create a Character" />
+        <activity android:name=".CharacterMainActivity"
+                  android:parentActivityName=".MainActivity"
+                  android:label="" />
     </application>
 </manifest>

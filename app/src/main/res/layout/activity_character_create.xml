@@ -7,7 +7,7 @@
         android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
+        android:layout_marginTop="16dp"
         android:text="Character Name" />
     <EditText
         android:id="@+id/name_input"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name_input"
-        android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
         android:text="Character Race" />
     <Spinner
         android:id="@+id/race_spinner"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/race_spinner"
-        android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
         android:text="Character Class" />
     <Spinner
         android:id="@+id/class_spinner"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/class_spinner"
-        android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
         android:text="Character Level" />
     <EditText
         android:id="@+id/level_input"
@@ -59,5 +59,15 @@
         android:backgroundTint="@android:color/holo_blue_dark"
         android:inputType="numberDecimal"
         android:imeOptions="actionDone" />
+
+    <Button
+        android:id="@+id/character_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/level_input"
+        android:layout_marginTop="16dp"
+        android:layout_centerInParent="true"
+        android:text="Create"
+        android:onClick="submitCharacter" />
 
 </RelativeLayout>
