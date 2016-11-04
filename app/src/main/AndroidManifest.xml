@@ -17,8 +17,9 @@
         </activity>
         <activity android:name=".Preferences"
                   android:parentActivityName=".MainActivity"
-                  android:theme="@android:style/Theme.Holo">
-
-        </activity>
+                  android:theme="@android:style/Theme.Holo" />
+        <activity android:name=".CreateCharacterActivity"
+                  android:parentActivityName=".MainActivity"
+                  android:label="Create a Character" />
     </application>
 </manifest>

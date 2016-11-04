@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createCharacter(View v) {
-
+        Intent intent = new Intent(this, CreateCharacterActivity.class);
+        startActivity(intent);
     }
 
     public void loadCharacter(View v) {
