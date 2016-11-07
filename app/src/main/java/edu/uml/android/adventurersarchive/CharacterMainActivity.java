@@ -25,14 +25,20 @@ public class CharacterMainActivity extends AppCompatActivity {
     }
 
     public void openCharacterSheet(View v) {
-
+        Intent intent = new Intent(this, CharacterSheetActivity.class);
+        intent.putExtra("character", myCharacter);
+        startActivity(intent);
     }
 
     public void openEquipment(View v) {
-
+        Intent intent = new Intent(this, CharacterEquipmentActivity.class);
+        intent.putExtra("character", myCharacter);
+        startActivity(intent);
     }
 
     public void openSpellbook(View v) {
-
+        Intent intent = new Intent(this, CharacterSpellbookActivity.class);
+        intent.putExtra("character", myCharacter);
+        startActivity(intent);
     }
 }
