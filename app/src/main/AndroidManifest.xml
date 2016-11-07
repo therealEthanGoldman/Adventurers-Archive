@@ -24,5 +24,14 @@
         <activity android:name=".CharacterMainActivity"
                   android:parentActivityName=".MainActivity"
                   android:label="" />
+        <activity android:name=".CharacterSheetActivity"
+                  android:parentActivityName=".CharacterMainActivity"
+                  android:label="" />
+        <activity android:name=".CharacterEquipmentActivity"
+            android:parentActivityName=".CharacterMainActivity"
+            android:label="" />
+        <activity android:name=".CharacterSpellbookActivity"
+            android:parentActivityName=".CharacterMainActivity"
+            android:label="" />
     </application>
 </manifest>

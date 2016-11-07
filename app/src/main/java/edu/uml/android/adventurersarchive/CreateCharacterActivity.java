@@ -62,5 +62,7 @@ public class CreateCharacterActivity extends AppCompatActivity {
         Toast.makeText(this, ("Creating " + n + "..."), Toast.LENGTH_SHORT);
 
         startActivity(intent);
+
+        finish(); // So the user doesn't return to this screen upon pressing BACK from CharacterMainActvitiy.
     }
 }
