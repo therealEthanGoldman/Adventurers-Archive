@@ -29,9 +29,9 @@
                   android:label="" />
         <activity android:name=".CharacterEquipmentActivity"
             android:parentActivityName=".CharacterMainActivity"
-            android:label="" />
+            android:label="Equipment" />
         <activity android:name=".CharacterSpellbookActivity"
             android:parentActivityName=".CharacterMainActivity"
-            android:label="" />
+            android:label="Spellbook" />
     </application>
 </manifest>

@@ -25,18 +25,21 @@ public class CharacterMainActivity extends AppCompatActivity {
     }
 
     public void openCharacterSheet(View v) {
-        Intent intent = new Intent(this, CharacterSheetActivity.class);
+        // TODO: Re-enable this once Character Sheet activity is complete.
+        /*Intent intent = new Intent(this, CharacterSheetActivity.class);
         intent.putExtra("character", myCharacter);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void openEquipment(View v) {
-        Intent intent = new Intent(this, CharacterEquipmentActivity.class);
+        // TODO: Re-enable this once Equipment activity is complete.
+        /*Intent intent = new Intent(this, CharacterEquipmentActivity.class);
         intent.putExtra("character", myCharacter);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void openSpellbook(View v) {
+        // TODO: Re-enable this once Spellbook activity is complete.
         Intent intent = new Intent(this, CharacterSpellbookActivity.class);
         intent.putExtra("character", myCharacter);
         startActivity(intent);
