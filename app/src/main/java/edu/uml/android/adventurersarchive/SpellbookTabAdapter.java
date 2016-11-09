@@ -23,16 +23,15 @@ public class SpellbookTabAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Bundle bundle = new Bundle();
         if(position == 0) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("character", myCharacter);
             PreparedSpellsFragment prepared = new PreparedSpellsFragment();
+            bundle.putParcelable("character", myCharacter);
             prepared.setArguments(bundle);
             return prepared;
         } else if(position == 1) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("character", myCharacter);
             MySpellbookFragment myspellbook = new MySpellbookFragment();
+            bundle.putParcelable("character", myCharacter);
             myspellbook.setArguments(bundle);
             return myspellbook;
         } else if(position == 2) return new FullSpellbookFragment();

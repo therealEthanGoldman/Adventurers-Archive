@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,15 +23,16 @@ public class MySpellbookFragment extends Fragment {
     private List<String> groupHeaders;
     private Map<String, List<Spell>> groupItems;
 
-    public MySpellbookFragment() {
-        Bundle bundle = getArguments();
-        CharacterInfo myCharacter = (CharacterInfo) bundle.getParcelable("character");
-        prepareGroups(myCharacter);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.spell_list, container, false);
+
+        Bundle bundle = getArguments();
+        CharacterInfo myCharacter = (CharacterInfo) bundle.getParcelable("character");
+        prepareGroups(myCharacter);
+
+        groupHeaders = new ArrayList<String>();
+        groupItems = new HashMap<String, List<Spell>>();
 
         adapter = new SpellListAdapter(groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);

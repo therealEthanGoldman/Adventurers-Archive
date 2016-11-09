@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,10 @@ public class FullSpellbookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.spell_list, container, false);
 
+        groupHeaders = new ArrayList<String>();
+        groupItems = new HashMap<String, List<Spell>>();
         prepareGroups();
+
         adapter = new SpellListAdapter(groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
         expView.setAdapter(adapter);

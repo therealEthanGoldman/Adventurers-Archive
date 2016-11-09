@@ -39,7 +39,6 @@ public class CharacterMainActivity extends AppCompatActivity {
     }
 
     public void openSpellbook(View v) {
-        // TODO: Re-enable this once Spellbook activity is complete.
         Intent intent = new Intent(this, CharacterSpellbookActivity.class);
         intent.putExtra("character", myCharacter);
         startActivity(intent);
