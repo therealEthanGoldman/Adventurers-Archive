@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/dungeon_master" />
 
     <Button
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/character_main_image"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
         android:text="Character Sheet"
         android:onClick="openCharacterSheet" />
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/character_sheet_button"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
         android:text="Equipment"
         android:onClick="openEquipment" />
@@ -37,9 +37,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/character_equipment_button"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
         android:text="Spellbook"
         android:onClick="openSpellbook" />
+
+    <Button
+        android:id="@+id/character_skills_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_spellbook_button"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="Skills"
+        android:onClick="openSkills" />
 
 </RelativeLayout>

@@ -20,6 +20,5 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         myCharacter = (CharacterInfo) intent.getParcelableExtra("character");
-        setTitle(myCharacter.getCharacterName());
     }
 }

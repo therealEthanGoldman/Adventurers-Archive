@@ -7,15 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
 /**
- * Created by Darin on 11/6/2016.
+ * Created by Darin on 11/9/2016.
  */
-public class CharacterSheetActivity extends AppCompatActivity {
+public class CharacterSkillsActivity extends AppCompatActivity {
     private CharacterInfo myCharacter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_sheet);
+        setContentView(R.layout.activity_character_skills);
 
         Intent intent = getIntent();
 

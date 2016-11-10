@@ -33,10 +33,9 @@ public class CharacterSpellbookActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         myCharacter = (CharacterInfo) intent.getParcelableExtra("character");
-        setTitle(myCharacter.getCharacterName());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        SpellbookTabAdapter adapter = new SpellbookTabAdapter(this, myCharacter, getSupportFragmentManager());
+        SpellbookTabAdapter adapter = new SpellbookTabAdapter(myCharacter, getSupportFragmentManager());
 
         viewPager.setAdapter(adapter);
 
