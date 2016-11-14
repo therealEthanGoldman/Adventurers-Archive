@@ -25,4 +25,15 @@
         <item>Warlock</item>
         <item>Wizard</item>
     </string-array>
+    <string-array name="alignment_array">
+        <item>Lawful Good</item>
+        <item>Neutral Good</item>
+        <item>Chaotic Good</item>
+        <item>Lawful Neutral</item>
+        <item>True Neutral</item>
+        <item>Chaotic Neutral</item>
+        <item>Lawful Evil</item>
+        <item>Neutral Evil</item>
+        <item>Chaotic Evil</item>
+    </string-array>
 </resources>

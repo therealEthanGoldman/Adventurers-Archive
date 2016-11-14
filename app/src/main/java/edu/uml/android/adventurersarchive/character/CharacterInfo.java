@@ -3,6 +3,8 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import edu.uml.android.adventurersarchive.info.DiceRoller;
+
 /**
  * Created by Darin on 11/3/2016.
  */
@@ -22,21 +24,47 @@ public class CharacterInfo implements Parcelable {
     private int cLevel;
     public int getCharacterLevel() { return cLevel; }
     public void setCharacterLevel(int l) { cLevel = l; }
+    public int getProficiency() {
+        // Calculates proficiency bonus based on the player's level.
+        return (2 + (int)((cLevel - 1) / 4));
+    }
+
+    private int cExperience;
+    public int getCharacterExp() { return cExperience; }
+    public void setCharacterExp(int e) { cExperience = e; }
+
+    private CharacterAlignment cAlignment;
+    public CharacterAlignment getCharacterAlign() { return cAlignment; }
+    public void setCharacterAlign(CharacterAlignment a) { cAlignment = a; }
+
+    private int cInspiration;
+    public int getInspiration() { return cInspiration; }
+    public void setInspiration(int i) { cInspiration = i; }
 
     private AbilityScore [] cAbilityScores;
     public AbilityScore [] getAbilityScores() { return cAbilityScores; }
+    public AbilityScore getAbilityScore(AbilityScore.Scores score) {
+        for(AbilityScore sc : cAbilityScores) {
+            if(sc.getScoreType() == score) return sc;
+        }
+        return null;
+    }
     public void setAbilityScores(AbilityScore [] scores) { cAbilityScores = scores; }
     public void setAbilityScore(AbilityScore score, int val) {
         for(int i = 0; i < cAbilityScores.length; i++) {
             if(cAbilityScores[i] == score) cAbilityScores[i].setScoreValue(val);
         }
     }
+    public int rollInitiative() {
+        return getAbilityScore(AbilityScore.Scores.DEXTERITY).getScoreModifier() + DiceRoller.roll(20);
+    }
 
-    public CharacterInfo(String n, CharacterRace r, CharacterClass c, int l) {
+    public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
         cRace = r;
         cClass = c;
         cLevel = l;
+        cAlignment = a;
 
         cAbilityScores = new AbilityScore[] {new AbilityScore(AbilityScore.Scores.STRENGTH, 10),
                                              new AbilityScore(AbilityScore.Scores.DEXTERITY, 10),
@@ -56,22 +84,31 @@ public class CharacterInfo implements Parcelable {
         dest.writeString(cName);
         dest.writeParcelable(cRace, 0);
         dest.writeParcelable(cClass, 0);
+        dest.writeParcelable(cAlignment, 0);
         dest.writeInt(cLevel);
+        dest.writeInt(cExperience);
+        dest.writeInt(cInspiration);
         dest.writeTypedArray(cAbilityScores, 0);
     }
 
     public static final Creator<CharacterInfo> CREATOR = new Creator<CharacterInfo>() {
         @Override
         public CharacterInfo createFromParcel(final Parcel source) {
-            String n = source.readString();
+            String n = source.readString(); // Retrieve Character Name
             CharacterRace r = (CharacterRace) source.readParcelable(CharacterRace.class.getClassLoader());
             CharacterClass cl = (CharacterClass) source.readParcelable(CharacterClass.class.getClassLoader());
-            int lv = source.readInt();
+            CharacterAlignment al = (CharacterAlignment) source.readParcelable(CharacterAlignment.class.getClassLoader());
+            int lv = source.readInt(); // Retrieve Level
+            int exp = source.readInt(); // Retrieve current Experience
+            int insp = source.readInt(); // Retrieve Inspiration
 
-            CharacterInfo ch = new CharacterInfo(n, r, cl, lv);
+            CharacterInfo ch = new CharacterInfo(n, r, cl, al, lv);
 
             AbilityScore [] sc = source.createTypedArray(AbilityScore.CREATOR);
             ch.setAbilityScores(sc);
+
+            ch.setCharacterExp(exp);
+            ch.setInspiration(insp);
 
             return ch;
         }
@@ -81,4 +118,14 @@ public class CharacterInfo implements Parcelable {
             return new CharacterInfo[size];
         }
     };
+
+    public static final int [] LEVELS = {300,900,2700,6500,14000,
+                                         23000,34000,48000,64000,85000,
+                                         100000,120000,140000,165000,195000,
+                                         225000,265000,305000,355000};
+    public static int getNextLevelExp(int level) {
+        if(level <= 0) return 0;
+        if(level >= 20) level = 19;
+        return CharacterInfo.LEVELS[level - 1];
+    }
 }

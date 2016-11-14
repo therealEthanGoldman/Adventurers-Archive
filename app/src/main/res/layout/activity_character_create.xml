@@ -45,10 +45,23 @@
         android:layout_below="@id/class_label" />
 
     <TextView
-        android:id="@+id/level_label"
+        android:id="@+id/alignment_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/class_spinner"
+        android:layout_marginTop="8dp"
+        android:text="Character Alignment" />
+    <Spinner
+        android:id="@+id/alignment_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_label" />
+
+    <TextView
+        android:id="@+id/level_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_spinner"
         android:layout_marginTop="8dp"
         android:text="Character Level" />
     <EditText

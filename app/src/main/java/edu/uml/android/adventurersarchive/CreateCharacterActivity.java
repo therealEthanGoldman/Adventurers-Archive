@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import edu.uml.android.adventurersarchive.character.CharacterAlignment;
 import edu.uml.android.adventurersarchive.character.CharacterClass;
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 import edu.uml.android.adventurersarchive.character.CharacterRace;
@@ -40,6 +41,14 @@ public class CreateCharacterActivity extends AppCompatActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             classChooser.setAdapter(adapter);
         } // End initialization of class spinner adapter.
+
+        { // Initialize and set the alignment spinner adapter.
+            Spinner alignChooser = (Spinner) findViewById(R.id.alignment_spinner);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.alignment_array,
+                    R.layout.support_simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            alignChooser.setAdapter(adapter);
+        } // End initialization of alignment spinner adapter.
     }
 
     public void submitCharacter(View v) {
@@ -53,9 +62,12 @@ public class CreateCharacterActivity extends AppCompatActivity {
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         CharacterClass c = CharacterClass.getCharacterClass(classSpinner.getSelectedItem().toString());
 
+        Spinner alignSpinner = (Spinner) findViewById(R.id.alignment_spinner);
+        CharacterAlignment a = CharacterAlignment.getCharacterAlign(alignSpinner.getSelectedItem().toString());
+
         int l = Integer.parseInt(((EditText) findViewById(R.id.level_input)).getText().toString());
 
-        CharacterInfo ch = new CharacterInfo(n, r, c, l);
+        CharacterInfo ch = new CharacterInfo(n, r, c, a, l);
 
         intent.putExtra("character", ch);
 

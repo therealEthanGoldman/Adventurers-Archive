@@ -3,6 +3,10 @@ package edu.uml.android.adventurersarchive;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
@@ -20,5 +24,40 @@ public class CharacterSheetActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         myCharacter = (CharacterInfo) intent.getParcelableExtra("character");
+        if(myCharacter != null) {
+            { // Set the character name.
+                TextView nameText = (TextView) findViewById(R.id.sheet_name_label);
+                nameText.setText("Character Name: " + myCharacter.getCharacterName());
+            } // End name set.
+
+            { // Set the character race.
+                TextView raceText = (TextView) findViewById(R.id.sheet_race_label);
+                raceText.setText("Character Race: " + myCharacter.getCharacterRace().toString());
+            } // End race set.
+
+            { // Set the character class.
+                TextView classText = (TextView) findViewById(R.id.sheet_class_label);
+                String text = "Character Class: " + myCharacter.getCharacterClass().toString() + " "
+                                                  + myCharacter.getCharacterLevel();
+                classText.setText(text);
+                // TODO: Set a listener on this label so the user can tap it to enter their level.
+            } // End class set.
+
+            { // Set the experience level.
+                TextView expText = (TextView) findViewById(R.id.sheet_exp_next_label);
+                int level = myCharacter.getCharacterLevel();
+                expText.setText("/ " + CharacterInfo.getNextLevelExp(level));
+            } // End experience set.
+
+            { // Set the character alignment.
+                Spinner alignSpinner = (Spinner) findViewById(R.id.sheet_align_spinner);
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.alignment_array,
+                                                                    R.layout.support_simple_spinner_dropdown_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                alignSpinner.setAdapter(adapter);
+                alignSpinner.setSelection(myCharacter.getCharacterAlign().ordinal());
+                // TODO: Set listener on spinner to update character alignment when item selected.
+            } // End alignment set.
+        }
     }
 }
