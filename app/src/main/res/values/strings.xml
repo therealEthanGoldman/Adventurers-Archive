@@ -3,4 +3,12 @@
 
     <string name="create_character">Create Character</string>
     <string name="load_character">Load Character</string>
+    <string name="addloot">Add Item</string>
+    <string name="pplabel">PP: </string>
+    <string name="gplabel">GP: </string>
+    <string name="eplabel">EP: </string>
+    <string name="splabel">SP: </string>
+    <string name="cplabel">CP: </string>
+
+
 </resources>
