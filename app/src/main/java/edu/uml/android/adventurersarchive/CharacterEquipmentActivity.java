@@ -53,6 +53,7 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
         }
 
 
+
     }
 
 
@@ -69,11 +70,14 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
     }
 
 
-    public class coins{
-        int cp, sp, ep, gp, pp;
+    public class coins {
+        private int cp;
+        private int sp;
+        private int ep;
+        private int gp;
+        private int pp;
 
-        coins()
-        {
+        public coins() {
             cp = 0;
             sp = 0;
             ep = 0;
@@ -81,97 +85,87 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
             pp = 0;
         }
 
-        coins( int c, int s, int e, int g, int p)
-        {
+        public coins(int c, int s, int e, int g, int p) {
             cp = c;
             sp = s;
             ep = e;
             gp = g;
             pp = p;
-
-            convert();
-
-        }
-        void convert(){
-            while (cp > 10)
-            {
-                cp = cp - 10;
-                sp++;
-            }
-            while (sp > 5)
-            {
-                sp = sp - 5;
-                ep++;
-            }
-            while (ep > 2)
-            {
-                ep = ep - 2;
-                gp++;
-            }
-            while (gp > 10)
-            {
-                gp = gp - 10;
-                pp++;
-            }
-        }
-        void set( coins newv)
-        {
-            cp = newv.cp;
-            sp = newv.sp;
-            ep = newv.ep;
-            gp = newv.gp;
-            pp = newv.pp;
-
-            convert();
-
-        }
-        void add(coins loot)
-        {
-            cp = cp + loot.cp;
-            sp = sp + loot.sp;
-            ep = ep + loot.ep;
-            gp = gp + loot.gp;
-            pp = pp + loot.pp;
-            convert();
+            adjust();
         }
 
-        boolean take(coins cost)
-        {
-            cp = cp - cost.cp;
-
-            sp = sp - cost.sp;
-            ep = ep - cost.ep;
-            gp = gp - cost.gp;
-            pp = pp - cost.pp;
-
-            return negconvert();
+        public double valueInGold() {
+            return (pp*10.0 + gp*1.0 + ep*0.5 + 0.1*sp + 0.01*cp);
         }
 
-        boolean negconvert()
-        {
-            while (cp < 0)
-            {
-                sp--;
-                while (sp <0 )
-                {
-                    ep--;
-                    while (ep < 0)
-                    {
-                        gp--;
-                        while(gp < 0)
-                        {
-                            pp--;
-                            if (pp < 0)
-                                return false;
-                            gp = gp + 10;
-                        }
-                        ep = ep + 2;
-                    }
-                    sp = sp + 5;
-                }
-                cp = cp + 10;
+        private void adjust() {
+            int tmp = 0;
+
+            if (cp >= 10) {
+                sp += cp / 10;
+                cp = cp%10;
+            } else if (cp < 0) {
+                tmp = -1*(cp / 10) + 1;
+                sp -= tmp;
+                cp += 10*tmp;
             }
-            return true;
+            if (sp >= 5) {
+                ep += sp / 5;
+                sp = sp%5;
+            } else if (sp < 0) {
+                tmp = -1*(sp / 5) + 1;
+                ep -= tmp;
+                sp += 5*tmp;
+            }
+            if (ep >= 2) {
+                gp += ep / 2;
+                ep = ep%2;
+            } else if (ep < 0) {
+                tmp = -1*(ep / 2) + 1;
+                gp -= tmp;
+                ep += 2*tmp;
+            }
+            if (gp >= 10) {
+                pp += gp / 10;
+                gp = gp%10;
+            } else if (gp < 0) {
+                tmp = -1*(gp / 10) + 1;
+                pp -= tmp;
+                gp += 10*tmp;
+            }
+        }
+
+        public void add(coins loot) {
+            cp += loot.cp;
+            sp += loot.sp;
+            ep += loot.ep;
+            gp += loot.gp;
+            pp += loot.pp;
+            adjust();
+        }
+
+        public boolean take(coins payment) {
+            if (valueInGold() >= payment.valueInGold()) {
+                cp -= payment.cp;
+                sp -= payment.sp;
+                ep -= payment.ep;
+                gp -= payment.gp;
+                pp -= payment.pp;
+                adjust();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public boolean takeValue(double payValue) {
+            if (valueInGold() >= payValue) {
+                cp -= payValue*100;
+                adjust();
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
