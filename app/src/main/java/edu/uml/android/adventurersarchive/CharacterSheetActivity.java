@@ -6,12 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.uml.android.adventurersarchive.character.AbilityScore;
+import edu.uml.android.adventurersarchive.character.CharacterAlignment;
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
 /**
@@ -45,7 +48,22 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
             } // End class set.
 
             { // Set the experience level.
+                EditText expInput = (EditText) findViewById(R.id.sheet_exp_input);
+                expInput.setText(String.valueOf(myCharacter.getCharacterExp()));
+                expInput.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setCharacterExp(Integer.parseInt(s.toString()));
+                        }
+                    }
+                });
 
                 TextView expText = (TextView) findViewById(R.id.sheet_exp_next_label);
                 int level = myCharacter.getCharacterLevel();
@@ -59,36 +77,58 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 alignSpinner.setAdapter(adapter);
                 alignSpinner.setSelection(myCharacter.getCharacterAlign().ordinal());
-                // TODO: Set listener on spinner to update character alignment when item selected.
+                alignSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        CharacterAlignment align = CharacterAlignment.getCharacterAlign(parent.getItemAtPosition(position)
+                                .toString());
+                        state.getCharacter().setCharacterAlign(align);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {}
+                });
             } // End alignment set.
 
             { // Set the character ability scores and modifiers.
-                EditText strInput = (EditText) findViewById(R.id.sheet_strength_input);
-                strInput.setText(String.valueOf(myCharacter.getAbilityScore(AbilityScore.Scores.STRENGTH)
-                                                           .getScoreValue()));
-                strInput.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
-                            state.getCharacter().setAbilityScore(AbilityScore.Scores.STRENGTH,
-                                    Integer.parseInt(s.toString()));
-                            TextView mod = (TextView) findViewById(R.id.sheet_str_mod_label);
-                            mod.setText("Mod: " + state.getCharacter().getAbilityScore(AbilityScore.Scores.STRENGTH)
-                                    .getScoreModifier());
-                        }
-                    }
-                });
-
-                TextView modText = (TextView) findViewById(R.id.sheet_str_mod_label);
-                modText.setText("Mod: " + myCharacter.getAbilityScore(AbilityScore.Scores.STRENGTH)
-                                                     .getScoreModifier());
+                setupAbilityScore(R.id.sheet_strength_input, R.id.sheet_str_mod_label,
+                                  state, AbilityScore.Scores.STRENGTH);
+                setupAbilityScore(R.id.sheet_dexterity_input, R.id.sheet_dex_mod_label,
+                                  state, AbilityScore.Scores.DEXTERITY);
+                setupAbilityScore(R.id.sheet_constitution_input, R.id.sheet_con_mod_label,
+                                  state, AbilityScore.Scores.CONSTITUTION);
+                setupAbilityScore(R.id.sheet_intelligence_input, R.id.sheet_int_mod_label,
+                                  state, AbilityScore.Scores.INTELLIGENCE);
+                setupAbilityScore(R.id.sheet_wisdom_input, R.id.sheet_wis_mod_label,
+                                  state, AbilityScore.Scores.WISDOM);
+                setupAbilityScore(R.id.sheet_charisma_input, R.id.sheet_cha_mod_label,
+                                  state, AbilityScore.Scores.CHARISMA);
             } // End ability score set.
         }
+    }
+
+    private void setupAbilityScore(final int inputID, final int modID,
+                                   final GlobalState state, final AbilityScore.Scores score) {
+        EditText dexInput = (EditText) findViewById(inputID);
+        dexInput.setText(String.valueOf(state.getCharacter().getAbilityScore(score).getScoreValue()));
+        dexInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                    state.getCharacter().setAbilityScore(score, Integer.parseInt(s.toString()));
+                    TextView mod = (TextView) findViewById(modID);
+                    mod.setText("Mod: " + state.getCharacter().getAbilityScore(score).getScoreModifier());
+                }
+            }
+        });
+
+        TextView modText = (TextView) findViewById(modID);
+        modText.setText("Mod: " + state.getCharacter().getAbilityScore(score).getScoreModifier());
     }
 }

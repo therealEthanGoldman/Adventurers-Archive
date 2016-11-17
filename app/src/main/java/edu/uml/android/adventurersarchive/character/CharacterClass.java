@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by Darin on 11/3/2016.
  */
-public enum CharacterClass implements Parcelable {
+public enum CharacterClass {
     BARBARIAN("Barbarian"), BARD("Bard"),
     CLERIC("Cleric"), DRUID("Druid"),
     FIGHTER("Fighter"), MONK("Monk"),
@@ -32,26 +32,4 @@ public enum CharacterClass implements Parcelable {
 
         return null;
     }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(ordinal());
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<CharacterClass> CREATOR = new Creator<CharacterClass>() {
-        @Override
-        public CharacterClass createFromParcel(Parcel in) {
-            return CharacterClass.values()[in.readInt()];
-        }
-
-        @Override
-        public CharacterClass[] newArray(int size) {
-            return new CharacterClass[size];
-        }
-    };
 }

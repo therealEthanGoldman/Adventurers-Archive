@@ -63,7 +63,9 @@ public class CharacterInfo {
         cRace = r;
         cClass = c;
         cLevel = l;
+        cExperience = 0;
         cAlignment = a;
+        cInspiration = 0;
 
         cAbilityScores = new AbilityScore[] {new AbilityScore(AbilityScore.Scores.STRENGTH, 10),
                                              new AbilityScore(AbilityScore.Scores.DEXTERITY, 10),
