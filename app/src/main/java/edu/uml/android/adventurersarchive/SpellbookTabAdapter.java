@@ -12,30 +12,15 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
  * Created by Darin on 11/8/2016.
  */
 public class SpellbookTabAdapter extends FragmentPagerAdapter {
-    private CharacterInfo myCharacter;
-
-    public SpellbookTabAdapter(CharacterInfo ch, FragmentManager fm) {
+    public SpellbookTabAdapter(FragmentManager fm) {
         super(fm);
-        myCharacter = ch;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("character", myCharacter);
-        if(position == 0) {
-            PreparedSpellsFragment prepared = new PreparedSpellsFragment();
-            prepared.setArguments(bundle);
-            return prepared;
-        } else if(position == 1) {
-            MySpellbookFragment myspellbook = new MySpellbookFragment();
-            myspellbook.setArguments(bundle);
-            return myspellbook;
-        } else if(position == 2) {
-            FullSpellbookFragment fullspell = new FullSpellbookFragment();
-            fullspell.setArguments(bundle);
-            return fullspell;
-        }
+        if(position == 0) return new PreparedSpellsFragment();
+        else if(position == 1) return new MySpellbookFragment();
+        else if(position == 2) return new FullSpellbookFragment();
         else return null;
     }
 

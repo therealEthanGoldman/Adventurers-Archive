@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.uml.android.adventurersarchive.character.CharacterInfo;
 import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
@@ -28,7 +29,9 @@ public class FullSpellbookFragment extends Fragment {
 
         groupHeaders = new ArrayList<String>();
         groupItems = new HashMap<String, List<Spell>>();
-        prepareGroups();
+
+        CharacterInfo myCharacter = ((GlobalState) getActivity().getApplicationContext()).getCharacter();
+        prepareGroups(myCharacter);
 
         adapter = new SpellListAdapter(groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
@@ -45,7 +48,10 @@ public class FullSpellbookFragment extends Fragment {
         return rootView;
     }
 
-    private void prepareGroups() {
+    private void prepareGroups(CharacterInfo myCharacter) {
         // TODO: Take all spells in database and populate the groups and their items.
+        if(myCharacter != null) {
+
+        }
     }
 }

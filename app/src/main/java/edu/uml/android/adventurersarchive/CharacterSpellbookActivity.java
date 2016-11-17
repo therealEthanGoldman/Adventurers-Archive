@@ -23,19 +23,13 @@ import edu.uml.android.adventurersarchive.info.Spell;
  * Created by Darin on 11/6/2016.
  */
 public class CharacterSpellbookActivity extends AppCompatActivity {
-    private CharacterInfo myCharacter;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_spellbook);
 
-        Intent intent = getIntent();
-
-        myCharacter = (CharacterInfo) intent.getParcelableExtra("character");
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        SpellbookTabAdapter adapter = new SpellbookTabAdapter(myCharacter, getSupportFragmentManager());
+        SpellbookTabAdapter adapter = new SpellbookTabAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(adapter);
 

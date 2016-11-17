@@ -8,7 +8,7 @@ import edu.uml.android.adventurersarchive.info.DiceRoller;
 /**
  * Created by Darin on 11/3/2016.
  */
-public class CharacterInfo implements Parcelable {
+public class CharacterInfo {
     private String cName;
     public String getCharacterName() { return cName; }
     public void setCharacterName(String n) { cName = n; }
@@ -50,10 +50,9 @@ public class CharacterInfo implements Parcelable {
         return null;
     }
     public void setAbilityScores(AbilityScore [] scores) { cAbilityScores = scores; }
-    public void setAbilityScore(AbilityScore score, int val) {
-        for(int i = 0; i < cAbilityScores.length; i++) {
-            if(cAbilityScores[i] == score) cAbilityScores[i].setScoreValue(val);
-        }
+    public void setAbilityScore(AbilityScore.Scores score, int val) {
+        AbilityScore abil = getAbilityScore(score);
+        abil.setScoreValue(val);
     }
     public int rollInitiative() {
         return getAbilityScore(AbilityScore.Scores.DEXTERITY).getScoreModifier() + DiceRoller.roll(20);
@@ -73,51 +72,6 @@ public class CharacterInfo implements Parcelable {
                                              new AbilityScore(AbilityScore.Scores.WISDOM, 10),
                                              new AbilityScore(AbilityScore.Scores.CHARISMA, 10)};
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(cName);
-        dest.writeParcelable(cRace, 0);
-        dest.writeParcelable(cClass, 0);
-        dest.writeParcelable(cAlignment, 0);
-        dest.writeInt(cLevel);
-        dest.writeInt(cExperience);
-        dest.writeInt(cInspiration);
-        dest.writeTypedArray(cAbilityScores, 0);
-    }
-
-    public static final Creator<CharacterInfo> CREATOR = new Creator<CharacterInfo>() {
-        @Override
-        public CharacterInfo createFromParcel(final Parcel source) {
-            String n = source.readString(); // Retrieve Character Name
-            CharacterRace r = (CharacterRace) source.readParcelable(CharacterRace.class.getClassLoader());
-            CharacterClass cl = (CharacterClass) source.readParcelable(CharacterClass.class.getClassLoader());
-            CharacterAlignment al = (CharacterAlignment) source.readParcelable(CharacterAlignment.class.getClassLoader());
-            int lv = source.readInt(); // Retrieve Level
-            int exp = source.readInt(); // Retrieve current Experience
-            int insp = source.readInt(); // Retrieve Inspiration
-
-            CharacterInfo ch = new CharacterInfo(n, r, cl, al, lv);
-
-            AbilityScore [] sc = source.createTypedArray(AbilityScore.CREATOR);
-            ch.setAbilityScores(sc);
-
-            ch.setCharacterExp(exp);
-            ch.setInspiration(insp);
-
-            return ch;
-        }
-
-        @Override
-        public CharacterInfo[] newArray(final int size) {
-            return new CharacterInfo[size];
-        }
-    };
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,
                                          23000,34000,48000,64000,85000,

@@ -68,8 +68,9 @@ public class CreateCharacterActivity extends AppCompatActivity {
         int l = Integer.parseInt(((EditText) findViewById(R.id.level_input)).getText().toString());
 
         CharacterInfo ch = new CharacterInfo(n, r, c, a, l);
-
-        intent.putExtra("character", ch);
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.setCharacter(ch);
+        //intent.putExtra("character", ch);
 
         Toast.makeText(this, ("Creating " + n + "..."), Toast.LENGTH_SHORT);
 

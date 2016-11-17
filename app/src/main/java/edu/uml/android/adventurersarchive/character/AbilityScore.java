@@ -31,9 +31,7 @@ public class AbilityScore implements Parcelable {
     private int value;
     public int getScoreValue() { return value; }
     public void setScoreValue(int v) { value = v; }
-    public int getScoreModifier() {
-        return ((value - 10) / 2);
-    }
+    public int getScoreModifier() { return ((int)(value / 2) - 5); }
 
     @Override
     public int describeContents() {

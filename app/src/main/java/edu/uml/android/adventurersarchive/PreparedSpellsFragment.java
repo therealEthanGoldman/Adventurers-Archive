@@ -29,8 +29,7 @@ public class PreparedSpellsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.spell_list, container, false);
 
-        Bundle bundle = getArguments();
-        CharacterInfo myCharacter = (CharacterInfo) bundle.getParcelable("character");
+        CharacterInfo myCharacter = ((GlobalState) getActivity().getApplicationContext()).getCharacter();
         prepareGroups(myCharacter);
 
         groupHeaders = new ArrayList<String>();
