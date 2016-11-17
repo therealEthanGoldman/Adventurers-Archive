@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.uml.android.adventurersarchive.character.AbilityScore;
 import edu.uml.android.adventurersarchive.character.CharacterAlignment;
+import edu.uml.android.adventurersarchive.character.CharacterClass;
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
 /**
@@ -92,22 +94,28 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
             { // Set the character ability scores and modifiers.
                 setupAbilityScore(R.id.sheet_strength_input, R.id.sheet_str_mod_label,
+                                  R.id.sheet_str_save_label, R.id.sheet_str_save_box,
                                   state, AbilityScore.Scores.STRENGTH);
                 setupAbilityScore(R.id.sheet_dexterity_input, R.id.sheet_dex_mod_label,
+                                  R.id.sheet_dex_save_label, R.id.sheet_dex_save_box,
                                   state, AbilityScore.Scores.DEXTERITY);
                 setupAbilityScore(R.id.sheet_constitution_input, R.id.sheet_con_mod_label,
+                                  R.id.sheet_con_save_label, R.id.sheet_con_save_box,
                                   state, AbilityScore.Scores.CONSTITUTION);
                 setupAbilityScore(R.id.sheet_intelligence_input, R.id.sheet_int_mod_label,
+                                  R.id.sheet_int_save_label, R.id.sheet_int_save_box,
                                   state, AbilityScore.Scores.INTELLIGENCE);
                 setupAbilityScore(R.id.sheet_wisdom_input, R.id.sheet_wis_mod_label,
+                                  R.id.sheet_wis_save_label, R.id.sheet_wis_save_box,
                                   state, AbilityScore.Scores.WISDOM);
                 setupAbilityScore(R.id.sheet_charisma_input, R.id.sheet_cha_mod_label,
+                                  R.id.sheet_cha_save_label, R.id.sheet_cha_save_box,
                                   state, AbilityScore.Scores.CHARISMA);
             } // End ability score set.
         }
     }
 
-    private void setupAbilityScore(final int inputID, final int modID,
+    private void setupAbilityScore(final int inputID, final int modID, final int saveID, final int saveBoxID,
                                    final GlobalState state, final AbilityScore.Scores score) {
         EditText dexInput = (EditText) findViewById(inputID);
         dexInput.setText(String.valueOf(state.getCharacter().getAbilityScore(score).getScoreValue()));
@@ -122,13 +130,29 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
             public void afterTextChanged(Editable s) {
                 if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
                     state.getCharacter().setAbilityScore(score, Integer.parseInt(s.toString()));
-                    TextView mod = (TextView) findViewById(modID);
-                    mod.setText("Mod: " + state.getCharacter().getAbilityScore(score).getScoreModifier());
+
+                    TextView modText = (TextView) findViewById(modID);
+                    int mod = state.getCharacter().getAbilityScore(score).getScoreModifier();
+                    modText.setText("Mod: " + ((mod < 0)?"":"+") + mod);
+
+                    TextView saveText = (TextView) findViewById(saveID);
+                    boolean prof = CharacterClass.abilityIsProficient(state.getCharacter().getCharacterClass(), score);
+                    int save = mod + ((prof)?state.getCharacter().getProficiency():0);
+                    saveText.setText("Save: " + ((save < 0)?"":"+") + save);
                 }
             }
         });
 
         TextView modText = (TextView) findViewById(modID);
-        modText.setText("Mod: " + state.getCharacter().getAbilityScore(score).getScoreModifier());
+        int mod = state.getCharacter().getAbilityScore(score).getScoreModifier();
+        modText.setText("Mod: " + ((mod < 0)?"":"+") + mod);
+
+        TextView saveText = (TextView) findViewById(saveID);
+        boolean prof = CharacterClass.abilityIsProficient(state.getCharacter().getCharacterClass(), score);
+        int save = mod + ((prof)?state.getCharacter().getProficiency():0);
+        saveText.setText("Save: " + ((save < 0)?"":"+") + save);
+
+        CheckBox saveBox = (CheckBox) findViewById(saveBoxID);
+        saveBox.setChecked(prof);
     }
 }

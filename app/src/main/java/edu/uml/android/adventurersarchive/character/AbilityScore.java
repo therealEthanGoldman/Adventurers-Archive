@@ -15,6 +15,10 @@ public class AbilityScore {
     public void setScoreValue(int v) { value = v; }
     public int getScoreModifier() { return ((int)(value / 2) - 5); }
 
+    private boolean proficient;
+    public boolean isProficient() { return proficient; }
+    public void setProficient(boolean p) { proficient = p; }
+
     public AbilityScore(Scores t, int v) {
         type = t;
         value = v;
