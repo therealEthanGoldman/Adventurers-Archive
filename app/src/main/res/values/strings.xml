@@ -3,7 +3,9 @@
 
     <string name="create_character">Create Character</string>
     <string name="load_character">Load Character</string>
-    <string name="addloot">Add Item</string>
+    <string name="addloot">Add Loot</string>
+    <string name="editwealth">Edit Wealth</string>
+
     <string name="pplabel">PP: </string>
     <string name="gplabel">GP: </string>
     <string name="eplabel">EP: </string>
