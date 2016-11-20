@@ -14,7 +14,7 @@ public class Equipment
     boolean isEquiptable, isEquiped;
     int quanity;
     boolean attunable;
-    coins value;
+    Coins value;
 
     Equipment(){
         wt = 0;
@@ -24,10 +24,10 @@ public class Equipment
         isEquiped = false;
         quanity = 0;
         attunable = false;
-        value = new coins( );
+        value = new Coins( );
     }
 
-    Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attuned, coins kaching)
+    Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attuned, Coins kaching)
     {
         wt = weight;
         name = newname;
