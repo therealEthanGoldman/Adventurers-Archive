@@ -7,13 +7,16 @@
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants">
 
         <TextView
             android:id="@+id/sheet_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
             android:text="Character Name: " />
 
         <TextView
@@ -21,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_name_label"
             android:text="Character Race: " />
 
@@ -29,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_race_label"
             android:text="Character Class: " />
 
@@ -37,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_class_label"
             android:text="Experience: " />
         <EditText
@@ -65,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_exp_label"
             android:text="Alignment: " />
         <Spinner
@@ -75,6 +82,298 @@
             android:layout_toRightOf="@id/sheet_align_label"
             android:layout_alignBottom="@id/sheet_align_label"
             android:layout_alignBaseline="@+id/sheet_align_label" />
+
+        <!-- Ability Score section begins here -->
+
+        <!-- STRENGTH -->
+        <TextView
+            android:id="@+id/sheet_strength_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_align_label"
+            android:text="STR: " />
+        <EditText
+            android:id="@+id/sheet_strength_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_align_label"
+            android:layout_toRightOf="@id/sheet_strength_label"
+            android:layout_alignBaseline="@id/sheet_strength_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_str_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_align_label"
+            android:layout_alignBaseline="@id/sheet_strength_label"
+            android:layout_toRightOf="@id/sheet_strength_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_str_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_align_label"
+            android:layout_alignBaseline="@id/sheet_strength_label"
+            android:layout_toRightOf="@id/sheet_str_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_str_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_align_label"
+            android:layout_alignBaseline="@id/sheet_strength_label"
+            android:layout_toRightOf="@id/sheet_str_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- DEXTERITY -->
+        <TextView
+            android:id="@+id/sheet_dexterity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_strength_label"
+            android:text="DEX: " />
+        <EditText
+            android:id="@+id/sheet_dexterity_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_strength_label"
+            android:layout_toRightOf="@id/sheet_dexterity_label"
+            android:layout_alignBaseline="@id/sheet_dexterity_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_dex_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_strength_label"
+            android:layout_alignBaseline="@id/sheet_dexterity_label"
+            android:layout_toRightOf="@id/sheet_dexterity_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_dex_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_strength_label"
+            android:layout_alignBaseline="@id/sheet_dexterity_label"
+            android:layout_toRightOf="@id/sheet_dex_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_dex_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_strength_label"
+            android:layout_alignBaseline="@id/sheet_dexterity_label"
+            android:layout_toRightOf="@id/sheet_dex_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- CONSTITUTION -->
+        <TextView
+            android:id="@+id/sheet_constitution_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_dexterity_label"
+            android:text="CON: " />
+        <EditText
+            android:id="@+id/sheet_constitution_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_dexterity_label"
+            android:layout_toRightOf="@id/sheet_constitution_label"
+            android:layout_alignBaseline="@id/sheet_constitution_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_con_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_dexterity_label"
+            android:layout_alignBaseline="@id/sheet_constitution_label"
+            android:layout_toRightOf="@id/sheet_constitution_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_con_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_dexterity_label"
+            android:layout_alignBaseline="@id/sheet_constitution_label"
+            android:layout_toRightOf="@id/sheet_con_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_con_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_dexterity_label"
+            android:layout_alignBaseline="@id/sheet_constitution_label"
+            android:layout_toRightOf="@id/sheet_con_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- INTELLIGENCE -->
+        <TextView
+            android:id="@+id/sheet_intelligence_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_constitution_label"
+            android:text="INT: " />
+        <EditText
+            android:id="@+id/sheet_intelligence_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_constitution_label"
+            android:layout_toRightOf="@id/sheet_intelligence_label"
+            android:layout_alignBaseline="@id/sheet_intelligence_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_int_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_constitution_label"
+            android:layout_alignBaseline="@id/sheet_intelligence_label"
+            android:layout_toRightOf="@id/sheet_intelligence_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_int_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_constitution_label"
+            android:layout_alignBaseline="@id/sheet_intelligence_label"
+            android:layout_toRightOf="@id/sheet_int_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_int_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_constitution_label"
+            android:layout_alignBaseline="@id/sheet_intelligence_label"
+            android:layout_toRightOf="@id/sheet_int_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- WISDOM -->
+        <TextView
+            android:id="@+id/sheet_wisdom_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_intelligence_label"
+            android:text="WIS: " />
+        <EditText
+            android:id="@+id/sheet_wisdom_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_intelligence_label"
+            android:layout_toRightOf="@id/sheet_wisdom_label"
+            android:layout_alignBaseline="@id/sheet_wisdom_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_wis_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_intelligence_label"
+            android:layout_alignBaseline="@id/sheet_wisdom_label"
+            android:layout_toRightOf="@id/sheet_wisdom_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_wis_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_intelligence_label"
+            android:layout_alignBaseline="@id/sheet_wisdom_label"
+            android:layout_toRightOf="@id/sheet_wis_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_wis_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_intelligence_label"
+            android:layout_alignBaseline="@id/sheet_wisdom_label"
+            android:layout_toRightOf="@id/sheet_wis_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- CHARISMA -->
+        <TextView
+            android:id="@+id/sheet_charisma_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_wisdom_label"
+            android:text="CHA: " />
+        <EditText
+            android:id="@+id/sheet_charisma_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_wisdom_label"
+            android:layout_toRightOf="@id/sheet_charisma_label"
+            android:layout_alignBaseline="@id/sheet_charisma_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_cha_mod_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_wisdom_label"
+            android:layout_alignBaseline="@id/sheet_charisma_label"
+            android:layout_toRightOf="@id/sheet_charisma_input"
+            android:layout_marginLeft="16dp"
+            android:text="Mod: " />
+        <TextView
+            android:id="@+id/sheet_cha_save_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_wisdom_label"
+            android:layout_alignBaseline="@id/sheet_charisma_label"
+            android:layout_toRightOf="@id/sheet_cha_mod_label"
+            android:layout_marginLeft="16dp"
+            android:text="Save: " />
+        <CheckBox
+            android:id="@+id/sheet_cha_save_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_wisdom_label"
+            android:layout_alignBaseline="@id/sheet_charisma_label"
+            android:layout_toRightOf="@id/sheet_cha_save_label"
+            android:layout_marginLeft="8dp"
+            android:clickable="false" />
+
+        <!-- Ability Score section ends here -->
 
     </RelativeLayout>
 
