@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
+import edu.uml.android.adventurersarchive.character.Coins;
 import edu.uml.android.adventurersarchive.character.Equipment;
 
 /**
@@ -16,7 +17,8 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
     private CharacterInfo myCharacter;
     public int totalweight;
 
-    List<Equipment> equipments;
+    private List<Equipment> equipments;
+    private Coins totalValue;
 
 
 

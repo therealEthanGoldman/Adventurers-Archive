@@ -79,6 +79,15 @@ public class Coins {
         adjust();
     }
 
+    public void setCoins(Coins loot) {
+        cp = loot.cp;
+        sp = loot.sp;
+        ep = loot.ep;
+        gp = loot.gp;
+        pp = loot.pp;
+        adjust();
+    }
+
     public boolean take(Coins payment) {
         if (valueInGold() >= payment.valueInGold()) {
             cp -= payment.cp;

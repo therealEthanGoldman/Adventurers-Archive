@@ -3,6 +3,7 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import edu.uml.android.adventurersarchive.CharacterEquipmentActivity;
 import edu.uml.android.adventurersarchive.info.DiceRoller;
 
 /**
@@ -57,6 +58,11 @@ public class CharacterInfo {
     public int rollInitiative() {
         return getAbilityScore(AbilityScore.Scores.DEXTERITY).getScoreModifier() + DiceRoller.roll(20);
     }
+
+    private Coins cCoins;
+    public  Coins getcCoins() { return cCoins;}
+    public  void setcCoins( Coins cash){ cCoins.setCoins(cash);}
+    public  void addcCoins( Coins cash){ cCoins.add( cash);}
 
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
