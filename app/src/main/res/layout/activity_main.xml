@@ -26,5 +26,6 @@
         android:layout_below="@id/create_character"
         android:layout_centerInParent="true"
         android:text="@string/load_character"
-        android:onClick="loadCharacter" />
+        android:onClick="loadCharacter"
+        android:enabled="false" />
 </RelativeLayout>

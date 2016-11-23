@@ -42,6 +42,24 @@ public enum CharacterClass {
         return null;
     }
 
+    public static int getHitDie(CharacterClass cc) {
+        switch(cc) {
+            case BARBARIAN: return 12;
+            case FIGHTER:
+            case PALADIN:
+            case RANGER: return 10;
+            case BARD:
+            case CLERIC:
+            case DRUID:
+            case MONK:
+            case ROGUE:
+            case WARLOCK: return 8;
+            case SORCERER:
+            case WIZARD:
+            default: return 6;
+        }
+    }
+
     public static boolean abilityIsProficient(CharacterClass cc, AbilityScore.Scores score) {
         for(AbilityScore.Scores sc : cc.getProficiencies()) {
             if(score.equals(sc)) return true;
