@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.uml.android.adventurersarchive.info.DiceRoller;
 
@@ -105,6 +107,9 @@ public class CharacterInfo implements Serializable {
     private Coins money;
     public Coins getMoney() { return money; }
 
+    private List<Equipment> cEquipment;
+    public List<Equipment> getEquipment() { return cEquipment; }
+
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
         cRace = r;
@@ -152,6 +157,7 @@ public class CharacterInfo implements Serializable {
                                new Skill(Skill.SkillType.SURVIVAL)};
 
         money = new Coins();
+        cEquipment = new ArrayList<Equipment>();
     }
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,
