@@ -27,8 +27,9 @@ public class CharacterMainActivity extends AppCompatActivity {
 
     public void openEquipment(View v) {
         // TODO: Re-enable this once Equipment activity is complete.
-        /*Intent intent = new Intent(this, CharacterEquipmentActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, CharacterEquipmentActivity.class);
+        startActivity(intent);
+
     }
 
     public void openSpellbook(View v) {
