@@ -78,8 +78,8 @@ public class CharacterInfo implements Serializable {
     private int [] cDeathSaves;
     public int getDeathSuccesses() { return cDeathSaves[0]; }
     public int getDeathFailures() { return cDeathSaves[1]; }
-    public void addDeathSuccess() { if(cDeathSaves[0] < 3) cDeathSaves[0]++; }
-    public void addDeathFailure() { if(cDeathSaves[1] < 3) cDeathSaves[1]++; }
+    public void setDeathSuccesses(int v) { cDeathSaves[0] = v; }
+    public void setDeathFailures(int v) { cDeathSaves[1] = v; }
     public void resetDeathSaves() {
         cDeathSaves[0] = 0;
         cDeathSaves[1] = 0;
@@ -120,8 +120,7 @@ public class CharacterInfo implements Serializable {
 
         cArmorClass = 0;
 
-        cDeathSaves = new int[2];
-        resetDeathSaves();
+        cDeathSaves = new int[] {0, 0};
 
         cInspiration = 0;
         cSpeed = 30;

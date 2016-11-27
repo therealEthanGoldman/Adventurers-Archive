@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.uml.android.adventurersarchive.character.AbilityScore;
 import edu.uml.android.adventurersarchive.character.CharacterAlignment;
@@ -296,50 +298,124 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
     }
 
     public void resetDeathSaveButton(View v) {
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.getCharacter().resetDeathSaves();
         resetDeathSaves();
     }
 
     private void resetDeathSaves() {
-        GlobalState state = (GlobalState) getApplicationContext();
-        state.getCharacter().resetDeathSaves();
+        final GlobalState state = (GlobalState) getApplicationContext();
 
-        CheckBox [] successes = {(CheckBox) findViewById(R.id.sheet_success_1),
-                                 (CheckBox) findViewById(R.id.sheet_success_2),
-                                 (CheckBox) findViewById(R.id.sheet_success_3)};
-        CheckBox [] failures = {(CheckBox) findViewById(R.id.sheet_fail_1),
-                                (CheckBox) findViewById(R.id.sheet_fail_2),
-                                (CheckBox) findViewById(R.id.sheet_fail_3)};
+        final CheckBox [] successes = {(CheckBox) findViewById(R.id.sheet_success_1),
+                                       (CheckBox) findViewById(R.id.sheet_success_2),
+                                       (CheckBox) findViewById(R.id.sheet_success_3)};
+        final CheckBox [] failures = {(CheckBox) findViewById(R.id.sheet_fail_1),
+                                      (CheckBox) findViewById(R.id.sheet_fail_2),
+                                      (CheckBox) findViewById(R.id.sheet_fail_3)};
 
-        for(CheckBox cb : successes) {
-            cb.setChecked(false);
-            cb.setEnabled(false);
+        for(int i = 0; i < 3; i++) {
+            successes[i].setOnCheckedChangeListener(null);
+            failures[i].setOnCheckedChangeListener(null);
         }
 
-        for(CheckBox cb : failures) {
-            cb.setChecked(false);
-            cb.setEnabled(false);
+        for(int i = 0; i < 3; i++) {
+            successes[i].setEnabled(false);
+            successes[i].setChecked(false);
+            failures[i].setEnabled(false);
+            failures[i].setChecked(false);
+        }
+
+        for(int i = 0; i < 3; i++) {
+            successes[i].setOnCheckedChangeListener(deathListener);
+            failures[i].setOnCheckedChangeListener(deathListener);
         }
 
         int s = state.getCharacter().getDeathSuccesses();
         int f = state.getCharacter().getDeathFailures();
 
         for(int i = 0; i < s; i++) {
-            successes[i].setEnabled(true);
             successes[i].setChecked(true);
         }
 
         for(int j = 0; j < f; j++) {
-            failures[j].setEnabled(true);
             failures[j].setChecked(true);
         }
 
-        if(!successes[0].isChecked() || !successes[0].isEnabled()) {
-            successes[0].setEnabled(true);
-            successes[0].setChecked(true);
-        }
-        if(!failures[0].isChecked() || !failures[0].isEnabled()) {
-            failures[0].setEnabled(true);
-            failures[0].setChecked(true);
-        }
+        if(!successes[0].isEnabled()) successes[0].setEnabled(true);
+        if(!failures[0].isEnabled()) failures[0].setEnabled(true);
     }
+
+    private CheckBox.OnCheckedChangeListener deathListener = new CheckBox.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            GlobalState state = (GlobalState) getApplicationContext();
+            final CheckBox [] successes = {(CheckBox) findViewById(R.id.sheet_success_1),
+                                           (CheckBox) findViewById(R.id.sheet_success_2),
+                                           (CheckBox) findViewById(R.id.sheet_success_3)};
+            final CheckBox [] failures = {(CheckBox) findViewById(R.id.sheet_fail_1),
+                                          (CheckBox) findViewById(R.id.sheet_fail_2),
+                                          (CheckBox) findViewById(R.id.sheet_fail_3)};
+
+            switch(buttonView.getId()) {
+                case R.id.sheet_success_1:
+                    if(isChecked) {
+                        state.getCharacter().setDeathSuccesses(1);
+                        successes[1].setEnabled(true);
+                    } else {
+                        state.getCharacter().setDeathSuccesses(0);
+                        successes[1].setEnabled(false);
+                    }
+                    successes[1].setChecked(false);
+                    successes[2].setEnabled(false);
+                    successes[2].setChecked(false);
+                    break;
+                case R.id.sheet_success_2:
+                    if(isChecked) {
+                        state.getCharacter().setDeathSuccesses(2);
+                        successes[2].setEnabled(true);
+                    } else {
+                        state.getCharacter().setDeathSuccesses(1);
+                        successes[2].setEnabled(false);
+                    }
+                    successes[2].setChecked(false);
+                    break;
+                case R.id.sheet_success_3:
+                    if(isChecked) {
+                        state.getCharacter().setDeathSuccesses(3);
+                    } else {
+                        state.getCharacter().setDeathSuccesses(2);
+                    }
+                    break;
+                case R.id.sheet_fail_1:
+                    if(isChecked) {
+                        state.getCharacter().setDeathFailures(1);
+                        failures[1].setEnabled(true);
+                    } else {
+                        state.getCharacter().setDeathFailures(0);
+                        failures[1].setEnabled(false);
+                    }
+                    failures[1].setChecked(false);
+                    failures[2].setEnabled(false);
+                    failures[2].setChecked(false);
+                    break;
+                case R.id.sheet_fail_2:
+                    if(isChecked) {
+                        state.getCharacter().setDeathFailures(2);
+                        failures[2].setEnabled(true);
+                    } else {
+                        state.getCharacter().setDeathFailures(1);
+                        failures[2].setEnabled(false);
+                    }
+                    failures[2].setChecked(false);
+                    break;
+                case R.id.sheet_fail_3:
+                    if(isChecked) {
+                        state.getCharacter().setDeathFailures(3);
+                    } else {
+                        state.getCharacter().setDeathFailures(2);
+                    }
+                    break;
+            }
+        }
+    };
 }
