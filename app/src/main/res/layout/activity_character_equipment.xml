@@ -52,7 +52,7 @@
             android:text="@string/splabel"
             />
 
-        <EditText android:id="@+id/sp_value"
+        <TextView android:id="@+id/sp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="8dp"
@@ -77,7 +77,7 @@
             android:text="@string/eplabel"
             />
 
-        <EditText android:id="@+id/ep_value"
+        <TextView android:id="@+id/ep_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="8dp"
@@ -103,7 +103,7 @@
             android:text="@string/gplabel"
             />
 
-        <EditText android:id="@+id/gp_value"
+        <TextView android:id="@+id/gp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="8dp"
@@ -129,7 +129,7 @@
             android:text="@string/pplabel"
             />
 
-        <EditText android:id="@+id/pp_value"
+        <TextView android:id="@+id/pp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="8dp"

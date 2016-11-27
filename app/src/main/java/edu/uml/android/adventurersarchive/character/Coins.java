@@ -6,10 +6,15 @@ package edu.uml.android.adventurersarchive.character;
 
 public class Coins {
     private int cp;
+    public  int getCp() {return cp; };
     private int sp;
+    public  int getSp() {return sp; };
     private int ep;
+    public  int getEp() {return ep; };
     private int gp;
+    public  int getGp() {return gp; };
     private int pp;
+    public  int getPp() {return pp; };
 
 
     public Coins() {

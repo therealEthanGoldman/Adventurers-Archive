@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:text="Equipment"
         android:onClick="openEquipment"
-        android:enabled="false" />
+        android:enabled="true" />
 
     <Button
         android:id="@+id/character_spellbook_button"
