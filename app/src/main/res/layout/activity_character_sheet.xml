@@ -572,12 +572,12 @@
             android:id="@+id/sheet_death_success_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="72dp"
+            android:minWidth="80dp"
             android:layout_below="@id/sheet_hp_label"
             android:layout_marginTop="32dp"
             android:layout_marginLeft="16dp"
             android:text="Successes: " />
-        <RadioButton
+        <CheckBox
             android:id="@+id/sheet_success_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -585,33 +585,35 @@
             android:layout_toRightOf="@id/sheet_death_success_label"
             android:layout_alignBaseline="@id/sheet_death_success_label"
             android:layout_marginLeft="8dp" />
-        <RadioButton
+        <CheckBox
             android:id="@+id/sheet_success_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sheet_hp_label"
             android:layout_toRightOf="@id/sheet_success_1"
             android:layout_alignBaseline="@id/sheet_death_success_label"
-            android:layout_marginLeft="16dp" />
-        <RadioButton
+            android:layout_marginLeft="16dp"
+            android:enabled="false" />
+        <CheckBox
             android:id="@+id/sheet_success_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sheet_hp_label"
             android:layout_toRightOf="@id/sheet_success_2"
             android:layout_alignBaseline="@id/sheet_death_success_label"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:enabled="false" />
 
         <TextView
             android:id="@+id/sheet_death_failure_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="72dp"
+            android:minWidth="80dp"
             android:layout_below="@id/sheet_death_success_label"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="16dp"
             android:text="Failures: " />
-        <RadioButton
+        <CheckBox
             android:id="@+id/sheet_fail_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -619,22 +621,43 @@
             android:layout_toRightOf="@id/sheet_death_failure_label"
             android:layout_alignBaseline="@id/sheet_death_failure_label"
             android:layout_marginLeft="8dp" />
-        <RadioButton
+        <CheckBox
             android:id="@+id/sheet_fail_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sheet_death_success_label"
             android:layout_toRightOf="@id/sheet_fail_1"
             android:layout_alignBaseline="@id/sheet_death_failure_label"
-            android:layout_marginLeft="16dp" />
-        <RadioButton
+            android:layout_marginLeft="16dp"
+            android:enabled="false" />
+        <CheckBox
             android:id="@+id/sheet_fail_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sheet_death_success_label"
             android:layout_toRightOf="@id/sheet_fail_2"
             android:layout_alignBaseline="@id/sheet_death_failure_label"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:enabled="false" />
+        <Button
+            android:id="@+id/sheet_reset_death_saves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_death_failure_label"
+            android:text="Reset"
+            android:onClick="resetDeathSaveButton" />
+
+        <View
+            android:id="@+id/sheet_misc_div"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/sheet_reset_death_saves"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/darker_gray"/>
 
     </RelativeLayout>
 

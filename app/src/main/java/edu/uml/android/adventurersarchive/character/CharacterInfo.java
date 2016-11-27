@@ -1,8 +1,5 @@
 package edu.uml.android.adventurersarchive.character;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 import edu.uml.android.adventurersarchive.info.DiceRoller;
@@ -51,7 +48,6 @@ public class CharacterInfo implements Serializable {
         }
         return null;
     }
-    public void setAbilityScores(AbilityScore [] scores) { cAbilityScores = scores; }
     public void setAbilityScore(AbilityScore.Scores score, int val) {
         AbilityScore abil = getAbilityScore(score);
         abil.setScoreValue(val);
@@ -94,6 +90,15 @@ public class CharacterInfo implements Serializable {
     public int getSpeed() { return cSpeed; }
     public void setSpeed(int s) { cSpeed = s; }
 
+    private Skill [] cSkills;
+    public Skill [] getSkills() { return cSkills; }
+    public Skill getSkill(Skill.SkillType skill) {
+        for(Skill sk : cSkills) {
+            if(sk.getSkillType() == skill) return sk;
+        }
+        return null;
+    }
+
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
         cRace = r;
@@ -104,8 +109,8 @@ public class CharacterInfo implements Serializable {
 
         cHealthCurrent = 0;
         cHealthMaximum = 0;
-        cHitDiceSize = 0;
-        cHitDiceCount = 0;
+        cHitDiceSize = CharacterClass.getHitDie(cClass);
+        cHitDiceCount = cLevel;
 
         cArmorClass = 0;
 
@@ -121,6 +126,25 @@ public class CharacterInfo implements Serializable {
                                              new AbilityScore(AbilityScore.Scores.INTELLIGENCE, 10),
                                              new AbilityScore(AbilityScore.Scores.WISDOM, 10),
                                              new AbilityScore(AbilityScore.Scores.CHARISMA, 10)};
+
+        cSkills = new Skill[] {new Skill(Skill.SkillType.ACROBATICS),
+                               new Skill(Skill.SkillType.ANIMAL_HANDLING),
+                               new Skill(Skill.SkillType.ARCANA),
+                               new Skill(Skill.SkillType.ATHLETICS),
+                               new Skill(Skill.SkillType.DECEPTION),
+                               new Skill(Skill.SkillType.HISTORY),
+                               new Skill(Skill.SkillType.INSIGHT),
+                               new Skill(Skill.SkillType.INTIMIDATION),
+                               new Skill(Skill.SkillType.INVESTIGATION),
+                               new Skill(Skill.SkillType.MEDICINE),
+                               new Skill(Skill.SkillType.NATURE),
+                               new Skill(Skill.SkillType.PERCEPTION),
+                               new Skill(Skill.SkillType.PERFORMANCE),
+                               new Skill(Skill.SkillType.PERSUASION),
+                               new Skill(Skill.SkillType.RELIGION),
+                               new Skill(Skill.SkillType.SLEIGHT_OF_HAND),
+                               new Skill(Skill.SkillType.STEALTH),
+                               new Skill(Skill.SkillType.SURVIVAL)};
     }
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,

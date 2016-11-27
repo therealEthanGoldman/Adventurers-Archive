@@ -14,5 +14,11 @@ public class CharacterSkillsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_skills);
+
+        final GlobalState state = (GlobalState) getApplicationContext();
+        CharacterInfo myCharacter = state.getCharacter();
+        if(myCharacter != null) {
+
+        }
     }
 }

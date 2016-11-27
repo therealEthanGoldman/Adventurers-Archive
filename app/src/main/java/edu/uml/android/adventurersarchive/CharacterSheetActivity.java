@@ -2,6 +2,7 @@ package edu.uml.android.adventurersarchive;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -106,13 +107,15 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setInspiration(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setInspiration(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
 
                 TextView prof = (TextView) findViewById(R.id.sheet_proficiency_label);
                 int bonus = myCharacter.getProficiency();
-                prof.setText(((bonus < 0)?"":"+") + String.valueOf(bonus));
+                prof.setText("Proficiency Bonus: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
             } // End inspiration and proficiency bonus set.
 
             { // Set the character ability scores and modifiers.
@@ -148,7 +151,9 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setArmorClass(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setArmorClass(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
             } // End AC set.
@@ -171,7 +176,9 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setSpeed(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setSpeed(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
             } // End Speed set.
@@ -188,7 +195,9 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setCurrentHealth(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setCurrentHealth(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
 
@@ -203,7 +212,9 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setMaximumHealth(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setMaximumHealth(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
 
@@ -221,7 +232,9 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        state.getCharacter().setHitDiceCount(Integer.parseInt(s.toString()));
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            state.getCharacter().setHitDiceCount(Integer.parseInt(s.toString()));
+                        }
                     }
                 });
 
@@ -230,18 +243,7 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
             } // End character vitals set.
 
             { // Set death save indicators.
-                RadioButton [] successes = {(RadioButton) findViewById(R.id.sheet_success_1),
-                                            (RadioButton) findViewById(R.id.sheet_success_2),
-                                            (RadioButton) findViewById(R.id.sheet_success_3)};
-                RadioButton [] failures = {(RadioButton) findViewById(R.id.sheet_fail_1),
-                                           (RadioButton) findViewById(R.id.sheet_fail_2),
-                                           (RadioButton) findViewById(R.id.sheet_fail_3)};
-
-                int s = myCharacter.getDeathSuccesses();
-                int f = myCharacter.getDeathFailures();
-
-                for(int i = 0; i < s; i++) { successes[i].setChecked(true); }
-                for(int j = 0; j < f; j++) { failures[j].setChecked(true); }
+                resetDeathSaves();
             } // End death save indicator set.
         }
     }
@@ -291,5 +293,53 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
         CheckBox saveBox = (CheckBox) findViewById(saveBoxID);
         saveBox.setChecked(prof);
+    }
+
+    public void resetDeathSaveButton(View v) {
+        resetDeathSaves();
+    }
+
+    private void resetDeathSaves() {
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.getCharacter().resetDeathSaves();
+
+        CheckBox [] successes = {(CheckBox) findViewById(R.id.sheet_success_1),
+                                 (CheckBox) findViewById(R.id.sheet_success_2),
+                                 (CheckBox) findViewById(R.id.sheet_success_3)};
+        CheckBox [] failures = {(CheckBox) findViewById(R.id.sheet_fail_1),
+                                (CheckBox) findViewById(R.id.sheet_fail_2),
+                                (CheckBox) findViewById(R.id.sheet_fail_3)};
+
+        for(CheckBox cb : successes) {
+            cb.setChecked(false);
+            cb.setEnabled(false);
+        }
+
+        for(CheckBox cb : failures) {
+            cb.setChecked(false);
+            cb.setEnabled(false);
+        }
+
+        int s = state.getCharacter().getDeathSuccesses();
+        int f = state.getCharacter().getDeathFailures();
+
+        for(int i = 0; i < s; i++) {
+            successes[i].setEnabled(true);
+            successes[i].setChecked(true);
+        }
+
+        for(int j = 0; j < f; j++) {
+            failures[j].setEnabled(true);
+            failures[j].setChecked(true);
+        }
+
+        if(!successes[0].isChecked() || !successes[0].isEnabled()) {
+            successes[0].setEnabled(true);
+            successes[0].setChecked(true);
+        }
+        if(!failures[0].isChecked() || !failures[0].isEnabled()) {
+            failures[0].setEnabled(true);
+            failures[0].setChecked(true);
+        }
     }
 }
