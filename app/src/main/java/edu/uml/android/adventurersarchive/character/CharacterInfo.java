@@ -1,5 +1,8 @@
 package edu.uml.android.adventurersarchive.character;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 import edu.uml.android.adventurersarchive.info.DiceRoller;
