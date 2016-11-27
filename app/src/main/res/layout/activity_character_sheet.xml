@@ -83,6 +83,55 @@
             android:layout_alignBottom="@id/sheet_align_label"
             android:layout_alignBaseline="@+id/sheet_align_label" />
 
+        <View
+            android:id="@+id/sheet_insp_div"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/sheet_align_spinner"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/sheet_inspiration_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_insp_div"
+            android:text="Inspiration: " />
+        <EditText
+            android:id="@+id/sheet_inspiration_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_align_label"
+            android:layout_toRightOf="@id/sheet_inspiration_label"
+            android:layout_alignBaseline="@id/sheet_inspiration_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/sheet_proficiency_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@id/sheet_inspiration_label"
+            android:text="Proficiency Bonus: 0" />
+
+        <View
+            android:id="@+id/sheet_scores_div"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/sheet_proficiency_label"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/darker_gray"/>
+
         <!-- Ability Score section begins here -->
 
         <!-- STRENGTH -->
@@ -90,15 +139,16 @@
             android:id="@+id/sheet_strength_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_below="@id/sheet_align_label"
+            android:layout_below="@id/sheet_scores_div"
             android:text="STR: " />
         <EditText
             android:id="@+id/sheet_strength_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sheet_align_label"
+            android:layout_below="@id/sheet_scores_div"
             android:layout_toRightOf="@id/sheet_strength_label"
             android:layout_alignBaseline="@id/sheet_strength_label"
             android:backgroundTint="@android:color/holo_blue_dark"
@@ -109,7 +159,7 @@
             android:id="@+id/sheet_str_mod_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sheet_align_label"
+            android:layout_below="@id/sheet_scores_div"
             android:layout_alignBaseline="@id/sheet_strength_label"
             android:layout_toRightOf="@id/sheet_strength_input"
             android:layout_marginLeft="16dp"
@@ -118,7 +168,7 @@
             android:id="@+id/sheet_str_save_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sheet_align_label"
+            android:layout_below="@id/sheet_scores_div"
             android:layout_alignBaseline="@id/sheet_strength_label"
             android:layout_toRightOf="@id/sheet_str_mod_label"
             android:layout_marginLeft="16dp"
@@ -127,7 +177,7 @@
             android:id="@+id/sheet_str_save_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sheet_align_label"
+            android:layout_below="@id/sheet_scores_div"
             android:layout_alignBaseline="@id/sheet_strength_label"
             android:layout_toRightOf="@id/sheet_str_save_label"
             android:layout_marginLeft="8dp"
@@ -138,7 +188,8 @@
             android:id="@+id/sheet_dexterity_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_strength_label"
             android:text="DEX: " />
@@ -186,7 +237,8 @@
             android:id="@+id/sheet_constitution_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_dexterity_label"
             android:text="CON: " />
@@ -234,7 +286,8 @@
             android:id="@+id/sheet_intelligence_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_constitution_label"
             android:text="INT: " />
@@ -282,7 +335,8 @@
             android:id="@+id/sheet_wisdom_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_intelligence_label"
             android:text="WIS: " />
@@ -330,7 +384,8 @@
             android:id="@+id/sheet_charisma_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:minWidth="36dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_wisdom_label"
             android:text="CHA: " />
@@ -374,6 +429,212 @@
             android:clickable="false" />
 
         <!-- Ability Score section ends here -->
+
+        <View
+            android:id="@+id/sheet_ac_div"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/sheet_charisma_label"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/sheet_ac_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_div"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="AC: " />
+        <EditText
+            android:id="@+id/sheet_ac_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_div"
+            android:layout_toRightOf="@id/sheet_ac_label"
+            android:layout_alignBaseline="@id/sheet_ac_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/sheet_init_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_div"
+            android:layout_toRightOf="@id/sheet_ac_input"
+            android:layout_alignBaseline="@id/sheet_ac_label"
+            android:layout_marginLeft="16dp"
+            android:text="Initiative: 0" />
+
+        <TextView
+            android:id="@+id/sheet_speed_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_div"
+            android:layout_toRightOf="@id/sheet_init_label"
+            android:layout_alignBaseline="@id/sheet_ac_label"
+            android:layout_marginLeft="16dp"
+            android:text="Speed: " />
+        <EditText
+            android:id="@+id/sheet_speed_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_div"
+            android:layout_toRightOf="@id/sheet_speed_label"
+            android:layout_alignBaseline="@id/sheet_ac_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/sheet_hp_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_label"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:text="HP: " />
+        <EditText
+            android:id="@+id/sheet_hp_curr_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_label"
+            android:layout_toRightOf="@id/sheet_hp_label"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_hp_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_label"
+            android:layout_toRightOf="@id/sheet_hp_curr_input"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:text=" / " />
+        <EditText
+            android:id="@+id/sheet_hp_max_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_ac_label"
+            android:layout_toRightOf="@id/sheet_hp_div"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/sheet_hd_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_hp_max_input"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:layout_marginLeft="16dp"
+            android:text="HD: 0" />
+        <TextView
+            android:id="@+id/sheet_hd_total_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_hd_label"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:layout_marginLeft="16dp"
+            android:text="HD Total: " />
+        <EditText
+            android:id="@+id/sheet_hd_curr_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_hd_total_label"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
+        <TextView
+            android:id="@+id/sheet_hd_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_hd_curr_input"
+            android:layout_alignBaseline="@id/sheet_hp_label"
+            android:text="/ 0" />
+
+        <TextView
+            android:id="@+id/sheet_death_success_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="72dp"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:text="Successes: " />
+        <RadioButton
+            android:id="@+id/sheet_success_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_death_success_label"
+            android:layout_alignBaseline="@id/sheet_death_success_label"
+            android:layout_marginLeft="8dp" />
+        <RadioButton
+            android:id="@+id/sheet_success_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_success_1"
+            android:layout_alignBaseline="@id/sheet_death_success_label"
+            android:layout_marginLeft="16dp" />
+        <RadioButton
+            android:id="@+id/sheet_success_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_hp_label"
+            android:layout_toRightOf="@id/sheet_success_2"
+            android:layout_alignBaseline="@id/sheet_death_success_label"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/sheet_death_failure_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="72dp"
+            android:layout_below="@id/sheet_death_success_label"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:text="Failures: " />
+        <RadioButton
+            android:id="@+id/sheet_fail_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_death_success_label"
+            android:layout_toRightOf="@id/sheet_death_failure_label"
+            android:layout_alignBaseline="@id/sheet_death_failure_label"
+            android:layout_marginLeft="8dp" />
+        <RadioButton
+            android:id="@+id/sheet_fail_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_death_success_label"
+            android:layout_toRightOf="@id/sheet_fail_1"
+            android:layout_alignBaseline="@id/sheet_death_failure_label"
+            android:layout_marginLeft="16dp" />
+        <RadioButton
+            android:id="@+id/sheet_fail_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_death_success_label"
+            android:layout_toRightOf="@id/sheet_fail_2"
+            android:layout_alignBaseline="@id/sheet_death_failure_label"
+            android:layout_marginLeft="16dp" />
 
     </RelativeLayout>
 

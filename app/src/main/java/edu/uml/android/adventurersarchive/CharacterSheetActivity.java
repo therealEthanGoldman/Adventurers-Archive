@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                                                   + myCharacter.getCharacterLevel();
                 classText.setText(text);
                 // TODO: Set a listener on this label so the user can tap it to enter their level.
+                //       The listener should update anything relating to level (number of hit die, etc)
             } // End class set.
 
             { // Set the experience level.
@@ -92,6 +94,27 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                 });
             } // End alignment set.
 
+            { // Set the inspiration and proficiency bonus values.
+                EditText insp = (EditText) findViewById(R.id.sheet_inspiration_input);
+                insp.setText(String.valueOf(myCharacter.getInspiration()));
+                insp.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setInspiration(Integer.parseInt(s.toString()));
+                    }
+                });
+
+                TextView prof = (TextView) findViewById(R.id.sheet_proficiency_label);
+                int bonus = myCharacter.getProficiency();
+                prof.setText(((bonus < 0)?"":"+") + String.valueOf(bonus));
+            } // End inspiration and proficiency bonus set.
+
             { // Set the character ability scores and modifiers.
                 setupAbilityScore(R.id.sheet_strength_input, R.id.sheet_str_mod_label,
                                   R.id.sheet_str_save_label, R.id.sheet_str_save_box,
@@ -112,6 +135,114 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                                   R.id.sheet_cha_save_label, R.id.sheet_cha_save_box,
                                   state, AbilityScore.Scores.CHARISMA);
             } // End ability score set.
+
+            { // Set AC value.
+                EditText ac = (EditText) findViewById(R.id.sheet_ac_input);
+                ac.setText(String.valueOf(myCharacter.getArmorClass()));
+                ac.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setArmorClass(Integer.parseInt(s.toString()));
+                    }
+                });
+            } // End AC set.
+
+            { // Set Initiative field.
+                TextView init = (TextView) findViewById(R.id.sheet_init_label);
+                int bonus = myCharacter.getInitiative();
+                init.setText("Initiative: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
+            } // End Initiative set.
+
+            { // Set Speed field.
+                EditText spd = (EditText) findViewById(R.id.sheet_speed_input);
+                spd.setText(String.valueOf(myCharacter.getSpeed()));
+                spd.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setSpeed(Integer.parseInt(s.toString()));
+                    }
+                });
+            } // End Speed set.
+
+            { // Set character vital fields.
+                EditText curr = (EditText) findViewById(R.id.sheet_hp_curr_input);
+                curr.setText(String.valueOf(myCharacter.getCurrentHealth()));
+                curr.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setCurrentHealth(Integer.parseInt(s.toString()));
+                    }
+                });
+
+                EditText max = (EditText) findViewById(R.id.sheet_hp_max_input);
+                max.setText(String.valueOf(myCharacter.getMaximumHealth()));
+                max.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setMaximumHealth(Integer.parseInt(s.toString()));
+                    }
+                });
+
+                TextView hds = (TextView) findViewById(R.id.sheet_hd_label);
+                hds.setText("HD: d" + String.valueOf(myCharacter.getHitDiceSize()));
+
+                EditText hdc = (EditText) findViewById(R.id.sheet_hd_curr_input);
+                hdc.setText(String.valueOf(myCharacter.getHitDiceCount()));
+                hdc.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setHitDiceCount(Integer.parseInt(s.toString()));
+                    }
+                });
+
+                TextView hdt = (TextView) findViewById(R.id.sheet_hd_total);
+                hdt.setText("/ " + String.valueOf(myCharacter.getCharacterLevel()));
+            } // End character vitals set.
+
+            { // Set death save indicators.
+                RadioButton [] successes = {(RadioButton) findViewById(R.id.sheet_success_1),
+                                            (RadioButton) findViewById(R.id.sheet_success_2),
+                                            (RadioButton) findViewById(R.id.sheet_success_3)};
+                RadioButton [] failures = {(RadioButton) findViewById(R.id.sheet_fail_1),
+                                           (RadioButton) findViewById(R.id.sheet_fail_2),
+                                           (RadioButton) findViewById(R.id.sheet_fail_3)};
+
+                int s = myCharacter.getDeathSuccesses();
+                int f = myCharacter.getDeathFailures();
+
+                for(int i = 0; i < s; i++) { successes[i].setChecked(true); }
+                for(int j = 0; j < f; j++) { failures[j].setChecked(true); }
+            } // End death save indicator set.
         }
     }
 
@@ -139,6 +270,12 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                     boolean prof = CharacterClass.abilityIsProficient(state.getCharacter().getCharacterClass(), score);
                     int save = mod + ((prof)?state.getCharacter().getProficiency():0);
                     saveText.setText("Save: " + ((save < 0)?"":"+") + save);
+
+                    if(score.equals(AbilityScore.Scores.DEXTERITY)) {
+                        TextView init = (TextView) findViewById(R.id.sheet_init_label);
+                        int bonus = state.getCharacter().getInitiative();
+                        init.setText("Initiative: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
+                    }
                 }
             }
         });

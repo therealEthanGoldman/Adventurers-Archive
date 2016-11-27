@@ -30,7 +30,8 @@
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
         android:text="Equipment"
-        android:onClick="openEquipment" />
+        android:onClick="openEquipment"
+        android:enabled="false" />
 
     <Button
         android:id="@+id/character_spellbook_button"
@@ -50,6 +51,7 @@
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
         android:text="Skills"
-        android:onClick="openSkills" />
+        android:onClick="openSkills"
+        android:enabled="false" />
 
 </RelativeLayout>
