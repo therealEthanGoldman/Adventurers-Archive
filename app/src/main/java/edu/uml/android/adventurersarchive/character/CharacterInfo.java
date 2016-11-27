@@ -3,6 +3,7 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import edu.uml.android.adventurersarchive.CharacterEquipmentActivity;
 import edu.uml.android.adventurersarchive.info.DiceRoller;
 
@@ -55,9 +56,41 @@ public class CharacterInfo {
         AbilityScore abil = getAbilityScore(score);
         abil.setScoreValue(val);
     }
-    public int rollInitiative() {
+    public int getInitiative() {
         return getAbilityScore(AbilityScore.Scores.DEXTERITY).getScoreModifier() + DiceRoller.roll(20);
     }
+
+    // merged from master
+    private int cHealthCurrent;
+    private int cHealthMaximum;
+    private int cHitDiceSize;
+    private int cHitDiceCount;
+    public int getCurrentHealth() { return cHealthCurrent; }
+    public void setCurrentHealth(int h) { cHealthCurrent = h; }
+    public int getMaximumHealth() { return cHealthMaximum; }
+    public void setMaximumHealth(int h) { cHealthMaximum = h; }
+    public int getHitDiceSize() { return cHitDiceSize; }
+    public void setHitDiceSize(int d) { cHitDiceSize = d; }
+    public int getHitDiceCount() { return cHitDiceCount; }
+    public void setHitDiceCount(int c) { cHitDiceCount = c; }
+
+    private int [] cDeathSaves;
+    public int getDeathSuccesses() { return cDeathSaves[0]; }
+    public int getDeathFailures() { return cDeathSaves[1]; }
+    public void addDeathSuccess() { if(cDeathSaves[0] < 3) cDeathSaves[0]++; }
+    public void addDeathFailure() { if(cDeathSaves[1] < 3) cDeathSaves[1]++; }
+    public void resetDeathSaves() {
+        cDeathSaves[0] = 0;
+        cDeathSaves[1] = 0;
+    }
+
+    private int cArmorClass;
+    public int getArmorClass() { return cArmorClass; }
+    public void setArmorClass(int ac) { cArmorClass = ac; }
+
+    private int cSpeed;
+    public int getSpeed() { return cSpeed; }
+    public void setSpeed(int s) { cSpeed = s; }
 
     private Coins cCoins;
     public  Coins getcCoins() { return cCoins;}
@@ -71,7 +104,21 @@ public class CharacterInfo {
         cLevel = l;
         cExperience = 0;
         cAlignment = a;
+
+        cHealthCurrent = 0;
+        cHealthMaximum = 0;
+        cHitDiceSize = 0;
+        cHitDiceCount = 0;
+
+        cArmorClass = 0;
+
+        cDeathSaves = new int[2];
+        resetDeathSaves();
+
         cInspiration = 0;
+        cSpeed = 30;
+
+        cCoins = new Coins();
 
         cAbilityScores = new AbilityScore[] {new AbilityScore(AbilityScore.Scores.STRENGTH, 10),
                                              new AbilityScore(AbilityScore.Scores.DEXTERITY, 10),
