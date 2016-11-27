@@ -102,6 +102,9 @@ public class CharacterInfo implements Serializable {
         return null;
     }
 
+    private Coins money;
+    public Coins getMoney() { return money; }
+
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
         cRace = r;
@@ -148,6 +151,8 @@ public class CharacterInfo implements Serializable {
                                new Skill(Skill.SkillType.SLEIGHT_OF_HAND),
                                new Skill(Skill.SkillType.STEALTH),
                                new Skill(Skill.SkillType.SURVIVAL)};
+
+        money = new Coins();
     }
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,

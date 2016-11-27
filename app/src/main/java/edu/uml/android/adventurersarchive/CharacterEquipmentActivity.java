@@ -41,7 +41,7 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
 
     private void refreshCoins() {
         if (null != myCharacter) {
-            Coins myCoins = myCharacter.getcCoins();
+            Coins myCoins = myCharacter.getMoney();
             TextView nameText = (TextView) findViewById(R.id.cp_value);
             nameText.setText(""+myCoins.getCp());
             TextView nameText2 = (TextView) findViewById(R.id.sp_value);
