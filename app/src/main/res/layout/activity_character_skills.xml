@@ -1,6 +1,559 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/skills_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SKILLS"/>
+    <!-- Acrobatics -->
+    <CheckBox
+        android:layout_below="@id/skills_id"
+        android:id="@+id/skills_acrobatics_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp" />
+    <TextView
+        android:id="@+id/skills_acrobatics_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/skills_id"
+        android:layout_toRightOf="@id/skills_acrobatics_save_box"
+        android:layout_alignBaseline="@id/skills_acrobatics_save_box"
+        android:text="___"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/skills_id"
+        android:layout_toRightOf="@id/skills_acrobatics_text_underscore"
+        android:layout_alignBaseline="@id/skills_acrobatics_save_box"
+        android:text=" Acrobatics (Dex)"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/skills_id"
+        android:layout_alignBaseline="@id/skills_acrobatics_save_box"
+        android:text="Roll"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Animal Handling -->
+
+    <CheckBox
+        android:id="@+id/skills_animal_handling_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_acrobatics_save_box"/>
+    <TextView
+        android:id="@+id/skills_animal_handling_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_animal_handling_save_box"
+        android:layout_alignBaseline="@id/skills_animal_handling_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_acrobatics_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_animal_handling_text_underscore"
+        android:layout_alignBaseline="@id/skills_animal_handling_save_box"
+        android:text=" Animal Handling (Wis)"
+        android:layout_below="@id/skills_acrobatics_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_animal_handling_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_acrobatics_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Arcana -->
+    <CheckBox
+        android:id="@+id/skills_arcana_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_animal_handling_save_box"/>
+    <TextView
+        android:id="@+id/skills_arcana_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_arcana_save_box"
+        android:layout_alignBaseline="@id/skills_arcana_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_animal_handling_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_arcana_text_underscore"
+        android:layout_alignBaseline="@id/skills_arcana_save_box"
+        android:text=" Arcana (Int)"
+        android:layout_below="@id/skills_animal_handling_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_arcana_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_animal_handling_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Athletics -->
+    <CheckBox
+        android:id="@+id/skills_athletics_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_arcana_save_box"/>
+    <TextView
+        android:id="@+id/skills_athletics_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_athletics_save_box"
+        android:layout_alignBaseline="@id/skills_athletics_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_arcana_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_athletics_text_underscore"
+        android:layout_alignBaseline="@id/skills_athletics_save_box"
+        android:text=" Athletics (Str)"
+        android:layout_below="@id/skills_arcana_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_athletics_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_arcana_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Deception (Cha) -->
+    <CheckBox
+        android:id="@+id/skills_deception_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_athletics_save_box"/>
+    <TextView
+        android:id="@+id/skills_deception_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_deception_save_box"
+        android:layout_alignBaseline="@id/skills_deception_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_athletics_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_athletics_text_underscore"
+        android:layout_alignBaseline="@id/skills_deception_save_box"
+        android:text=" Deception (Cha)"
+        android:layout_below="@id/skills_athletics_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_deception_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_athletics_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- History (Int) -->
+    <CheckBox
+        android:id="@+id/skills_history_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_deception_save_box"/>
+    <TextView
+        android:id="@+id/skills_history_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_history_save_box"
+        android:layout_alignBaseline="@id/skills_history_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_deception_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_history_text_underscore"
+        android:layout_alignBaseline="@id/skills_history_save_box"
+        android:text=" History (Int)"
+        android:layout_below="@id/skills_deception_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_history_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_deception_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Insight (Wis) -->
+    <CheckBox
+        android:id="@+id/skills_insight_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_history_save_box"/>
+    <TextView
+        android:id="@+id/skills_insight_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_insight_save_box"
+        android:layout_alignBaseline="@id/skills_insight_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_history_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_insight_text_underscore"
+        android:layout_alignBaseline="@id/skills_insight_save_box"
+        android:text=" Insight (Wis)"
+        android:layout_below="@id/skills_history_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_insight_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_history_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Intimidation (Cha) -->
+    <CheckBox
+        android:id="@+id/skills_intimidation_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_insight_save_box"/>
+    <TextView
+        android:id="@+id/skills_intimidation_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_intimidation_save_box"
+        android:layout_alignBaseline="@id/skills_intimidation_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_insight_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_intimidation_text_underscore"
+        android:layout_alignBaseline="@id/skills_intimidation_save_box"
+        android:text=" Intimidation (Cha)"
+        android:layout_below="@id/skills_insight_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_intimidation_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_insight_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Investigation (Int) -->
+    <CheckBox
+        android:id="@+id/skills_investigation_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_intimidation_save_box"/>
+    <TextView
+        android:id="@+id/skills_investigation_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_investigation_save_box"
+        android:layout_alignBaseline="@id/skills_investigation_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_intimidation_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_investigation_text_underscore"
+        android:layout_alignBaseline="@id/skills_investigation_save_box"
+        android:text=" Investigation (Int)"
+        android:layout_below="@id/skills_intimidation_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_investigation_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_intimidation_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Medicine (Wis) -->
+    <CheckBox
+        android:id="@+id/skills_medicine_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_investigation_save_box"/>
+    <TextView
+        android:id="@+id/skills_medicine_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_medicine_save_box"
+        android:layout_alignBaseline="@id/skills_medicine_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_investigation_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_medicine_text_underscore"
+        android:layout_alignBaseline="@id/skills_medicine_save_box"
+        android:text=" Medicine (Wis)"
+        android:layout_below="@id/skills_investigation_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_medicine_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_investigation_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Nature (Int) -->
+    <CheckBox
+        android:id="@+id/skills_nature_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_medicine_save_box"/>
+    <TextView
+        android:id="@+id/skills_nature_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_nature_save_box"
+        android:layout_alignBaseline="@id/skills_nature_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_medicine_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_nature_text_underscore"
+        android:layout_alignBaseline="@id/skills_nature_save_box"
+        android:text=" Nature (Int)"
+        android:layout_below="@id/skills_medicine_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_nature_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_medicine_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Perception (Wis) -->
+    <CheckBox
+        android:id="@+id/skills_perception_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_nature_save_box"/>
+    <TextView
+        android:id="@+id/skills_perception_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_perception_save_box"
+        android:layout_alignBaseline="@id/skills_perception_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_nature_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_perception_text_underscore"
+        android:layout_alignBaseline="@id/skills_perception_save_box"
+        android:text=" Perception (Wis)"
+        android:layout_below="@id/skills_nature_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_perception_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_nature_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Performance (Cha) -->
+    <CheckBox
+        android:id="@+id/skills_performance_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_perception_save_box"/>
+    <TextView
+        android:id="@+id/skills_performance_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_performance_save_box"
+        android:layout_alignBaseline="@id/skills_performance_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_perception_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_performance_text_underscore"
+        android:layout_alignBaseline="@id/skills_performance_save_box"
+        android:text=" Performance (Cha)"
+        android:layout_below="@id/skills_perception_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_performance_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_perception_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Persuasion (Cha) -->
+    <CheckBox
+        android:id="@+id/skills_persuasion_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_performance_save_box"/>
+    <TextView
+        android:id="@+id/skills_persuasion_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_persuasion_save_box"
+        android:layout_alignBaseline="@id/skills_persuasion_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_performance_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_persuasion_text_underscore"
+        android:layout_alignBaseline="@id/skills_persuasion_save_box"
+        android:text=" Persuasion (Cha)"
+        android:layout_below="@id/skills_performance_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_persuasion_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_performance_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Religion (Int) -->
+    <CheckBox
+        android:id="@+id/skills_religion_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_persuasion_save_box"/>
+    <TextView
+        android:id="@+id/skills_religion_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_religion_save_box"
+        android:layout_alignBaseline="@id/skills_religion_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_persuasion_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_religion_text_underscore"
+        android:layout_alignBaseline="@id/skills_religion_save_box"
+        android:text=" Religion (Int)"
+        android:layout_below="@id/skills_persuasion_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_religion_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_persuasion_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Sleight Of Hand (Dex) -->
+    <CheckBox
+        android:id="@+id/skills_soh_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_religion_save_box"/>
+    <TextView
+        android:id="@+id/skills_soh_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_soh_save_box"
+        android:layout_alignBaseline="@id/skills_soh_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_religion_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_soh_text_underscore"
+        android:layout_alignBaseline="@id/skills_soh_save_box"
+        android:text=" Sleight of Hand (Dex)"
+        android:layout_below="@id/skills_religion_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_soh_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_religion_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Stealth (Dex) -->
+    <CheckBox
+        android:id="@+id/skills_stealth_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_soh_save_box"/>
+    <TextView
+        android:id="@+id/skills_stealth_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_stealth_save_box"
+        android:layout_alignBaseline="@id/skills_stealth_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_soh_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_stealth_text_underscore"
+        android:layout_alignBaseline="@id/skills_stealth_save_box"
+        android:text=" Stealth (Dex)"
+        android:layout_below="@id/skills_soh_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_stealth_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_soh_save_box"
+        android:layout_alignParentRight="true"/>
+
+    <!-- Survival (Wis)-->
+    <CheckBox
+        android:id="@+id/skills_survival_save_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/skills_stealth_save_box"/>
+    <TextView
+        android:id="@+id/skills_survival_text_underscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_survival_save_box"
+        android:layout_alignBaseline="@id/skills_survival_save_box"
+        android:text="___"
+        android:layout_below="@id/skills_stealth_save_box"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/skills_survival_text_underscore"
+        android:layout_alignBaseline="@id/skills_survival_save_box"
+        android:text=" Survival (Wis)"
+        android:layout_below="@id/skills_stealth_save_box"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/skills_survival_save_box"
+        android:text="Roll"
+        android:layout_below="@id/skills_stealth_save_box"
+        android:layout_alignParentRight="true"/>
+
+
+
+</RelativeLayout>
+    </ScrollView>
