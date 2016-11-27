@@ -12,5 +12,9 @@
     <string name="splabel">SP: </string>
     <string name="cplabel">CP: </string>
 
+    <string name="addcash">Add</string>
+    <string name="subtractcash">Spend</string>
+
+    <string name="overspend">Spent too much!</string>
 
 </resources>

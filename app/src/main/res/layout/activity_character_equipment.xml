@@ -160,6 +160,8 @@
             android:text="@string/editwealth"
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom"
+            android:onClick="openUpdateCash"
+            android:enabled="true"
             />
     </RelativeLayout>
 

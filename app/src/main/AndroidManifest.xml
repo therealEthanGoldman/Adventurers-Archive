@@ -16,26 +16,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Preferences"
-                  android:parentActivityName=".MainActivity"
-                  android:theme="@android:style/Theme.Holo" />
-        <activity android:name=".CreateCharacterActivity"
-                  android:parentActivityName=".MainActivity"
-                  android:label="Create a Character" />
-        <activity android:name=".CharacterMainActivity"
-                  android:parentActivityName=".MainActivity"
-                  android:label="" />
-        <activity android:name=".CharacterSheetActivity"
-                  android:parentActivityName=".CharacterMainActivity"
-                  android:label="Character Sheet" />
-        <activity android:name=".CharacterEquipmentActivity"
-                  android:parentActivityName=".CharacterMainActivity"
-                  android:label="Equipment" />
-        <activity android:name=".CharacterSpellbookActivity"
-                  android:parentActivityName=".CharacterMainActivity"
-                  android:label="Spellbook" />
-        <activity android:name=".CharacterSkillsActivity"
-                  android:parentActivityName=".CharacterMainActivity"
-                  android:label="Skills" />
+        <activity
+            android:name=".Preferences"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
+            android:name=".CreateCharacterActivity"
+            android:label="Create a Character"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CharacterMainActivity"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CharacterSheetActivity"
+            android:label="Character Sheet"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterEquipmentActivity"
+            android:label="Equipment"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterSpellbookActivity"
+            android:label="Spellbook"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterSkillsActivity"
+            android:label="Skills"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity android:name=".UpdateCashActivity"></activity>
     </application>
+
 </manifest>

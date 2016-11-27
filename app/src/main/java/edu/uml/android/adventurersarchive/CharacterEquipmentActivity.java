@@ -3,6 +3,7 @@ package edu.uml.android.adventurersarchive;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
@@ -54,5 +55,24 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
             nameText5.setText(myCoins.getPp()+"");
         }
     }
+    public void openUpdateCash(View v) {
+        // TODO: Re-enable this once Equipment activity is complete.
+        Intent intent = new Intent(this, UpdateCashActivity.class);
+        startActivityForResult(intent,1);
+
+
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+
+            if(resultCode == RESULT_OK){
+                refreshCoins();
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //Do nothing?
+            }
+        }
+    }//onActivityResult
 }
 
