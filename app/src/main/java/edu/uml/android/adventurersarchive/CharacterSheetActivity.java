@@ -64,13 +64,28 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                             public void onClick(DialogInterface dialog, int which) {
                                 String s = input.getText().toString();
                                 if(!s.isEmpty() && s.matches("\\d+")) {
-                                    int level = Integer.parseInt(s);
-                                    state.getCharacter().setCharacterLevel(level);
+                                    int l = Integer.parseInt(s);
+                                    state.getCharacter().setCharacterLevel(l);
                                     String text = "Character Class: "
                                             + state.getCharacter().getCharacterClass().toString() + " "
                                             + state.getCharacter().getCharacterLevel();
                                     classText.setText(text);
-                                    // TODO: Update other fields that rely on the character's level.
+
+                                    TextView expText = (TextView) findViewById(R.id.sheet_exp_next_label);
+                                    int level = state.getCharacter().getCharacterLevel();
+                                    expText.setText("/ " + CharacterInfo.getNextLevelExp(level));
+
+                                    TextView prof = (TextView) findViewById(R.id.sheet_proficiency_label);
+                                    int bonus = state.getCharacter().getProficiency();
+                                    prof.setText("Proficiency Bonus: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
+
+                                    state.getCharacter().setHitDiceCount(level);
+
+                                    EditText hdc = (EditText) findViewById(R.id.sheet_hd_curr_input);
+                                    hdc.setText(String.valueOf(state.getCharacter().getHitDiceCount()));
+
+                                    TextView hdt = (TextView) findViewById(R.id.sheet_hd_total);
+                                    hdt.setText("/ " + String.valueOf(level));
                                 }
                             }
                         });
