@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import edu.uml.android.adventurersarchive.character.AbilityScore;
 import edu.uml.android.adventurersarchive.character.CharacterAlignment;
 import edu.uml.android.adventurersarchive.character.CharacterClass;
@@ -51,13 +49,13 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                 String text = "Character Class: " + myCharacter.getCharacterClass().toString() + " "
                                                   + myCharacter.getCharacterLevel();
                 classText.setText(text);
-                classText.setOnTouchListener(new View.OnTouchListener() {
+                classText.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CharacterSheetActivity.this);
                         builder.setTitle("Enter Character Level");
 
-                        final EditText input = new EditText(getBaseContext());
+                        final EditText input = new EditText(CharacterSheetActivity.this);
                         input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
                         builder.setView(input);
 
@@ -72,6 +70,7 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                                             + state.getCharacter().getCharacterClass().toString() + " "
                                             + state.getCharacter().getCharacterLevel();
                                     classText.setText(text);
+                                    // TODO: Update other fields that rely on the character's level.
                                 }
                             }
                         });
@@ -83,8 +82,6 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
                         });
 
                         builder.show();
-
-                        return true;
                     }
                 });
             } // End class set.
