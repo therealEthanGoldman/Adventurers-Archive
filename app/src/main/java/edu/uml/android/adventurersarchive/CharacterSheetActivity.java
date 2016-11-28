@@ -1,9 +1,13 @@
 package edu.uml.android.adventurersarchive;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import edu.uml.android.adventurersarchive.character.AbilityScore;
 import edu.uml.android.adventurersarchive.character.CharacterAlignment;
@@ -41,12 +47,46 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
             } // End race set.
 
             { // Set the character class.
-                TextView classText = (TextView) findViewById(R.id.sheet_class_label);
+                final TextView classText = (TextView) findViewById(R.id.sheet_class_label);
                 String text = "Character Class: " + myCharacter.getCharacterClass().toString() + " "
                                                   + myCharacter.getCharacterLevel();
                 classText.setText(text);
-                // TODO: Set a listener on this label so the user can tap it to enter their level.
-                //       The listener should update anything relating to level (number of hit die, etc)
+                classText.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                        builder.setTitle("Enter Character Level");
+
+                        final EditText input = new EditText(getBaseContext());
+                        input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                        builder.setView(input);
+
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String s = input.getText().toString();
+                                if(!s.isEmpty() && s.matches("\\d+")) {
+                                    int level = Integer.parseInt(s);
+                                    state.getCharacter().setCharacterLevel(level);
+                                    String text = "Character Class: "
+                                            + state.getCharacter().getCharacterClass().toString() + " "
+                                            + state.getCharacter().getCharacterLevel();
+                                    classText.setText(text);
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        builder.show();
+
+                        return true;
+                    }
+                });
             } // End class set.
 
             { // Set the experience level.
