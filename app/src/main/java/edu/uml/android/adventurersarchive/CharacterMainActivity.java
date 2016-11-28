@@ -26,7 +26,6 @@ public class CharacterMainActivity extends AppCompatActivity {
     }
 
     public void openEquipment(View v) {
-        // TODO: Re-enable this once Equipment activity is complete.
         Intent intent = new Intent(this, CharacterEquipmentActivity.class);
         startActivity(intent);
 
@@ -38,8 +37,7 @@ public class CharacterMainActivity extends AppCompatActivity {
     }
 
     public void openSkills(View v) {
-        // TODO: Re-enable this once Skills activity is complete.
-        /*Intent intent = new Intent(this, CharacterSkillsActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, CharacterSkillsActivity.class);
+        startActivity(intent);
     }
 }
