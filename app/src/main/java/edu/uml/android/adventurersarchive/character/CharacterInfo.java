@@ -104,6 +104,18 @@ public class CharacterInfo implements Serializable {
         return null;
     }
 
+    private String cProficiencies;
+    public String getProficiencies() { return cProficiencies; }
+    public void setProficiencies(String p) { cProficiencies = p; }
+
+    private String cLanguages;
+    public String getLanguages() { return cLanguages; }
+    public void setLanguages(String l) { cLanguages = l; }
+
+    private String cFeatures;
+    public String getFeatures() { return cFeatures; }
+    public void setFeatures(String f) { cFeatures = f; }
+
     private Coins money;
     public Coins getMoney() { return money; }
 
@@ -155,6 +167,10 @@ public class CharacterInfo implements Serializable {
                                new Skill(Skill.SkillType.SLEIGHT_OF_HAND),
                                new Skill(Skill.SkillType.STEALTH),
                                new Skill(Skill.SkillType.SURVIVAL)};
+
+        cProficiencies = "";
+        cLanguages = "";
+        cFeatures = "";
 
         money = new Coins();
         cEquipment = new ArrayList<Equipment>();

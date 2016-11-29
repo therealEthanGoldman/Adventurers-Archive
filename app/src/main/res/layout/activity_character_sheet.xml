@@ -659,6 +659,88 @@
             android:layout_marginRight="16dp"
             android:background="@android:color/darker_gray"/>
 
+        <RelativeLayout
+            android:id="@+id/sheet_proficiencies_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_misc_div">
+            <TextView
+                android:id="@+id/sheet_proficiencies_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:minWidth="90dp"
+                android:text="Proficiencies: " />
+            <EditText
+                android:id="@+id/sheet_proficiencies_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@id/sheet_proficiencies_label"
+                android:layout_alignBaseline="@id/sheet_proficiencies_label"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:inputType="textCapSentences|textMultiLine"
+                android:scrollHorizontally="false"
+                android:imeOptions="actionDone"
+                android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+        android:id="@+id/sheet_languages_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sheet_proficiencies_container">
+        <TextView
+            android:id="@+id/sheet_languages_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:minWidth="90dp"
+            android:text="Languages: " />
+        <EditText
+            android:id="@+id/sheet_languages_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/sheet_languages_label"
+            android:layout_alignBaseline="@id/sheet_languages_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="textCapSentences|textMultiLine"
+            android:scrollHorizontally="false"
+            android:imeOptions="actionDone"
+            android:text="" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sheet_features_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@id/sheet_languages_container">
+        <TextView
+            android:id="@+id/sheet_features_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:minWidth="90dp"
+            android:text="Features: " />
+        <EditText
+            android:id="@+id/sheet_features_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/sheet_features_label"
+            android:layout_alignBaseline="@id/sheet_features_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="textCapSentences|textMultiLine"
+            android:scrollHorizontally="false"
+            android:imeOptions="actionDone"
+            android:text="" />
+    </RelativeLayout>
+
     </RelativeLayout>
 
 </ScrollView>

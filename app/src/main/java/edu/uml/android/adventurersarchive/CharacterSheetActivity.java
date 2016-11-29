@@ -294,6 +294,53 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
             { // Set death save indicators.
                 resetDeathSaves();
             } // End death save indicator set.
+
+            { // Set the miscellaneous information.
+                EditText prof = (EditText) findViewById(R.id.sheet_proficiencies_input);
+                prof.setText(myCharacter.getProficiencies());
+                prof.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setProficiencies(s.toString());
+                    }
+                });
+
+                EditText lang = (EditText) findViewById(R.id.sheet_languages_input);
+                lang.setText(myCharacter.getLanguages());
+                lang.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setLanguages(s.toString());
+                    }
+                });
+
+                EditText feat = (EditText) findViewById(R.id.sheet_features_input);
+                feat.setText(myCharacter.getFeatures());
+                feat.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        state.getCharacter().setFeatures(s.toString());
+                    }
+                });
+            } // End miscellaneous information set.
         }
     }
 
