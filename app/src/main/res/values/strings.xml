@@ -16,5 +16,8 @@
     <string name="subtractcash">Spend</string>
 
     <string name="overspend">Spent too much!</string>
+    <string name="equippedlabel">Equipped?</string>
+    <string name="equipbtnlabel">Equip</string>
+    <string name="unequipbtnlabel">Unquip</string>
 
 </resources>

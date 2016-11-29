@@ -51,7 +51,6 @@
             android:layout_gravity="center_vertical"
             android:text="@string/splabel"
             />
-
         <TextView android:id="@+id/sp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
@@ -76,7 +75,6 @@
             android:layout_gravity="center_vertical"
             android:text="@string/eplabel"
             />
-
         <TextView android:id="@+id/ep_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
@@ -87,7 +85,6 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-
             />
 
         <TextView android:id="@+id/text4"
@@ -102,7 +99,6 @@
             android:layout_gravity="center_vertical"
             android:text="@string/gplabel"
             />
-
         <TextView android:id="@+id/gp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
@@ -113,7 +109,6 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-
             />
 
         <TextView android:id="@+id/text5"
@@ -128,7 +123,6 @@
             android:layout_gravity="center_vertical"
             android:text="@string/pplabel"
             />
-
         <TextView android:id="@+id/pp_value"
             android:paddingTop="8dp"
             android:layout_marginTop="8dp"
@@ -139,7 +133,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-
             />
 
     </LinearLayout>
