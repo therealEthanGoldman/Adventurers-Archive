@@ -50,7 +50,6 @@ public class GlobalState extends Application {
             fin = context.openFileInput(filename);
             ois = new ObjectInputStream(fin);
             myCharacter = (CharacterInfo) ois.readObject();
-            Toast.makeText(context, "Loaded!", Toast.LENGTH_SHORT).show();
 
             if(ois != null) ois.close();
         } catch(Exception e) {

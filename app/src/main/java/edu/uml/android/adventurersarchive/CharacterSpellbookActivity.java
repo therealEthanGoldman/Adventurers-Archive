@@ -36,4 +36,11 @@ public class CharacterSpellbookActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.saveCharacter(this);
+    }
 }

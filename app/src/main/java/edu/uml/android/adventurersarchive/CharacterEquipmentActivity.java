@@ -74,5 +74,12 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
             }
         }
     }//onActivityResult
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.saveCharacter(this);
+    }
 }
 

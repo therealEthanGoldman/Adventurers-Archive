@@ -21,4 +21,11 @@ public class CharacterSkillsActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        GlobalState state = (GlobalState) getApplicationContext();
+        state.saveCharacter(this);
+    }
 }
