@@ -1,7 +1,9 @@
 package edu.uml.android.adventurersarchive;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,12 +63,21 @@ public class LoadCharacterAdapter extends ArrayAdapter<CharacterInfo> {
             Button deleteButton = (Button) listItemView.findViewById(R.id.delete_character_button);
             deleteButton.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    // TODO: Prompt the user for confirmation.
-                    Toast.makeText(getContext(), ("Deleting " + currCharacter.getCharacterName()),
-                                   Toast.LENGTH_SHORT).show();
-                    v.getContext().deleteFile(currCharacter.getFilename());
-                    LoadCharacterAdapter.this.remove(currCharacter);
+                public void onClick(final View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setMessage("Are you sure?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(getContext(),
+                                            ("Deleting " + currCharacter.getCharacterName()),
+                                            Toast.LENGTH_SHORT).show();
+                                    v.getContext().deleteFile(currCharacter.getFilename());
+                                    LoadCharacterAdapter.this.remove(currCharacter);
+                                }
+                            })
+                            .setNegativeButton("No", null).show();
+
                 }
             });
         }

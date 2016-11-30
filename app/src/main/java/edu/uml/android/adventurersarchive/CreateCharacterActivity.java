@@ -72,10 +72,7 @@ public class CreateCharacterActivity extends AppCompatActivity {
         state.setCharacter(ch);
         state.saveCharacter(v.getContext());
 
-        Toast.makeText(this, ("Creating " + n + "..."), Toast.LENGTH_SHORT).show();
-
         startActivity(intent);
-
         finish(); // So the user doesn't return to this screen upon pressing BACK from CharacterMainActvitiy.
     }
 }
