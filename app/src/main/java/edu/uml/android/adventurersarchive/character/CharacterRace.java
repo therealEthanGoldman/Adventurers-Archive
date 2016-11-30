@@ -3,10 +3,12 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Darin on 11/3/2016.
  */
-public enum CharacterRace {
+public enum CharacterRace implements Serializable {
     DWARF("Dwarf"), ELF("Elf"),
     HALFLING("Halfling"), HUMAN("Human"),
     DRAGONBORN("Dragonborn"), GNOME("Gnome"),

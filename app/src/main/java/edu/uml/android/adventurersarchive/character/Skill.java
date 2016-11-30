@@ -1,9 +1,11 @@
 package edu.uml.android.adventurersarchive.character;
 
+import java.io.Serializable;
+
 /**
  * Created by Darin on 11/27/2016.
  */
-public class Skill {
+public class Skill implements Serializable {
     private SkillType type;
     public SkillType getSkillType() { return type; }
 
@@ -18,7 +20,7 @@ public class Skill {
         trained = false; // False by default. Set manually.
     }
 
-    public static enum SkillType {
+    public enum SkillType implements Serializable {
         ACROBATICS,
         ANIMAL_HANDLING,
         ARCANA,

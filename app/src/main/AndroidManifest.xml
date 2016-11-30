@@ -22,7 +22,11 @@
             android:theme="@android:style/Theme.Holo" />
         <activity
             android:name=".CreateCharacterActivity"
-            android:label="Create a Character"
+            android:label="Create Character"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LoadCharacterActivity"
+            android:label="Load Character"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CharacterMainActivity"

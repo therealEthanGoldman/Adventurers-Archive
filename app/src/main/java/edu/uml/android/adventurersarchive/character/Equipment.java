@@ -1,11 +1,12 @@
 package edu.uml.android.adventurersarchive.character;
 
+import java.io.Serializable;
+
 /**
  * Created by Golg on 11/16/2016.
  */
 
-public class Equipment
-{
+public class Equipment implements Serializable {
     public int id;
     public double wt;
     public String name;

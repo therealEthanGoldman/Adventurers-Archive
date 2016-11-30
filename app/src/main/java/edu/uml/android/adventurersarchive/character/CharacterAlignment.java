@@ -3,10 +3,12 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Darin on 11/10/2016.
  */
-public enum CharacterAlignment {
+public enum CharacterAlignment implements Serializable {
     LG("Lawful Good"), NG("Neutral Good"), CG("Chaotic Good"),
     LN("Lawful Neutral"), TN("True Neutral"), CN("Chaotic Neutral"),
     LE("Lawful Evil"), NE("Neutral Evil"), CE("Chaotic Evil");

@@ -3,10 +3,12 @@ package edu.uml.android.adventurersarchive.character;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Darin on 11/3/2016.
  */
-public enum CharacterClass {
+public enum CharacterClass implements Serializable {
     BARBARIAN("Barbarian", new AbilityScore.Scores[] {AbilityScore.Scores.STRENGTH, AbilityScore.Scores.CONSTITUTION}),
     BARD("Bard", new AbilityScore.Scores[] {AbilityScore.Scores.DEXTERITY, AbilityScore.Scores.CHARISMA}),
     CLERIC("Cleric", new AbilityScore.Scores[] {AbilityScore.Scores.WISDOM, AbilityScore.Scores.CHARISMA}),

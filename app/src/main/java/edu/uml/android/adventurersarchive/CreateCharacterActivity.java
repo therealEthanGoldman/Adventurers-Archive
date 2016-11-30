@@ -70,9 +70,9 @@ public class CreateCharacterActivity extends AppCompatActivity {
         CharacterInfo ch = new CharacterInfo(n, r, c, a, l);
         GlobalState state = (GlobalState) getApplicationContext();
         state.setCharacter(ch);
-        //intent.putExtra("character", ch);
+        state.saveCharacter(v.getContext());
 
-        Toast.makeText(this, ("Creating " + n + "..."), Toast.LENGTH_SHORT);
+        Toast.makeText(this, ("Creating " + n + "..."), Toast.LENGTH_SHORT).show();
 
         startActivity(intent);
 

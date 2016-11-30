@@ -24,41 +24,41 @@ public class GlobalState extends Application {
     public void setCharacter(CharacterInfo info) { me = info; }
 
     public void saveCharacter(Context context) {
-        String filename = me.getCharacterName().replace(' ', '_') + ".aci";
+        String filename = me.getFilename();
 
         FileOutputStream fout = null;
         ObjectOutputStream oos = null;
         try {
-            fout = new FileOutputStream(filename, false);
+            fout = context.openFileOutput(filename, MODE_PRIVATE);
             oos = new ObjectOutputStream(fout);
             oos.writeObject(me);
-            Toast.makeText(context, "Saved!", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "Saved!", Toast.LENGTH_SHORT).show();
 
             if(oos != null) oos.close();
         } catch(Exception e) {
             Log.e(LOG_TAG, "ERROR: Problem saving character to file => " + filename);
-            Toast.makeText(context, "Error saving character...", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "Error saving character...", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
 
-    public boolean loadCharacter(Context context, String filename) {
+    public CharacterInfo loadCharacter(Context context, String filename) {
         FileInputStream fin = null;
         ObjectInputStream ois = null;
+        CharacterInfo myCharacter = null;
         try {
-            fin = new FileInputStream(filename);
+            fin = context.openFileInput(filename);
             ois = new ObjectInputStream(fin);
-            me = (CharacterInfo) ois.readObject();
-            Toast.makeText(context, "Loaded!", Toast.LENGTH_SHORT);
+            myCharacter = (CharacterInfo) ois.readObject();
+            Toast.makeText(context, "Loaded!", Toast.LENGTH_SHORT).show();
 
             if(ois != null) ois.close();
-            return true;
         } catch(Exception e) {
             Log.e(LOG_TAG, "ERROR: Problem loading character from file => " + filename);
-            Toast.makeText(context, "Error loading character...", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "Error loading character...", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
 
-        return false;
+        return myCharacter;
     }
 }

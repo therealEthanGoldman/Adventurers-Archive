@@ -16,6 +16,7 @@ public class CharacterInfo implements Serializable {
     private String cName;
     public String getCharacterName() { return cName; }
     public void setCharacterName(String n) { cName = n; }
+    public String getFilename() { return cName.trim().replaceAll(" ", "_") + ".aci"; }
 
     private CharacterRace cRace;
     public CharacterRace getCharacterRace() { return cRace; }

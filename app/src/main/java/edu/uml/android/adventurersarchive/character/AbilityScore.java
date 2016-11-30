@@ -1,12 +1,11 @@
 package edu.uml.android.adventurersarchive.character;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.io.Serializable;
 
 /**
  * Created by Darin on 11/3/2016.
  */
-public class AbilityScore {
+public class AbilityScore implements Serializable {
     private Scores type;
     public Scores getScoreType() { return type; }
 
@@ -24,7 +23,7 @@ public class AbilityScore {
         value = v;
     }
 
-    public enum Scores {
+    public enum Scores implements Serializable {
         STRENGTH, DEXTERITY, CONSTITUTION, INTELLIGENCE, WISDOM, CHARISMA;
     }
 }

@@ -1,9 +1,11 @@
 package edu.uml.android.adventurersarchive.info;
 
+import java.io.Serializable;
+
 /**
  * Created by Darin on 11/8/2016.
  */
-public class Spell {
+public class Spell implements Serializable {
     private String spellName;
     public String getSpellName() { return spellName; }
 

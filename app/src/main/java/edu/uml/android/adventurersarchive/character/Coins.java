@@ -1,10 +1,12 @@
 package edu.uml.android.adventurersarchive.character;
 
+import java.io.Serializable;
+
 /**
  * Created by Golg on 11/16/2016.
  */
 
-public class Coins {
+public class Coins implements Serializable {
     private int cp;
     public  int getCp() {return cp; };
     private int sp;
