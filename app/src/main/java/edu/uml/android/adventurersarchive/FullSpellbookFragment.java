@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
+import edu.uml.android.adventurersarchive.database.DBHelper;
 import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
@@ -22,6 +23,7 @@ public class FullSpellbookFragment extends Fragment {
     private SpellListAdapter adapter;
     private List<String> groupHeaders;
     private Map<String, List<Spell>> groupItems;
+    private DBHelper dbHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class FullSpellbookFragment extends Fragment {
         adapter = new SpellListAdapter(groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
         expView.setAdapter(adapter);
+
+        dbHelper = new DBHelper(rootView.getContext());
 
         expView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
