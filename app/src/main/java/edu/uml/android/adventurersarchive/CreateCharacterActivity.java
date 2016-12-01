@@ -55,6 +55,10 @@ public class CreateCharacterActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CharacterMainActivity.class);
 
         String n = ((EditText) findViewById(R.id.name_input)).getText().toString();
+        if((n == null) || n.isEmpty()) {
+            Toast.makeText(v.getContext(), "Please enter a valid name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Spinner raceSpinner = (Spinner) findViewById(R.id.race_spinner);
         CharacterRace r = CharacterRace.getCharacterRace(raceSpinner.getSelectedItem().toString());
@@ -65,7 +69,12 @@ public class CreateCharacterActivity extends AppCompatActivity {
         Spinner alignSpinner = (Spinner) findViewById(R.id.alignment_spinner);
         CharacterAlignment a = CharacterAlignment.getCharacterAlign(alignSpinner.getSelectedItem().toString());
 
-        int l = Integer.parseInt(((EditText) findViewById(R.id.level_input)).getText().toString());
+        String lvl = ((EditText) findViewById(R.id.level_input)).getText().toString();
+        if((lvl == null) || lvl.isEmpty()) {
+            Toast.makeText(v.getContext(), "Please enter a valid level!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int l = Integer.parseInt(lvl);
 
         CharacterInfo ch = new CharacterInfo(n, r, c, a, l);
         GlobalState state = (GlobalState) getApplicationContext();

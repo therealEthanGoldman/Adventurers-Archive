@@ -7,14 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/skills_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SKILLS"/>
     <!-- Acrobatics -->
     <CheckBox
-        android:layout_below="@id/skills_id"
         android:id="@+id/skills_acrobatics_save_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,24 +17,23 @@
         android:id="@+id/skills_acrobatics_text_underscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/skills_id"
         android:layout_toRightOf="@id/skills_acrobatics_save_box"
         android:layout_alignBaseline="@id/skills_acrobatics_save_box"
-        android:text="___"/>
+        android:text="0"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/skills_id"
         android:layout_toRightOf="@id/skills_acrobatics_text_underscore"
         android:layout_alignBaseline="@id/skills_acrobatics_save_box"
         android:text=" Acrobatics (Dex)"/>
     <Button
+        android:id="@+id/skills_acrobatics_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/skills_id"
         android:layout_alignBaseline="@id/skills_acrobatics_save_box"
         android:text="Roll"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true" />
 
     <!-- Animal Handling -->
 
@@ -56,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_animal_handling_save_box"
         android:layout_alignBaseline="@id/skills_animal_handling_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_acrobatics_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -66,6 +59,8 @@
         android:text=" Animal Handling (Wis)"
         android:layout_below="@id/skills_acrobatics_save_box"/>
     <Button
+        android:id="@+id/skills_animal_handling_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_animal_handling_save_box"
@@ -86,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_arcana_save_box"
         android:layout_alignBaseline="@id/skills_arcana_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_animal_handling_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -96,6 +91,8 @@
         android:text=" Arcana (Int)"
         android:layout_below="@id/skills_animal_handling_save_box"/>
     <Button
+        android:id="@+id/skills_arcana_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_arcana_save_box"
@@ -116,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_athletics_save_box"
         android:layout_alignBaseline="@id/skills_athletics_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_arcana_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -126,6 +123,8 @@
         android:text=" Athletics (Str)"
         android:layout_below="@id/skills_arcana_save_box"/>
     <Button
+        android:id="@+id/skills_athletics_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_athletics_save_box"
@@ -146,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_deception_save_box"
         android:layout_alignBaseline="@id/skills_deception_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_athletics_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -156,6 +155,8 @@
         android:text=" Deception (Cha)"
         android:layout_below="@id/skills_athletics_save_box"/>
     <Button
+        android:id="@+id/skills_deception_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_deception_save_box"
@@ -176,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_history_save_box"
         android:layout_alignBaseline="@id/skills_history_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_deception_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -186,6 +187,8 @@
         android:text=" History (Int)"
         android:layout_below="@id/skills_deception_save_box"/>
     <Button
+        android:id="@+id/skills_history_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_history_save_box"
@@ -206,7 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_insight_save_box"
         android:layout_alignBaseline="@id/skills_insight_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_history_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -216,6 +219,8 @@
         android:text=" Insight (Wis)"
         android:layout_below="@id/skills_history_save_box"/>
     <Button
+        android:id="@+id/skills_insight_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_insight_save_box"
@@ -236,7 +241,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_intimidation_save_box"
         android:layout_alignBaseline="@id/skills_intimidation_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_insight_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -246,6 +251,8 @@
         android:text=" Intimidation (Cha)"
         android:layout_below="@id/skills_insight_save_box"/>
     <Button
+        android:id="@+id/skills_intimidation_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_intimidation_save_box"
@@ -266,7 +273,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_investigation_save_box"
         android:layout_alignBaseline="@id/skills_investigation_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_intimidation_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -276,6 +283,8 @@
         android:text=" Investigation (Int)"
         android:layout_below="@id/skills_intimidation_save_box"/>
     <Button
+        android:id="@+id/skills_investigation_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_investigation_save_box"
@@ -296,7 +305,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_medicine_save_box"
         android:layout_alignBaseline="@id/skills_medicine_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_investigation_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -306,6 +315,8 @@
         android:text=" Medicine (Wis)"
         android:layout_below="@id/skills_investigation_save_box"/>
     <Button
+        android:id="@+id/skills_medicine_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_medicine_save_box"
@@ -326,7 +337,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_nature_save_box"
         android:layout_alignBaseline="@id/skills_nature_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_medicine_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -336,6 +347,8 @@
         android:text=" Nature (Int)"
         android:layout_below="@id/skills_medicine_save_box"/>
     <Button
+        android:id="@+id/skills_nature_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_nature_save_box"
@@ -356,7 +369,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_perception_save_box"
         android:layout_alignBaseline="@id/skills_perception_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_nature_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -366,6 +379,8 @@
         android:text=" Perception (Wis)"
         android:layout_below="@id/skills_nature_save_box"/>
     <Button
+        android:id="@+id/skills_perception_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_perception_save_box"
@@ -386,7 +401,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_performance_save_box"
         android:layout_alignBaseline="@id/skills_performance_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_perception_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -396,6 +411,8 @@
         android:text=" Performance (Cha)"
         android:layout_below="@id/skills_perception_save_box"/>
     <Button
+        android:id="@+id/skills_performance_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_performance_save_box"
@@ -416,7 +433,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_persuasion_save_box"
         android:layout_alignBaseline="@id/skills_persuasion_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_performance_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -426,6 +443,8 @@
         android:text=" Persuasion (Cha)"
         android:layout_below="@id/skills_performance_save_box"/>
     <Button
+        android:id="@+id/skills_persuasion_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_persuasion_save_box"
@@ -446,7 +465,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_religion_save_box"
         android:layout_alignBaseline="@id/skills_religion_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_persuasion_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -456,6 +475,8 @@
         android:text=" Religion (Int)"
         android:layout_below="@id/skills_persuasion_save_box"/>
     <Button
+        android:id="@+id/skills_religion_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_religion_save_box"
@@ -476,7 +497,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_soh_save_box"
         android:layout_alignBaseline="@id/skills_soh_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_religion_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -486,6 +507,8 @@
         android:text=" Sleight of Hand (Dex)"
         android:layout_below="@id/skills_religion_save_box"/>
     <Button
+        android:id="@+id/skills_soh_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_soh_save_box"
@@ -506,7 +529,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_stealth_save_box"
         android:layout_alignBaseline="@id/skills_stealth_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_soh_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -516,6 +539,8 @@
         android:text=" Stealth (Dex)"
         android:layout_below="@id/skills_soh_save_box"/>
     <Button
+        android:id="@+id/skills_stealth_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_stealth_save_box"
@@ -536,7 +561,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/skills_survival_save_box"
         android:layout_alignBaseline="@id/skills_survival_save_box"
-        android:text="___"
+        android:text="0"
         android:layout_below="@id/skills_stealth_save_box"/>
     <TextView
         android:layout_width="wrap_content"
@@ -546,6 +571,8 @@
         android:text=" Survival (Wis)"
         android:layout_below="@id/skills_stealth_save_box"/>
     <Button
+        android:id="@+id/skills_survival_button"
+        android:onClick="rollSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_survival_save_box"

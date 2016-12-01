@@ -51,7 +51,7 @@ public class LoadCharacterAdapter extends ArrayAdapter<CharacterInfo> {
             loadButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), ("Loading " + currCharacter.getCharacterName()),
+                    Toast.makeText(getContext(), ("Loading " + currCharacter.getCharacterName() + "..."),
                                    Toast.LENGTH_SHORT).show();
                     state.setCharacter(currCharacter);
                     Intent intent = new Intent(getContext(), CharacterMainActivity.class);

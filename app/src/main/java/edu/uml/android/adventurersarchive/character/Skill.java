@@ -1,6 +1,10 @@
 package edu.uml.android.adventurersarchive.character;
 
+import android.provider.Settings;
+
 import java.io.Serializable;
+
+import edu.uml.android.adventurersarchive.GlobalState;
 
 /**
  * Created by Darin on 11/27/2016.
@@ -14,6 +18,12 @@ public class Skill implements Serializable {
     private boolean trained;
     public boolean isTrained() { return trained; }
     public void setTrained(boolean t) { trained = t; }
+
+    public int getBonus(CharacterInfo me) {
+        int abil = me.getAbilityScore(getAbility()).getScoreModifier();
+        if(isTrained()) abil += me.getProficiency();
+        return abil;
+    }
 
     Skill(SkillType st) {
         type = st;

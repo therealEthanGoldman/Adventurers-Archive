@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.uml.android.adventurersarchive.info.DiceRoller;
+import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
  * Created by Darin on 11/3/2016.
@@ -123,6 +124,12 @@ public class CharacterInfo implements Serializable {
     private List<Equipment> cEquipment;
     public List<Equipment> getEquipment() { return cEquipment; }
 
+    private List<Spell> cPreparedSpells;
+    public List<Spell> getPreparedSpells() { return cPreparedSpells; }
+
+    private List<Spell> cKnownSpells;
+    public List<Spell> getKnownSpells() { return cKnownSpells; }
+
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
         cRace = r;
@@ -175,6 +182,9 @@ public class CharacterInfo implements Serializable {
 
         money = new Coins();
         cEquipment = new ArrayList<Equipment>();
+
+        cPreparedSpells = new ArrayList<Spell>();
+        cKnownSpells = new ArrayList<Spell>();
     }
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,

@@ -32,7 +32,7 @@ public class GlobalState extends Application {
             fout = context.openFileOutput(filename, MODE_PRIVATE);
             oos = new ObjectOutputStream(fout);
             oos.writeObject(me);
-            Toast.makeText(context, "Saved!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Saved!", Toast.LENGTH_SHORT).show();
 
             if(oos != null) oos.close();
         } catch(Exception e) {
