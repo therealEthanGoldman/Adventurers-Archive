@@ -1,11 +1,15 @@
 package edu.uml.android.adventurersarchive;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
@@ -15,15 +19,17 @@ import edu.uml.android.adventurersarchive.character.Equipment;
 /**
  * Created by Darin on 11/6/2016.
  */
-public class CharacterEquipmentActivity extends AppCompatActivity {
+public class CharacterEquipmentActivity extends ListActivity {
     private CharacterInfo myCharacter;
     public int totalweight;
 
     private List<Equipment> equipments;
     private Coins totalValue;
 
-
-
+    // For the cursor adapter, specify which columns go into which views
+    final String[] fromColumns = {"quant", "name", "isequip", "equipbutton"};
+    final int[] toViews = {R.id.quantity, R.id.equipname, R.id.isequipped, R.id.equipbutton}; // The TextView in simple_list_item_1
+    SimpleAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,13 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
             myCharacter = state.getCharacter();
         }
         refreshCoins();
-
+        //test equipment
+        Equipment newstuff = new Equipment();
+        newstuff.quanity = 1;
+        if (myCharacter != null) {
+            myCharacter.getEquipment().add(newstuff);
+        }
+        updateEquipmentList();
     }
 
     private void refreshCoins() {
@@ -59,8 +71,6 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
         // TODO: Re-enable this once Equipment activity is complete.
         Intent intent = new Intent(this, UpdateCashActivity.class);
         startActivityForResult(intent,1);
-
-
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -73,7 +83,34 @@ public class CharacterEquipmentActivity extends AppCompatActivity {
                 //Do nothing?
             }
         }
-    }//onActivityResult
+    }//onActivityResult=
+
+    private void updateEquipmentList() {
+        if ((null != myCharacter) && (null != myCharacter.getEquipment())) {
+            equipments = myCharacter.getEquipment();
+            ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+            for (Equipment equipment : equipments)
+            {
+                HashMap<String,String> hashMap=new HashMap<>();  // create the hashmap to store the data
+                hashMap.put("id", equipment.id+"");
+                hashMap.put("quant", equipment.quanity+"");
+                hashMap.put("name", equipment.name+"");
+                hashMap.put("isequip", equipment.isEquipped+"");
+                if (equipment.isEquipped) { hashMap.put("equipbutton", getResources().getString(R.string.unequipbtnlabel)); }
+                else { hashMap.put("equipbutton", getResources().getString(R.string.equipbtnlabel)); }
+                arrayList.add(hashMap);
+            }
+
+            // Create an empty adapter we will use to display the loaded data.
+            // We pass null for the cursor, then update it in onLoadFinished()
+            mAdapter = new SimpleAdapter(this,
+                    arrayList,
+                    R.layout.equipment_list_item,
+                    fromColumns, toViews);
+            setListAdapter(mAdapter);
+
+        }
+    }
 
     @Override
     public void onPause() {

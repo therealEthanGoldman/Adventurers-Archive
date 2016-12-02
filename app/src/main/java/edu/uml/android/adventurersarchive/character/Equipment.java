@@ -11,18 +11,18 @@ public class Equipment implements Serializable {
     public double wt;
     public String name;
     public String description;
-    public boolean isEquiptable, isEquipped;
+    public boolean isEquippable, isEquipped;
     public int quanity;
     public boolean attuneable;
     public Coins value;
     private static int lastUsedId = 0;
 
 
-    Equipment(){
+    public Equipment(){
         wt = 0;
         name = "Blank Slate";
         description = "This item is a default";
-        isEquiptable = false;
+        isEquippable = false;
         isEquipped = false;
         quanity = 0;
         attuneable = false;
@@ -31,12 +31,12 @@ public class Equipment implements Serializable {
         id = lastUsedId;
     }
 
-    Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attuned, Coins kaching)
+    public Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attuned, Coins kaching)
     {
         wt = weight;
         name = newname;
         description = Newdesc;
-        isEquiptable = equiptable;
+        isEquippable = equiptable;
         isEquipped = false;
         quanity = howmuch;
         attuneable = attuned;
@@ -45,8 +45,8 @@ public class Equipment implements Serializable {
         id = lastUsedId;
     }
 
-    void toggleEquiped( boolean val){
-        if ( isEquiptable == true)
+    public void toggleEquiped( boolean val){
+        if ( isEquippable == true)
             isEquipped = val;
     }
 
