@@ -46,57 +46,43 @@ import edu.uml.android.adventurersarchive.character.CharacterInfo;
 
             { // Set the character class.
                 final TextView classText = (TextView) findViewById(R.id.sheet_class_label);
-                String text = "Character Class: " + myCharacter.getCharacterClass().toString() + " "
-                                                  + myCharacter.getCharacterLevel();
+                String text = "Character Class: " + myCharacter.getCharacterClass().toString() + " ";
                 classText.setText(text);
-                classText.setOnClickListener(new View.OnClickListener() {
+
+                EditText levelInput = (EditText) findViewById(R.id.sheet_level_input);
+                levelInput.setText(String.valueOf(myCharacter.getCharacterLevel()));
+                levelInput.addTextChangedListener(new TextWatcher() {
                     @Override
-                    public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(CharacterSheetActivity.this);
-                        builder.setTitle("Enter Character Level");
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-                        final EditText input = new EditText(CharacterSheetActivity.this);
-                        input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-                        builder.setView(input);
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String s = input.getText().toString();
-                                if(!s.isEmpty() && s.matches("\\d+")) {
-                                    int l = Integer.parseInt(s);
-                                    state.getCharacter().setCharacterLevel(l);
-                                    String text = "Character Class: "
-                                            + state.getCharacter().getCharacterClass().toString() + " "
-                                            + state.getCharacter().getCharacterLevel();
-                                    classText.setText(text);
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(!s.toString().isEmpty() && s.toString().matches("\\d+")) {
+                            int l = Integer.parseInt(s.toString());
+                            state.getCharacter().setCharacterLevel(l);
+                            String text = "Character Class: "
+                                    + state.getCharacter().getCharacterClass().toString() + " ";
+                            classText.setText(text);
 
-                                    TextView expText = (TextView) findViewById(R.id.sheet_exp_next_label);
-                                    int level = state.getCharacter().getCharacterLevel();
-                                    expText.setText("/ " + CharacterInfo.getNextLevelExp(level));
+                            TextView expText = (TextView) findViewById(R.id.sheet_exp_next_label);
+                            int level = state.getCharacter().getCharacterLevel();
+                            expText.setText("/ " + CharacterInfo.getNextLevelExp(level));
 
-                                    TextView prof = (TextView) findViewById(R.id.sheet_proficiency_label);
-                                    int bonus = state.getCharacter().getProficiency();
-                                    prof.setText("Proficiency Bonus: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
+                            TextView prof = (TextView) findViewById(R.id.sheet_proficiency_label);
+                            int bonus = state.getCharacter().getProficiency();
+                            prof.setText("Proficiency Bonus: " + ((bonus < 0)?"":"+") + String.valueOf(bonus));
 
-                                    state.getCharacter().setHitDiceCount(level);
+                            state.getCharacter().setHitDiceCount(level);
 
-                                    EditText hdc = (EditText) findViewById(R.id.sheet_hd_curr_input);
-                                    hdc.setText(String.valueOf(state.getCharacter().getHitDiceCount()));
+                            EditText hdc = (EditText) findViewById(R.id.sheet_hd_curr_input);
+                            hdc.setText(String.valueOf(state.getCharacter().getHitDiceCount()));
 
-                                    TextView hdt = (TextView) findViewById(R.id.sheet_hd_total);
-                                    hdt.setText("/ " + String.valueOf(level));
-                                }
-                            }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-
-                        builder.show();
+                            TextView hdt = (TextView) findViewById(R.id.sheet_hd_total);
+                            hdt.setText("/ " + String.valueOf(level));
+                        }
                     }
                 });
             } // End class set.

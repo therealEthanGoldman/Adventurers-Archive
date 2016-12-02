@@ -36,6 +36,17 @@
             android:layout_marginLeft="16dp"
             android:layout_below="@id/sheet_race_label"
             android:text="Character Class: " />
+        <EditText
+            android:id="@+id/sheet_level_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sheet_race_label"
+            android:layout_toRightOf="@id/sheet_class_label"
+            android:layout_alignBaseline="@id/sheet_class_label"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:text="0" />
 
         <TextView
             android:id="@+id/sheet_exp_label"

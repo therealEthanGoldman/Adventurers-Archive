@@ -8,30 +8,55 @@ import java.io.Serializable;
 public class Spell implements Serializable {
     private String spellName;
     public String getSpellName() { return spellName; }
+    public void setSpellName(String name) { spellName = name; }
 
     private int spellLevel;
     public int getSpellLevel() { return spellLevel; }
+    public void setSpellLevel(int level) { spellLevel = level; }
 
     private String spellSchool;
     public String getSpellSchool() { return spellSchool; }
+    public void setSpellSchool(String school) { spellSchool = school; }
 
     private String castingTime;
     public String getCastingTime() { return castingTime; }
+    public void setCastingTime(String ct) { castingTime = ct; }
 
     private String spellRange;
     public String getSpellRange() { return spellRange; }
+    public void setSpellRange(String range) { spellRange = range; }
 
     private String spellComponents;
     public String getSpellComponents() { return spellComponents; }
+    public void setSpellComponents(String components) { spellComponents = components; }
 
     private String spellDuration;
     public String getSpellDuration() { return spellDuration; }
+    public void setSpellDuration(String duration) { spellDuration = duration; }
+
+    private String spellClasses;
+    public String getSpellClasses() { return spellClasses; }
+    public void setSpellClasses(String classes) { spellClasses = classes; }
 
     private String spellDescription;
     public String getSpellDescription() { return spellDescription; }
+    public void setSpellDescription(String description) { spellDescription = description; }
+    public void addToDescription(String description) { spellDescription += description; }
+
+    public Spell() {
+        spellName = "";
+        spellLevel = 0;
+        spellSchool = "";
+        castingTime = "";
+        spellRange = "";
+        spellComponents = "";
+        spellDuration = "";
+        spellClasses = "";
+        spellDescription = "";
+    }
 
     public Spell(String sName, int sLevel, String sSchool, String cTime, String sRange,
-                 String sComponents, String sDuration, String sDescription) {
+                 String sComponents, String sDuration, String sClasses, String sDescription) {
         spellName = sName;
         spellLevel = sLevel;
         spellSchool = sSchool;
@@ -39,6 +64,22 @@ public class Spell implements Serializable {
         spellRange = sRange;
         spellComponents = sComponents;
         spellDuration = sDuration;
+        spellClasses = sClasses;
         spellDescription = sDescription;
+    }
+
+    public String toString() {
+        String result = "";
+
+        result += spellName + "\n";
+        result += ((spellLevel == 0)?"Cantrip":("" + spellLevel + "-level"));
+        result += "(" + spellClasses + ")\n\n";
+        result += "Casting Time: " + castingTime + "\n";
+        result += "Range: " + spellRange + "\n";
+        result += "Components: " + spellComponents + "\n";
+        result += "Duration: " + spellDuration + "\n\n";
+        result += spellDescription;
+
+        return result;
     }
 }

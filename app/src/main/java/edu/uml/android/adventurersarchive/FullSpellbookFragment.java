@@ -2,6 +2,7 @@ package edu.uml.android.adventurersarchive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 import edu.uml.android.adventurersarchive.database.DBHelper;
+import edu.uml.android.adventurersarchive.database.SpellXMLParser;
 import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
@@ -55,7 +57,7 @@ public class FullSpellbookFragment extends Fragment {
     private void prepareGroups(CharacterInfo myCharacter) {
         // TODO: Take all spells in database and populate the groups and their items.
         if(myCharacter != null) {
-
+            //List<Spell> spells = SpellXMLParser.parseSpells(getContext());
         }
     }
 }
