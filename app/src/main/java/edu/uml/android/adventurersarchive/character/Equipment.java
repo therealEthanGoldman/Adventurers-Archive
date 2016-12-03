@@ -32,13 +32,13 @@ public class Equipment implements Serializable {
         id = lastUsedId;
     }
 
-    public Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attunable, boolean attuned, Coins kaching)
+    public Equipment( double weight, String newname, String Newdesc, boolean equiptable, boolean equipped, int howmuch, boolean attunable, boolean attuned, Coins kaching)
     {
         wt = weight;
         name = newname;
         description = Newdesc;
         isEquippable = equiptable;
-        isEquipped = false;
+        isEquipped = equipped;
         quanity = howmuch;
         isAttunable = attunable;
         isAttuned = attuned;

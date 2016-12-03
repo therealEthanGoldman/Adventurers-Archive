@@ -86,6 +86,12 @@ public class Coins implements Serializable {
         adjust();
     }
 
+    public void add(double val) {
+        int c = (int)(100*val);
+        cp += c;
+        adjust();
+    }
+
     public void setCoins(Coins loot) {
         cp = loot.cp;
         sp = loot.sp;

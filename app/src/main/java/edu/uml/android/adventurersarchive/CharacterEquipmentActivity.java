@@ -42,13 +42,6 @@ public class CharacterEquipmentActivity extends ListActivity {
             myCharacter = state.getCharacter();
         }
         refreshCoins();
-        //test equipment
-        Equipment newstuff = new Equipment();
-        newstuff.quanity = 1;
-        newstuff.isEquippable = true;
-        if (myCharacter != null) {
-            myCharacter.getEquipment().add(newstuff);
-        }
         updateEquipmentList();
     }
 
@@ -78,6 +71,15 @@ public class CharacterEquipmentActivity extends ListActivity {
 
             if(resultCode == RESULT_OK){
                 refreshCoins();
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //Do nothing?
+            }
+        }
+        if (requestCode == 2) {
+
+            if(resultCode == RESULT_OK){
+                updateEquipmentList();
             }
             if (resultCode == RESULT_CANCELED) {
                 //Do nothing?
@@ -133,7 +135,7 @@ public class CharacterEquipmentActivity extends ListActivity {
     public void onAddLootClicked(View v) {
         // TODO: Re-enable this once Equipment activity is complete.
         Intent intent = new Intent(this, EquipmentDetailsActivity.class);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent,2);
 
     }
 }
