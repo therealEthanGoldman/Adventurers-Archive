@@ -146,6 +146,7 @@
             android:text="@string/addloot"
             android:layout_alignParentLeft="true"
             android:layout_gravity="bottom"
+            android:onClick="onAddLootClicked"
             />
         <Button
             android:layout_width="wrap_content"

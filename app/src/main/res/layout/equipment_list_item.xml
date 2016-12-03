@@ -34,7 +34,7 @@
         android:text="Test Magic Sword of Power"
         android:layout_alignParentTop="true"
         />
-    <CheckBox
+    <TextView
         android:id="@+id/isequipped"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,21 +44,19 @@
         android:textSize="16sp"
         android:layout_marginRight="16dp"
         />
-    <Button
-        android:id="@+id/equipbutton"
+    <TextView
+        android:id="@+id/isattuned"
+        android:layout_toRightOf="@id/isequipped"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/isequipped"
-        android:layout_below="@id/equipname"
-        android:layout_alignBottom="@+id/isequipped"
-        android:text="@string/equipbtnlabel"
-
+        android:layout_below="@id/quantity"
+        android:layout_alignParentLeft="true"
+        android:text="@string/equippedlabel"
+        android:textSize="16sp"
+        android:layout_marginRight="16dp"
         />
 
-
-    <ImageButton
+  <!--  <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/trash"
@@ -68,6 +66,6 @@
         android:src="@drawable/trash"
         android:scaleType="centerInside"
 
-        />
+        />-->
 
 </RelativeLayout>

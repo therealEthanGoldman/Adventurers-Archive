@@ -13,7 +13,7 @@ public class Equipment implements Serializable {
     public String description;
     public boolean isEquippable, isEquipped;
     public int quanity;
-    public boolean attuneable;
+    public boolean isAttunable, isAttuned;
     public Coins value;
     private static int lastUsedId = 0;
 
@@ -25,13 +25,14 @@ public class Equipment implements Serializable {
         isEquippable = false;
         isEquipped = false;
         quanity = 0;
-        attuneable = false;
+        isAttunable = false;
+        isAttuned = false;
         value = new Coins( );
         lastUsedId++;
         id = lastUsedId;
     }
 
-    public Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attuned, Coins kaching)
+    public Equipment( double weight, String newname, String Newdesc, boolean equiptable, int howmuch, boolean attunable, boolean attuned, Coins kaching)
     {
         wt = weight;
         name = newname;
@@ -39,7 +40,8 @@ public class Equipment implements Serializable {
         isEquippable = equiptable;
         isEquipped = false;
         quanity = howmuch;
-        attuneable = attuned;
+        isAttunable = attunable;
+        isAttuned = attuned;
         value = kaching;
         lastUsedId++;
         id = lastUsedId;
@@ -50,6 +52,10 @@ public class Equipment implements Serializable {
             isEquipped = val;
     }
 
+    public void toggleAttuned( boolean val){
+        if (isAttuned == true)
+            isAttuned = val;
+    }
 
 
 }

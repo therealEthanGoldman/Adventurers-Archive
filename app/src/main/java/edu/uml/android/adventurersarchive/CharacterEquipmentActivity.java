@@ -3,7 +3,6 @@ package edu.uml.android.adventurersarchive;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -27,8 +26,8 @@ public class CharacterEquipmentActivity extends ListActivity {
     private Coins totalValue;
 
     // For the cursor adapter, specify which columns go into which views
-    final String[] fromColumns = {"quant", "name", "isequip", "equipbutton"};
-    final int[] toViews = {R.id.quantity, R.id.equipname, R.id.isequipped, R.id.equipbutton}; // The TextView in simple_list_item_1
+    final String[] fromColumns = {"quant", "name", "isequip", "isattuned"};
+    final int[] toViews = {R.id.quantity, R.id.equipname, R.id.isequipped, R.id.isattuned}; // The TextView in simple_list_item_1
     SimpleAdapter mAdapter;
 
     @Override
@@ -46,6 +45,7 @@ public class CharacterEquipmentActivity extends ListActivity {
         //test equipment
         Equipment newstuff = new Equipment();
         newstuff.quanity = 1;
+        newstuff.isEquippable = true;
         if (myCharacter != null) {
             myCharacter.getEquipment().add(newstuff);
         }
@@ -95,9 +95,20 @@ public class CharacterEquipmentActivity extends ListActivity {
                 hashMap.put("id", equipment.id+"");
                 hashMap.put("quant", equipment.quanity+"");
                 hashMap.put("name", equipment.name+"");
-                hashMap.put("isequip", equipment.isEquipped+"");
-                if (equipment.isEquipped) { hashMap.put("equipbutton", getResources().getString(R.string.unequipbtnlabel)); }
-                else { hashMap.put("equipbutton", getResources().getString(R.string.equipbtnlabel)); }
+                if (equipment.isEquippable) {
+                    if (equipment.isEquipped) {
+                        hashMap.put("isequip", getResources().getString(R.string.equipped));
+                    } else {
+                        hashMap.put("isequip", getResources().getString(R.string.unequipped));
+                    }
+                } else {
+                    hashMap.put("isequip", getResources().getString(R.string.notequippable));
+                }
+                if (equipment.isAttunable){
+                    hashMap.put("isAttunable", getResources().getString(R.string.attuned));
+                } else {
+                    hashMap.put("notattuneable", getResources().getString(R.string.notattunable));
+                }
                 arrayList.add(hashMap);
             }
 
@@ -117,6 +128,13 @@ public class CharacterEquipmentActivity extends ListActivity {
         super.onPause();
         GlobalState state = (GlobalState) getApplicationContext();
         state.saveCharacter(this);
+    }
+
+    public void onAddLootClicked(View v) {
+        // TODO: Re-enable this once Equipment activity is complete.
+        Intent intent = new Intent(this, EquipmentDetailsActivity.class);
+        startActivityForResult(intent,1);
+
     }
 }
 

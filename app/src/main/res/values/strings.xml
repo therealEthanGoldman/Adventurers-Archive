@@ -17,7 +17,20 @@
 
     <string name="overspend">Spent too much!</string>
     <string name="equippedlabel">Equipped?</string>
+    <string name="equipped">Equipped</string>
+    <string name="unequipped">Not Equipped</string>
+    <string name="notequippable">   </string>
     <string name="equipbtnlabel">Equip</string>
     <string name="unequipbtnlabel">Unquip</string>
+    <string name="attuned"> Attune</string>
+    <string name="notattunable">   </string>
+
+    <string name="weight">Wt. : </string>
+    <string name="pound"> lb</string>
+    <string name="quantity">Quanity: </string>
+    <string name="value">Value: </string>
+    <string name="savelbl">Save</string>
+    <string name="equipable">Equipable</string>
+    <string name="attunable">attunable</string>
 
 </resources>
