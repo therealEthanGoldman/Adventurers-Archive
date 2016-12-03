@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -49,36 +50,36 @@ public class CharacterEquipmentActivity extends ListActivity {
         if (null != myCharacter) {
             Coins myCoins = myCharacter.getMoney();
             TextView nameText = (TextView) findViewById(R.id.cp_value);
-            nameText.setText(""+myCoins.getCp());
+            nameText.setText("" + myCoins.getCp());
             TextView nameText2 = (TextView) findViewById(R.id.sp_value);
-            nameText2.setText(myCoins.getSp()+"");
+            nameText2.setText(myCoins.getSp() + "");
             TextView nameText3 = (TextView) findViewById(R.id.ep_value);
-            nameText3.setText(myCoins.getEp()+"");
+            nameText3.setText(myCoins.getEp() + "");
             TextView nameText4 = (TextView) findViewById(R.id.gp_value);
-            nameText4.setText(myCoins.getGp()+"");
+            nameText4.setText(myCoins.getGp() + "");
             TextView nameText5 = (TextView) findViewById(R.id.pp_value);
-            nameText5.setText(myCoins.getPp()+"");
+            nameText5.setText(myCoins.getPp() + "");
         }
     }
+
     public void openUpdateCash(View v) {
         // TODO: Re-enable this once Equipment activity is complete.
         Intent intent = new Intent(this, UpdateCashActivity.class);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-
-            if(resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 refreshCoins();
             }
             if (resultCode == RESULT_CANCELED) {
                 //Do nothing?
             }
         }
-        if (requestCode == 2) {
-
-            if(resultCode == RESULT_OK){
+        else if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
                 updateEquipmentList();
             }
             if (resultCode == RESULT_CANCELED) {
@@ -91,12 +92,11 @@ public class CharacterEquipmentActivity extends ListActivity {
         if ((null != myCharacter) && (null != myCharacter.getEquipment())) {
             equipments = myCharacter.getEquipment();
             ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
-            for (Equipment equipment : equipments)
-            {
-                HashMap<String,String> hashMap=new HashMap<>();  // create the hashmap to store the data
-                hashMap.put("id", equipment.id+"");
-                hashMap.put("quant", equipment.quanity+"");
-                hashMap.put("name", equipment.name+"");
+            for (Equipment equipment : equipments) {
+                HashMap<String, String> hashMap = new HashMap<>();  // create the hashmap to store the data
+                hashMap.put("id", equipment.id + "");
+                hashMap.put("quant", equipment.quantity + "");
+                hashMap.put("name", equipment.name + "");
                 if (equipment.isEquippable) {
                     if (equipment.isEquipped) {
                         hashMap.put("isequip", getResources().getString(R.string.equipped));
@@ -106,7 +106,7 @@ public class CharacterEquipmentActivity extends ListActivity {
                 } else {
                     hashMap.put("isequip", getResources().getString(R.string.notequippable));
                 }
-                if (equipment.isAttunable){
+                if (equipment.isAttunable) {
                     hashMap.put("isAttunable", getResources().getString(R.string.attuned));
                 } else {
                     hashMap.put("notattuneable", getResources().getString(R.string.notattunable));
@@ -121,7 +121,6 @@ public class CharacterEquipmentActivity extends ListActivity {
                     R.layout.equipment_list_item,
                     fromColumns, toViews);
             setListAdapter(mAdapter);
-
         }
     }
 
@@ -135,8 +134,15 @@ public class CharacterEquipmentActivity extends ListActivity {
     public void onAddLootClicked(View v) {
         // TODO: Re-enable this once Equipment activity is complete.
         Intent intent = new Intent(this, EquipmentDetailsActivity.class);
-        startActivityForResult(intent,2);
+        startActivityForResult(intent, 2);
 
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new Intent(this, EquipmentDetailsActivity.class);
+        intent.putExtra("pos",position);
+        startActivityForResult(intent, 2);
     }
 }
 

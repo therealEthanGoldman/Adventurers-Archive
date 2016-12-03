@@ -12,7 +12,7 @@ public class Equipment implements Serializable {
     public String name;
     public String description;
     public boolean isEquippable, isEquipped;
-    public int quanity;
+    public int quantity;
     public boolean isAttunable, isAttuned;
     public Coins value;
     private static int lastUsedId = 0;
@@ -24,7 +24,7 @@ public class Equipment implements Serializable {
         description = "This item is a default";
         isEquippable = false;
         isEquipped = false;
-        quanity = 0;
+        quantity = 0;
         isAttunable = false;
         isAttuned = false;
         value = new Coins( );
@@ -39,7 +39,7 @@ public class Equipment implements Serializable {
         description = Newdesc;
         isEquippable = equiptable;
         isEquipped = equipped;
-        quanity = howmuch;
+        quantity = howmuch;
         isAttunable = attunable;
         isAttuned = attuned;
         value = kaching;

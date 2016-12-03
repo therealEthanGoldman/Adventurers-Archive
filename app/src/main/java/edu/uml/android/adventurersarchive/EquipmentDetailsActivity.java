@@ -1,7 +1,6 @@
 package edu.uml.android.adventurersarchive;
 
 import android.content.Intent;
-import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +14,7 @@ import edu.uml.android.adventurersarchive.character.Equipment;
 public class EquipmentDetailsActivity extends AppCompatActivity {
     private CharacterInfo myCharacter;
     private boolean newStuff;
+    private Equipment theEquipment;
 
 
     @Override
@@ -28,12 +28,19 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
 
         // assume yes for now
         newStuff = true;
+        theEquipment = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Integer value = extras.getInt("pos");
+            if (value != null) {
+                newStuff = false;
+                loadEquipment(value);
+            }
 
+        }
     }
 
     public void setEquipment(View v){
-        Equipment theEquipment;
-
         EditText tempEdit = (EditText) findViewById(R.id.equipment_name);
         String name = (tempEdit.getText().toString());
         tempEdit = (EditText) findViewById(R.id.quantity);
@@ -67,13 +74,46 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                 myCharacter.getEquipment().add(theEquipment);
             }
         }
+        else if (theEquipment != null)
+        {
+            theEquipment.name = name;
+            theEquipment.quantity = q;
+            theEquipment.description = desc;
+            theEquipment.wt = w;
+            theEquipment.isEquippable = eqble;
+            theEquipment.isEquipped = isEq;
+            theEquipment.isAttunable = atble;
+            theEquipment.isAttuned = isAt;
+            theEquipment.value = val;
+        }
         // add edit case here
-
-
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         finish();
 
+    }
+
+    public void loadEquipment(int pos){
+        if((myCharacter != null) && ((theEquipment = myCharacter.getEquipment().get(pos))!= null)) {
+            EditText tempEdit = (EditText) findViewById(R.id.equipment_name);
+            tempEdit.setText(theEquipment.name);
+            tempEdit = (EditText) findViewById(R.id.quantity);
+            tempEdit.setText(Integer.toString(theEquipment.quantity));
+            tempEdit = (EditText) findViewById(R.id.description);
+            tempEdit.setText(theEquipment.description);
+            tempEdit = (EditText) findViewById(R.id.weight);
+            tempEdit.setText(Double.toString(theEquipment.wt));
+            CheckBox tempCheck = (CheckBox) findViewById(R.id.equippable);
+            tempCheck.setChecked(theEquipment.isEquippable);
+            tempCheck = (CheckBox) findViewById(R.id.isequipped);
+            tempCheck.setChecked(theEquipment.isEquipped);
+            tempCheck = (CheckBox) findViewById(R.id.attunable);
+            tempCheck.setChecked(theEquipment.isAttunable);
+            tempCheck = (CheckBox) findViewById(R.id.isattuned);
+            tempCheck.setChecked(theEquipment.isAttuned);
+            tempEdit = (EditText) findViewById(R.id.value);
+            tempEdit.setText(Double.toString(theEquipment.value.valueInGold()));
+        }
     }
 
  }
