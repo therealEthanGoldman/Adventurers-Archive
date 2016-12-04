@@ -145,7 +145,7 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
         });
         builder.setMessage(R.string.sure);
         AlertDialog dialog = builder.create();
-        dialog.show();
+        dialog.show(); 
     }
 
  }
