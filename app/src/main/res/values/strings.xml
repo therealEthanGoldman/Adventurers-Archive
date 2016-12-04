@@ -30,7 +30,17 @@
     <string name="quantity">Quanity: </string>
     <string name="value">Value: </string>
     <string name="savelbl">Save</string>
+    <string name="trash">Trash</string>
     <string name="equipable">Equipable</string>
-    <string name="attunable">attunable</string>
+    <string name="attunable">Attunable</string>
+    <string name="tot_wt_lbl">Total Weight: </string>
+    <string name="under5str">Light Load</string>
+    <string name="over5str">Encumbered</string>
+    <string name="over10str">H. Encumbered</string>
+    <string name="over15str">Too Heavy</string>
+
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
+    <string name="sure">Are you sure you want to trash this equipment?</string>
 
 </resources>

@@ -141,6 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/addlootbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addloot"
@@ -158,12 +159,14 @@
             android:enabled="true"
             />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="369dp"
         android:orientation="vertical"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:paddingRight="8dp"
+        >
 
         <ListView
             android:id="@android:id/list"
@@ -171,8 +174,70 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawSelectorOnTop="false"
+            android:layout_marginBottom="34dp"
             />
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="top">
+        <TextView
+            android:id="@+id/lblabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="lb."
+            />
+        <TextView
+            android:id="@+id/totweight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_toLeftOf="@id/lblabel"
+            android:layout_alignBottom="@id/lblabel"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="1000"
+            />
+        <TextView
+            android:id="@+id/twlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/totweight"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/tot_wt_lbl"
+            />
+        <TextView
+            android:id="@+id/encumbered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_alignBottom="@id/twlabel"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="encumbered"
+            />
+
+    </RelativeLayout>
 </LinearLayout>

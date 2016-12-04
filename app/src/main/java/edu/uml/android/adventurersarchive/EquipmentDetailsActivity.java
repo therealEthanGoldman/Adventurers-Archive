@@ -1,6 +1,8 @@
 package edu.uml.android.adventurersarchive;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -114,6 +116,36 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
             tempEdit = (EditText) findViewById(R.id.value);
             tempEdit.setText(Double.toString(theEquipment.value.valueInGold()));
         }
+    }
+
+    public void trash( View v){
+        if (theEquipment != null){
+
+            myCharacter.getEquipment().remove(theEquipment);
+            Intent returnIntent = new Intent();
+            setResult(RESULT_OK, returnIntent);
+            finish();
+        }
+
+    }
+
+    public void onTrashClicked(final View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                trash(v);
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setMessage(R.string.sure);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
  }

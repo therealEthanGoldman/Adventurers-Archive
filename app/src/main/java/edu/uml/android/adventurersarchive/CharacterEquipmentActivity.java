@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import edu.uml.android.adventurersarchive.character.AbilityScore;
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
 import edu.uml.android.adventurersarchive.character.Coins;
 import edu.uml.android.adventurersarchive.character.Equipment;
@@ -89,6 +91,8 @@ public class CharacterEquipmentActivity extends ListActivity {
     }//onActivityResult=
 
     private void updateEquipmentList() {
+        double totweight = 0.0;
+
         if ((null != myCharacter) && (null != myCharacter.getEquipment())) {
             equipments = myCharacter.getEquipment();
             ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -112,7 +116,31 @@ public class CharacterEquipmentActivity extends ListActivity {
                     hashMap.put("notattuneable", getResources().getString(R.string.notattunable));
                 }
                 arrayList.add(hashMap);
+                totweight += equipment.wt * equipment.quantity;
             }
+            // display total weight
+            TextView tempTV = (TextView) findViewById(R.id.totweight);
+            tempTV.setText(Double.toString(totweight));
+
+            double str = myCharacter.getAbilityScore(AbilityScore.Scores.STRENGTH).getScoreValue();
+            int encStrRes = 0;
+            if( str * 5 < totweight){
+                if( str * 10 < totweight){
+                    if (str * 15 < totweight){
+                        encStrRes = R.string.over15str;
+                    } else {
+                        encStrRes = R.string.over10str;
+                    }
+                } else {
+                    encStrRes = R.string.over5str;
+                }
+            } else {
+                encStrRes = R.string.under5str;
+            }
+            tempTV = (TextView) findViewById(R.id.encumbered);
+            tempTV.setText(getResources().getString(encStrRes));
+
+
 
             // Create an empty adapter we will use to display the loaded data.
             // We pass null for the cursor, then update it in onLoadFinished()
