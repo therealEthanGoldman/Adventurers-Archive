@@ -20,9 +20,9 @@ import edu.uml.android.adventurersarchive.info.Spell;
 public class SpellListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> groupHeaders;
-    private Map<String, List<Spell>> groupItems;
+    private Map<String, List<String>> groupItems;
 
-    public SpellListAdapter(Context c, List<String> gHeaders, Map<String, List<Spell>> gItems) {
+    public SpellListAdapter(Context c, List<String> gHeaders, Map<String, List<String>> gItems) {
         context = c;
         groupHeaders = gHeaders;
         groupItems = gItems;

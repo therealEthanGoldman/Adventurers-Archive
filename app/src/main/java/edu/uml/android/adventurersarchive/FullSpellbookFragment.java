@@ -24,7 +24,7 @@ import edu.uml.android.adventurersarchive.info.Spell;
 public class FullSpellbookFragment extends Fragment {
     private SpellListAdapter adapter;
     private List<String> groupHeaders;
-    private Map<String, List<Spell>> groupItems;
+    private Map<String, List<String>> groupItems;
     private DBHelper dbHelper;
 
     @Override
@@ -32,10 +32,7 @@ public class FullSpellbookFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.spell_list, container, false);
 
         groupHeaders = new ArrayList<String>();
-        for(int i = 0; i < 10; i++) {
-            groupHeaders.add(String.valueOf(i));
-        }
-        groupItems = new HashMap<String, List<Spell>>();
+        groupItems = new HashMap<String, List<String>>();
 
         CharacterInfo myCharacter = ((GlobalState) getActivity().getApplicationContext()).getCharacter();
         prepareGroups(myCharacter);
@@ -58,9 +55,15 @@ public class FullSpellbookFragment extends Fragment {
     }
 
     private void prepareGroups(CharacterInfo myCharacter) {
-        // TODO: Take all spells in database and populate the groups and their items.
+        GlobalState state = (GlobalState) getActivity().getApplicationContext();
+        DBHelper db = state.getDatabase();
+
         if(myCharacter != null) {
-            //List<Spell> spells = SpellXMLParser.parseSpells(getContext());
+            for(int i = 0; i < 10; i++) {
+                groupHeaders.add(String.valueOf(i));
+                List<String> items = db.getSpellNamesByClass(i, state.getCharacter().getCharacterClass());
+                groupItems.put(String.valueOf(i), items);
+            }
         }
     }
 }

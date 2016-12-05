@@ -11,6 +11,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.uml.android.adventurersarchive.character.CharacterClass;
 import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
@@ -154,6 +155,24 @@ public class DBHelper extends SQLiteOpenHelper {
             spells.add(res.getString(res.getColumnIndex(SPELLS_COLUMN_NAME)));
             res.moveToNext();
         }
+
+        return spells;
+    }
+
+    public ArrayList<String> getSpellNamesByClass(int level, CharacterClass cl) {
+        ArrayList<String> spells = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery(("SELECT * FROM " + SPELLS_TABLE_NAME + " WHERE "
+                                + SPELLS_COLUMN_LEVEL + "=" + level + " AND "
+                                + SPELLS_COLUMN_CLASSES + " LIKE \'%" + cl.toString() + "%\'"), null);
+
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
+            spells.add(res.getString(res.getColumnIndex(SPELLS_COLUMN_NAME)));
+            res.moveToNext();
+        }
+
         return spells;
     }
 }

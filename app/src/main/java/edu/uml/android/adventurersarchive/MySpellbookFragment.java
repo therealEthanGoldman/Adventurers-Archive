@@ -21,20 +21,19 @@ import edu.uml.android.adventurersarchive.info.Spell;
 public class MySpellbookFragment extends Fragment {
     private SpellListAdapter adapter;
     private List<String> groupHeaders;
-    private Map<String, List<Spell>> groupItems;
+    private Map<String, List<String>> groupItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.spell_list, container, false);
 
+        groupHeaders = new ArrayList<String>();
+        groupItems = new HashMap<String, List<String>>();
+
         CharacterInfo myCharacter = ((GlobalState) getActivity().getApplicationContext()).getCharacter();
         prepareGroups(myCharacter);
 
-        groupHeaders = new ArrayList<String>();
-        for(int i = 0; i < 10; i++) {
-            groupHeaders.add(String.valueOf(i));
-        }
-        groupItems = new HashMap<String, List<Spell>>();
+
 
         adapter = new SpellListAdapter(getContext(), groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
@@ -54,7 +53,9 @@ public class MySpellbookFragment extends Fragment {
     private void prepareGroups(CharacterInfo myCharacter) {
         // TODO: Take spells in player's personal spellbook and populate the groups and their items.
         if(myCharacter != null) {
-
+            for(int i = 0; i < 10; i++) {
+                groupHeaders.add(String.valueOf(i));
+            }
         }
     }
 }
