@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
+import edu.uml.android.adventurersarchive.database.DBHelper;
 import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
@@ -26,9 +27,12 @@ public class GlobalState extends Application {
     public CharacterInfo getCharacter() { return me; }
     public void setCharacter(CharacterInfo info) { me = info; }
 
-    private SQLiteDatabase db;
-    public SQLiteDatabase getDatabase() { return db; }
-    public void setDatabase(SQLiteDatabase d) { db = d; }
+    private DBHelper db;
+    public DBHelper getDatabase() { return db; }
+    public void setDatabase(DBHelper d) { db = d; }
+    public void createDatabaseFromData(List<Spell> spells) {
+        if(db.isEmpty()) db.insertSpells(spells);
+    }
 
     public void saveCharacter(Context context) {
         String filename = me.getFilename();
@@ -66,9 +70,5 @@ public class GlobalState extends Application {
         }
 
         return myCharacter;
-    }
-
-    public void createDatabaseFromData(List<Spell> spells) {
-
     }
 }

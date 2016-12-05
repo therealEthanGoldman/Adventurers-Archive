@@ -6,8 +6,12 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
  * Created by Darin on 12/1/2016.
@@ -54,22 +58,53 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertSpell(String name, String level, String school,
-                               String time, String range, String components,
-                               String duration, String classes, String description) {
+    public boolean checkDatabase() {
+        SQLiteDatabase db = getReadableDatabase();
+        return (db != null);
+    }
+
+    public boolean insertSpell(Spell sp) {
         SQLiteDatabase db = getWritableDatabase();
+
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("level", level);
-        contentValues.put("school", school);
-        contentValues.put("time", time);
-        contentValues.put("range", range);
-        contentValues.put("components", components);
-        contentValues.put("duration", duration);
-        contentValues.put("classes", classes);
-        contentValues.put("description", description);
+        contentValues.put("name", sp.getSpellName());
+        contentValues.put("level", sp.getSpellLevel());
+        contentValues.put("school", sp.getSpellSchool());
+        contentValues.put("time", sp.getCastingTime());
+        contentValues.put("range", sp.getSpellRange());
+        contentValues.put("components", sp.getSpellComponents());
+        contentValues.put("duration", sp.getSpellDuration());
+        contentValues.put("classes", sp.getSpellClasses());
+        contentValues.put("description", sp.getSpellDescription());
 
         db.insert("spells", null, contentValues);
+
+        return true;
+    }
+
+    public boolean insertSpells(List<Spell> spells) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        int sc = 0;
+        for(Spell sp : spells) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", sp.getSpellName());
+            contentValues.put("level", sp.getSpellLevel());
+            contentValues.put("school", sp.getSpellSchool());
+            contentValues.put("time", sp.getCastingTime());
+            contentValues.put("range", sp.getSpellRange());
+            contentValues.put("components", sp.getSpellComponents());
+            contentValues.put("duration", sp.getSpellDuration());
+            contentValues.put("classes", sp.getSpellClasses());
+            contentValues.put("description", sp.getSpellDescription());
+            long result = db.insert("spells", null, contentValues);
+            if(result == -1) Log.i(getClass().getSimpleName(), ("INFO: Error inserting spell => " +
+                                                                sp.getSpellName()));
+            else sc++;
+        }
+
+        Log.i(getClass().getSimpleName(), ("INFO: Spells written => " + sc));
+
         return true;
     }
 
@@ -83,6 +118,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public int numberOfRows() {
         SQLiteDatabase db = getReadableDatabase();
         return ((int) DatabaseUtils.queryNumEntries(db, SPELLS_TABLE_NAME));
+    }
+
+    public boolean isEmpty() {
+        return (numberOfRows() == 0);
     }
 
     public int deleteSpell(int id) {
