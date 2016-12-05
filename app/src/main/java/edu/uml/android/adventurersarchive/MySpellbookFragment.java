@@ -31,9 +31,12 @@ public class MySpellbookFragment extends Fragment {
         prepareGroups(myCharacter);
 
         groupHeaders = new ArrayList<String>();
+        for(int i = 0; i < 10; i++) {
+            groupHeaders.add(String.valueOf(i));
+        }
         groupItems = new HashMap<String, List<Spell>>();
 
-        adapter = new SpellListAdapter(groupHeaders, groupItems);
+        adapter = new SpellListAdapter(getContext(), groupHeaders, groupItems);
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
         expView.setAdapter(adapter);
 
