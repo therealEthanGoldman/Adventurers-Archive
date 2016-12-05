@@ -41,10 +41,10 @@ public class CharacterSpellbookActivity extends AppCompatActivity {
 
         GlobalState state = (GlobalState) getApplicationContext();
         state.setDatabase(new DBHelper(this));
-        List<Spell> spells = SpellXMLParser.parseSpells(this);
-        state.createDatabaseFromData(spells);
-        Log.i(getClass().getSimpleName(), ("INFO: Database has " +
-                state.getDatabase().numberOfRows() + " entries!"));
+        if(state.getDatabase().isEmpty()) {
+            List<Spell> spells = SpellXMLParser.parseSpells(this);
+            state.createDatabaseFromData(spells);
+        }
     }
 
     @Override

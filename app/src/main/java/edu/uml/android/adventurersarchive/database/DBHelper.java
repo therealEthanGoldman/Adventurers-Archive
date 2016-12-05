@@ -31,9 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SPELLS_COLUMN_DESCRIPTION = "description";
     public static final String SPELLS_COLUMN_ROLL = "roll";
 
-    public DBHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-    }
+    public DBHelper(Context context) { super(context, DATABASE_NAME, null, 1); }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
