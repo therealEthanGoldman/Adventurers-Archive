@@ -6,6 +6,10 @@ import java.io.Serializable;
  * Created by Darin on 11/8/2016.
  */
 public class Spell implements Serializable {
+    private int id;
+    public int getID() { return id; }
+    public void setID(int newID) { id = newID; }
+
     private String spellName;
     public String getSpellName() { return spellName; }
     public void setSpellName(String name) { spellName = name; }
@@ -44,6 +48,7 @@ public class Spell implements Serializable {
     public void addToDescription(String description) { spellDescription += description; }
 
     public Spell() {
+        id = 0;
         spellName = "";
         spellLevel = 0;
         spellSchool = "";
@@ -55,8 +60,10 @@ public class Spell implements Serializable {
         spellDescription = "";
     }
 
-    public Spell(String sName, int sLevel, String sSchool, String cTime, String sRange,
-                 String sComponents, String sDuration, String sClasses, String sDescription) {
+    public Spell(int newID, String sName, int sLevel, String sSchool,
+                 String cTime, String sRange, String sComponents,
+                 String sDuration, String sClasses, String sDescription) {
+        id = newID;
         spellName = sName;
         spellLevel = sLevel;
         spellSchool = sSchool;

@@ -2,6 +2,7 @@ package edu.uml.android.adventurersarchive;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -10,8 +11,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 
 import edu.uml.android.adventurersarchive.character.CharacterInfo;
+import edu.uml.android.adventurersarchive.info.Spell;
 
 /**
  * Created by Darin on 11/16/2016.
@@ -22,6 +25,10 @@ public class GlobalState extends Application {
     private CharacterInfo me;
     public CharacterInfo getCharacter() { return me; }
     public void setCharacter(CharacterInfo info) { me = info; }
+
+    private SQLiteDatabase db;
+    public SQLiteDatabase getDatabase() { return db; }
+    public void setDatabase(SQLiteDatabase d) { db = d; }
 
     public void saveCharacter(Context context) {
         String filename = me.getFilename();
@@ -59,5 +66,9 @@ public class GlobalState extends Application {
         }
 
         return myCharacter;
+    }
+
+    public void createDatabaseFromData(List<Spell> spells) {
+
     }
 }

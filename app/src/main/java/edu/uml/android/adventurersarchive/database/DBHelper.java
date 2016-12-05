@@ -1,7 +1,9 @@
 package edu.uml.android.adventurersarchive.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -31,12 +33,44 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Database already exists. Ignore this.
+        db.execSQL(
+                "CREATE TABLE spells " +
+                        "(id integer primary key, " +
+                        "name text, " +
+                        "level text, " +
+                        "school text, " +
+                        "time text, " +
+                        "range text, " +
+                        "components text, " +
+                        "duration text, " +
+                        "classes text, " +
+                        "description text)"
+        );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Ignore this for now. Probably don't need it for anything.
+        db.execSQL("DROP TABLE IF EXISTS spells");
+        onCreate(db);
+    }
+
+    public boolean insertSpell(String name, String level, String school,
+                               String time, String range, String components,
+                               String duration, String classes, String description) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("level", level);
+        contentValues.put("school", school);
+        contentValues.put("time", time);
+        contentValues.put("range", range);
+        contentValues.put("components", components);
+        contentValues.put("duration", duration);
+        contentValues.put("classes", classes);
+        contentValues.put("description", description);
+
+        db.insert("spells", null, contentValues);
+        return true;
     }
 
     public Cursor getData(int id) {
@@ -44,6 +78,11 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         return db.rawQuery(("SELECT * FROM " + SPELLS_TABLE_NAME
                           + " WHERE " + SPELLS_COLUMN_ID + "=" + id), null);
+    }
+
+    public int numberOfRows() {
+        SQLiteDatabase db = getReadableDatabase();
+        return ((int) DatabaseUtils.queryNumEntries(db, SPELLS_TABLE_NAME));
     }
 
     public int deleteSpell(int id) {
