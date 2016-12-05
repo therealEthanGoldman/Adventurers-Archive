@@ -30,7 +30,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SPELLS_COLUMN_DURATION = "duration";
     public static final String SPELLS_COLUMN_CLASSES = "classes";
     public static final String SPELLS_COLUMN_DESCRIPTION = "description";
-    public static final String SPELLS_COLUMN_ROLL = "roll";
 
     public DBHelper(Context context) { super(context, DATABASE_NAME, null, 1); }
 
@@ -127,6 +126,70 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         return db.delete(SPELLS_TABLE_NAME, (SPELLS_COLUMN_ID + " = ? "),
                          new String[] { String.valueOf(id) });
+    }
+
+    public String getSpellNameByID(int id) {
+        String sp = "";
+
+        Cursor res = getData(id);
+
+        res.moveToFirst();
+        while(!res.isAfterLast()) {
+            sp = res.getString(res.getColumnIndex(SPELLS_COLUMN_NAME));
+            res.moveToNext();
+        }
+
+        return sp;
+    }
+
+    public Spell getSpellByID(int id) {
+        Spell sp = new Spell();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery(("SELECT * FROM " + SPELLS_TABLE_NAME + " WHERE "
+                                + SPELLS_COLUMN_ID + "=" + id), null);
+
+        res.moveToFirst();
+        while(!res.isAfterLast()) {
+            sp.setID(id);
+            sp.setSpellName(res.getString(res.getColumnIndex(SPELLS_COLUMN_NAME)));
+            sp.setSpellLevel(Integer.parseInt(res.getString(res.getColumnIndex(SPELLS_COLUMN_LEVEL))));
+            sp.setSpellSchool(res.getString(res.getColumnIndex(SPELLS_COLUMN_SCHOOL)));
+            sp.setCastingTime(res.getString(res.getColumnIndex(SPELLS_COLUMN_TIME)));
+            sp.setSpellRange(res.getString(res.getColumnIndex(SPELLS_COLUMN_RANGE)));
+            sp.setSpellComponents(res.getString(res.getColumnIndex(SPELLS_COLUMN_COMPONENTS)));
+            sp.setSpellDuration(res.getString(res.getColumnIndex(SPELLS_COLUMN_DURATION)));
+            sp.setSpellClasses(res.getString(res.getColumnIndex(SPELLS_COLUMN_CLASSES)));
+            sp.setSpellDescription(res.getString(res.getColumnIndex(SPELLS_COLUMN_DESCRIPTION)));
+            res.moveToNext();
+        }
+
+        return sp;
+    }
+
+    public Spell getSpellByName(String name) {
+        Spell sp = new Spell();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery(("SELECT * FROM " + SPELLS_TABLE_NAME + " WHERE "
+                                + SPELLS_COLUMN_NAME + "=\"" + name + "\""), null);
+
+        res.moveToFirst();
+        while(!res.isAfterLast()) {
+            sp.setID(Integer.parseInt(res.getString(res.getColumnIndex(SPELLS_COLUMN_ID))));
+            sp.setSpellName(name);
+            sp.setSpellLevel(Integer.parseInt(res.getString(res.getColumnIndex(SPELLS_COLUMN_LEVEL))));
+            sp.setSpellSchool(res.getString(res.getColumnIndex(SPELLS_COLUMN_SCHOOL)));
+            sp.setCastingTime(res.getString(res.getColumnIndex(SPELLS_COLUMN_TIME)));
+            sp.setSpellRange(res.getString(res.getColumnIndex(SPELLS_COLUMN_RANGE)));
+            sp.setSpellComponents(res.getString(res.getColumnIndex(SPELLS_COLUMN_COMPONENTS)));
+            sp.setSpellDuration(res.getString(res.getColumnIndex(SPELLS_COLUMN_DURATION)));
+            sp.setSpellClasses(res.getString(res.getColumnIndex(SPELLS_COLUMN_CLASSES)));
+            sp.setSpellDescription(res.getString(res.getColumnIndex(SPELLS_COLUMN_DESCRIPTION)));
+            res.moveToNext();
+        }
+
+        return sp;
     }
 
     public ArrayList<String> getAllSpellNames() {

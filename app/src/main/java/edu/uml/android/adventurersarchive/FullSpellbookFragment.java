@@ -1,5 +1,6 @@
 package edu.uml.android.adventurersarchive;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -46,8 +47,16 @@ public class FullSpellbookFragment extends Fragment {
         expView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                // TODO: Launch activity to show detailed information about the spell.
-                return false;
+                Intent intent = new Intent(FullSpellbookFragment.this.getActivity(),
+                                           DisplaySpellActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("spell", (String) adapter.getChild(groupPosition, childPosition));
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+                return true;
             }
         });
 

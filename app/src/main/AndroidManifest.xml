@@ -48,8 +48,18 @@
             android:name=".CharacterSkillsActivity"
             android:label="Skills"
             android:parentActivityName=".CharacterMainActivity" />
-        <activity android:name=".UpdateCashActivity" />
-        <activity android:name=".EquipmentDetailsActivity"></activity>
+        <activity
+            android:name=".UpdateCashActivity"
+            android:label="Modify Wealth"
+            android:parentActivityName=".CharacterEquipmentActivity" />
+        <activity
+            android:name=".EquipmentDetailsActivity"
+            android:label="Equipment Details"
+            android:parentActivityName=".CharacterEquipmentActivity" />
+        <activity
+            android:name=".DisplaySpellActivity"
+            android:label="Spell Details"
+            android:parentActivityName=".CharacterSpellbookActivity" />
     </application>
 
 </manifest>

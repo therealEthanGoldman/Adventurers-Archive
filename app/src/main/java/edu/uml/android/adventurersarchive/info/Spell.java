@@ -17,6 +17,35 @@ public class Spell implements Serializable {
     private int spellLevel;
     public int getSpellLevel() { return spellLevel; }
     public void setSpellLevel(int level) { spellLevel = level; }
+    public String getLevelString() {
+        String result = String.valueOf(spellLevel);
+
+        switch(spellLevel) {
+            case 0:
+                result += "-level";
+                break;
+            case 1:
+                result += "st-level";
+                break;
+            case 2:
+                result += "nd-level";
+                break;
+            case 3:
+                result += "rd-level";
+                break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            default:
+                result += "th-level";
+                break;
+        }
+
+        return result;
+    }
 
     private String spellSchool;
     public String getSpellSchool() { return spellSchool; }
