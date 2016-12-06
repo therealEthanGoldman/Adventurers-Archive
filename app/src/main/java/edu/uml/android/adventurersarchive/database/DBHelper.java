@@ -238,4 +238,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return spells;
     }
+
+    public ArrayList<String> getSpellNamesByIDList(int level, CharacterClass cl, List<Integer> ids) {
+        ArrayList<String> spells = new ArrayList<>();
+        String inClause = ids.toString().replace('[', '(').replace(']', ')');
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery(("SELECT * FROM " + SPELLS_TABLE_NAME + " WHERE "
+                                + SPELLS_COLUMN_LEVEL + "=" + level + " AND "
+                                + SPELLS_COLUMN_ID + " IN " + inClause), null);
+
+        res.moveToFirst();
+        while(!res.isAfterLast()) {
+            spells.add(res.getString(res.getColumnIndex(SPELLS_COLUMN_NAME)));
+            res.moveToNext();
+        }
+
+        return spells;
+    }
 }

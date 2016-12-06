@@ -23,10 +23,11 @@ import edu.uml.android.adventurersarchive.info.Spell;
  * Created by Darin on 11/8/2016.
  */
 public class FullSpellbookFragment extends Fragment {
+    private static int REQUEST_CODE = 3;
+
     private SpellListAdapter adapter;
     private List<String> groupHeaders;
     private Map<String, List<String>> groupItems;
-    private DBHelper dbHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,8 +43,6 @@ public class FullSpellbookFragment extends Fragment {
         ExpandableListView expView = (ExpandableListView) rootView.findViewById(R.id.spell_list);
         expView.setAdapter(adapter);
 
-        dbHelper = new DBHelper(rootView.getContext());
-
         expView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -54,7 +53,7 @@ public class FullSpellbookFragment extends Fragment {
                 bundle.putString("spell", (String) adapter.getChild(groupPosition, childPosition));
 
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
 
                 return true;
             }

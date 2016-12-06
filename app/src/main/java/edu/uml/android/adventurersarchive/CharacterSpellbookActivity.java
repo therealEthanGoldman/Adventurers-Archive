@@ -48,6 +48,14 @@ public class CharacterSpellbookActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Intent refresh = new Intent(this, CharacterSpellbookActivity.class);
+        startActivity(refresh);
+        finish();
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         GlobalState state = (GlobalState) getApplicationContext();

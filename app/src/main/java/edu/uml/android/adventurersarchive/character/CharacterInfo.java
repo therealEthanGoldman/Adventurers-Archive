@@ -124,11 +124,17 @@ public class CharacterInfo implements Serializable {
     private List<Equipment> cEquipment;
     public List<Equipment> getEquipment() { return cEquipment; }
 
-    private List<Spell> cPreparedSpells;
-    public List<Spell> getPreparedSpells() { return cPreparedSpells; }
+    private List<Integer> cPreparedSpells;
+    public List<Integer> getPreparedSpells() { return cPreparedSpells; }
+    public boolean isPrepared(Integer id) { return cPreparedSpells.contains(id); }
+    public void prepare(Integer id) { cPreparedSpells.add(id); }
+    public void cast(Integer id) { cPreparedSpells.remove(id); }
 
-    private List<Spell> cKnownSpells;
-    public List<Spell> getKnownSpells() { return cKnownSpells; }
+    private List<Integer> cKnownSpells;
+    public List<Integer> getKnownSpells() { return cKnownSpells; }
+    public void learnSpell(Integer id) { cKnownSpells.add(id); }
+    public boolean knowsSpell(Integer id) { return cKnownSpells.contains(id); }
+    public void forgetSpell(Integer id) { cKnownSpells.remove(id); }
 
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
@@ -183,8 +189,8 @@ public class CharacterInfo implements Serializable {
         money = new Coins();
         cEquipment = new ArrayList<Equipment>();
 
-        cPreparedSpells = new ArrayList<Spell>();
-        cKnownSpells = new ArrayList<Spell>();
+        cPreparedSpells = new ArrayList<Integer>();
+        cKnownSpells = new ArrayList<Integer>();
     }
 
     public static final int [] LEVELS = {300,900,2700,6500,14000,
