@@ -194,82 +194,82 @@ public class CharacterSkillsActivity extends AppCompatActivity {
 
         switch(v.getId()) {
             case R.id.skills_acrobatics_button:
-                name = Skill.SkillType.ACROBATICS.toString() + " ";
+                name = Skill.toString(Skill.SkillType.ACROBATICS) + " ";
                 bonus = me.getSkill(Skill.SkillType.ACROBATICS).getBonus(me);
                 break;
             case R.id.skills_animal_handling_button:
-                name = Skill.SkillType.ANIMAL_HANDLING.toString() + " ";
+                name = Skill.toString(Skill.SkillType.ANIMAL_HANDLING) + " ";
                 bonus = me.getSkill(Skill.SkillType.ANIMAL_HANDLING).getBonus(me);
                 break;
             case R.id.skills_arcana_button:
-                name = Skill.SkillType.ARCANA.toString() + " ";
+                name = Skill.toString(Skill.SkillType.ARCANA)+ " ";
                 bonus = me.getSkill(Skill.SkillType.ARCANA).getBonus(me);
                 break;
             case R.id.skills_athletics_button:
-                name = Skill.SkillType.ATHLETICS.toString() + " ";
+                name = Skill.toString(Skill.SkillType.ATHLETICS)+ " ";
                 bonus = me.getSkill(Skill.SkillType.ATHLETICS).getBonus(me);
                 break;
             case R.id.skills_deception_button:
-                name = Skill.SkillType.DECEPTION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.DECEPTION)+ " ";
                 bonus = me.getSkill(Skill.SkillType.DECEPTION).getBonus(me);
                 break;
             case R.id.skills_history_button:
-                name = Skill.SkillType.HISTORY.toString() + " ";
+                name = Skill.toString(Skill.SkillType.HISTORY)+ " ";
                 bonus = me.getSkill(Skill.SkillType.HISTORY).getBonus(me);
                 break;
             case R.id.skills_insight_button:
-                name = Skill.SkillType.INSIGHT.toString() + " ";
+                name = Skill.toString(Skill.SkillType.INSIGHT)+ " ";
                 bonus = me.getSkill(Skill.SkillType.INSIGHT).getBonus(me);
                 break;
             case R.id.skills_intimidation_button:
-                name = Skill.SkillType.INTIMIDATION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.INTIMIDATION) + " ";
                 bonus = me.getSkill(Skill.SkillType.INTIMIDATION).getBonus(me);
                 break;
             case R.id.skills_investigation_button:
-                name = Skill.SkillType.INVESTIGATION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.INVESTIGATION) + " ";
                 bonus = me.getSkill(Skill.SkillType.INVESTIGATION).getBonus(me);
                 break;
             case R.id.skills_medicine_button:
-                name = Skill.SkillType.MEDICINE.toString() + " ";
+                name = Skill.toString(Skill.SkillType.MEDICINE) + " ";
                 bonus = me.getSkill(Skill.SkillType.MEDICINE).getBonus(me);
                 break;
             case R.id.skills_nature_button:
-                name = Skill.SkillType.NATURE.toString() + " ";
+                name = Skill.toString(Skill.SkillType.NATURE) + " ";
                 bonus = me.getSkill(Skill.SkillType.NATURE).getBonus(me);
                 break;
             case R.id.skills_perception_button:
-                name = Skill.SkillType.PERCEPTION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.PERCEPTION)+ " ";
                 bonus = me.getSkill(Skill.SkillType.PERCEPTION).getBonus(me);
                 break;
             case R.id.skills_performance_button:
-                name = Skill.SkillType.PERFORMANCE.toString() + " ";
+                name = Skill.toString(Skill.SkillType.PERFORMANCE) + " ";
                 bonus = me.getSkill(Skill.SkillType.PERFORMANCE).getBonus(me);
                 break;
             case R.id.skills_persuasion_button:
-                name = Skill.SkillType.PERSUASION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.PERSUASION)+ " ";
                 bonus = me.getSkill(Skill.SkillType.PERSUASION).getBonus(me);
                 break;
             case R.id.skills_religion_button:
-                name = Skill.SkillType.RELIGION.toString() + " ";
+                name = Skill.toString(Skill.SkillType.RELIGION)+ " ";
                 bonus = me.getSkill(Skill.SkillType.RELIGION).getBonus(me);
                 break;
             case R.id.skills_soh_button:
-                name = Skill.SkillType.SLEIGHT_OF_HAND.toString() + " ";
+                name = Skill.toString(Skill.SkillType.SLEIGHT_OF_HAND)+ " ";
                 bonus = me.getSkill(Skill.SkillType.SLEIGHT_OF_HAND).getBonus(me);
                 break;
             case R.id.skills_stealth_button:
-                name = Skill.SkillType.STEALTH.toString() + " ";
+                name = Skill.toString(Skill.SkillType.STEALTH) + " ";
                 bonus = me.getSkill(Skill.SkillType.STEALTH).getBonus(me);
                 break;
             case R.id.skills_survival_button:
-                name = Skill.SkillType.SURVIVAL.toString() + " ";
+                name = Skill.toString(Skill.SkillType.SURVIVAL) + " ";
                 bonus = me.getSkill(Skill.SkillType.SURVIVAL).getBonus(me);
                 break;
             default: break;
         }
 
-        int roll = DiceRoller.roll(20) + bonus;
-        Toast.makeText(v.getContext(), (name + "Roll: " + roll), Toast.LENGTH_SHORT).show();
+        int roll = DiceRoller.roll(20);
+        Toast.makeText(v.getContext(), (name + "Roll: " + roll +((bonus < 0)?"":"+")+ bonus + " = " + (roll + bonus)), Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -12,7 +12,8 @@
         android:id="@+id/skills_acrobatics_save_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"/>
     <TextView
         android:id="@+id/skills_acrobatics_text_underscore"
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/skills_acrobatics_save_box"
         android:text="Roll"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Animal Handling -->
 
@@ -42,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_acrobatics_save_box"/>
     <TextView
         android:id="@+id/skills_animal_handling_text_underscore"
@@ -66,7 +69,8 @@
         android:layout_alignBaseline="@id/skills_animal_handling_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_acrobatics_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Arcana -->
     <CheckBox
@@ -74,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_animal_handling_save_box"/>
     <TextView
         android:id="@+id/skills_arcana_text_underscore"
@@ -98,7 +103,8 @@
         android:layout_alignBaseline="@id/skills_arcana_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_animal_handling_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Athletics -->
     <CheckBox
@@ -106,6 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_arcana_save_box"/>
     <TextView
         android:id="@+id/skills_athletics_text_underscore"
@@ -130,7 +137,8 @@
         android:layout_alignBaseline="@id/skills_athletics_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_arcana_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Deception (Cha) -->
     <CheckBox
@@ -138,6 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_athletics_save_box"/>
     <TextView
         android:id="@+id/skills_deception_text_underscore"
@@ -162,7 +171,8 @@
         android:layout_alignBaseline="@id/skills_deception_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_athletics_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- History (Int) -->
     <CheckBox
@@ -170,6 +180,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_deception_save_box"/>
     <TextView
         android:id="@+id/skills_history_text_underscore"
@@ -194,7 +205,8 @@
         android:layout_alignBaseline="@id/skills_history_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_deception_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Insight (Wis) -->
     <CheckBox
@@ -202,6 +214,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_history_save_box"/>
     <TextView
         android:id="@+id/skills_insight_text_underscore"
@@ -226,7 +239,8 @@
         android:layout_alignBaseline="@id/skills_insight_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_history_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Intimidation (Cha) -->
     <CheckBox
@@ -234,6 +248,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_insight_save_box"/>
     <TextView
         android:id="@+id/skills_intimidation_text_underscore"
@@ -258,7 +273,8 @@
         android:layout_alignBaseline="@id/skills_intimidation_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_insight_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Investigation (Int) -->
     <CheckBox
@@ -266,6 +282,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_intimidation_save_box"/>
     <TextView
         android:id="@+id/skills_investigation_text_underscore"
@@ -290,7 +307,8 @@
         android:layout_alignBaseline="@id/skills_investigation_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_intimidation_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Medicine (Wis) -->
     <CheckBox
@@ -298,6 +316,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_investigation_save_box"/>
     <TextView
         android:id="@+id/skills_medicine_text_underscore"
@@ -322,7 +341,8 @@
         android:layout_alignBaseline="@id/skills_medicine_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_investigation_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Nature (Int) -->
     <CheckBox
@@ -330,6 +350,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_medicine_save_box"/>
     <TextView
         android:id="@+id/skills_nature_text_underscore"
@@ -354,7 +375,8 @@
         android:layout_alignBaseline="@id/skills_nature_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_medicine_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Perception (Wis) -->
     <CheckBox
@@ -362,6 +384,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_nature_save_box"/>
     <TextView
         android:id="@+id/skills_perception_text_underscore"
@@ -386,7 +409,8 @@
         android:layout_alignBaseline="@id/skills_perception_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_nature_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Performance (Cha) -->
     <CheckBox
@@ -394,6 +418,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_perception_save_box"/>
     <TextView
         android:id="@+id/skills_performance_text_underscore"
@@ -418,7 +443,8 @@
         android:layout_alignBaseline="@id/skills_performance_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_perception_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Persuasion (Cha) -->
     <CheckBox
@@ -426,6 +452,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_performance_save_box"/>
     <TextView
         android:id="@+id/skills_persuasion_text_underscore"
@@ -450,7 +477,8 @@
         android:layout_alignBaseline="@id/skills_persuasion_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_performance_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Religion (Int) -->
     <CheckBox
@@ -458,6 +486,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_persuasion_save_box"/>
     <TextView
         android:id="@+id/skills_religion_text_underscore"
@@ -482,7 +511,8 @@
         android:layout_alignBaseline="@id/skills_religion_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_persuasion_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Sleight Of Hand (Dex) -->
     <CheckBox
@@ -490,6 +520,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_religion_save_box"/>
     <TextView
         android:id="@+id/skills_soh_text_underscore"
@@ -514,7 +545,8 @@
         android:layout_alignBaseline="@id/skills_soh_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_religion_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Stealth (Dex) -->
     <CheckBox
@@ -522,6 +554,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_soh_save_box"/>
     <TextView
         android:id="@+id/skills_stealth_text_underscore"
@@ -546,7 +579,8 @@
         android:layout_alignBaseline="@id/skills_stealth_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_soh_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
     <!-- Survival (Wis)-->
     <CheckBox
@@ -554,6 +588,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/skills_stealth_save_box"/>
     <TextView
         android:id="@+id/skills_survival_text_underscore"
@@ -578,7 +613,8 @@
         android:layout_alignBaseline="@id/skills_survival_save_box"
         android:text="Roll"
         android:layout_below="@id/skills_stealth_save_box"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"/>
 
 
 

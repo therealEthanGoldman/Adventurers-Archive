@@ -10,6 +10,30 @@ import edu.uml.android.adventurersarchive.GlobalState;
  * Created by Darin on 11/27/2016.
  */
 public class Skill implements Serializable {
+
+    public static String toString(SkillType type){
+        switch(type){
+            case ACROBATICS: return "Acrobatics";
+            case ATHLETICS: return "Athletics";
+            case SLEIGHT_OF_HAND: return "Sleight of Hand";
+            case STEALTH: return "Stealth";
+            case ANIMAL_HANDLING: return "Animal Handling";
+            case INSIGHT: return "Insight";
+            case MEDICINE: return "Medicine";
+            case PERCEPTION: return "Perception";
+            case SURVIVAL: return "Survival";
+            case DECEPTION: return "Deception";
+            case INTIMIDATION: return "Intimidation";
+            case PERFORMANCE: return "Performance";
+            case PERSUASION: return "Persuasion";
+            case ARCANA: return "Arcana";
+            case HISTORY: return "History";
+            case INVESTIGATION: return "Investigation";
+            case NATURE: return "Nature";
+            case RELIGION: return "Religion";
+            default: return "default";
+        }
+    }
     private SkillType type;
     public SkillType getSkillType() { return type; }
 
