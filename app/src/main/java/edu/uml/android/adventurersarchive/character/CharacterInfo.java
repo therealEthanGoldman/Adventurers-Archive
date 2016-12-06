@@ -134,7 +134,10 @@ public class CharacterInfo implements Serializable {
     public List<Integer> getKnownSpells() { return cKnownSpells; }
     public void learnSpell(Integer id) { cKnownSpells.add(id); }
     public boolean knowsSpell(Integer id) { return cKnownSpells.contains(id); }
-    public void forgetSpell(Integer id) { cKnownSpells.remove(id); }
+    public void forgetSpell(Integer id) {
+        cKnownSpells.remove(id);
+        cPreparedSpells.remove(id); // just in case...
+    }
 
     public CharacterInfo(String n, CharacterRace r, CharacterClass c, CharacterAlignment a, int l) {
         cName = n;
