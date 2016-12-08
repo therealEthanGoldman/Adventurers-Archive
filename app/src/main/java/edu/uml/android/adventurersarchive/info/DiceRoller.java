@@ -88,7 +88,7 @@ public class DiceRoller {
                         pDialog.hide();
                         // INSERT JSON PARSING HERE
                         Log.d(DiceRoller.TAG, response.toString());
-                        int roll = 1;
+                        int roll = rand.nextInt(sides) + 1;
                         try {
                             JSONObject result = response.getJSONObject("result");
                             JSONObject rand = result.getJSONObject("random");
