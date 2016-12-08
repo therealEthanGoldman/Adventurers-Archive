@@ -268,8 +268,8 @@ public class CharacterSkillsActivity extends AppCompatActivity {
             default: break;
         }
 
-        int roll = DiceRoller.roll(20);
-        Toast.makeText(v.getContext(), (name + "Roll: " + roll +((bonus < 0)?"":"+")+ bonus + " = " + (roll + bonus)), Toast.LENGTH_SHORT).show();
+        int roll = DiceRoller.roll(20, bonus, this);
+        //Toast.makeText(v.getContext(), (name + "Roll: " + roll +((bonus < 0)?"":"+")+ bonus + " = " + (roll + bonus)), Toast.LENGTH_SHORT).show();
     }
 
     @Override

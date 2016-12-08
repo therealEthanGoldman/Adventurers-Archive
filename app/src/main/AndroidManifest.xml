@@ -61,5 +61,6 @@
             android:label="Spell Details"
             android:parentActivityName=".CharacterSpellbookActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
