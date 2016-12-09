@@ -108,6 +108,9 @@ public class DiceRoller {
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(DiceRoller.TAG, "Error: " + error.getMessage());
                 pDialog.hide();
+                int roll = rand.nextInt(sides) + 1;
+                Toast.makeText(thecontext, "Roll: " + roll +((bonus < 0)?"":"+")+ bonus + " = " + (roll + bonus), Toast.LENGTH_SHORT).show();
+
             }
 
         })
