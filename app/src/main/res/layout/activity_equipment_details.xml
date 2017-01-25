@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_equipment_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="edu.uml.android.adventurersarchive.EquipmentDetailsActivity">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Equipment Name"
+            android:ems="10"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:id="@+id/equipment_name" />
+
+        <TextView android:id="@+id/quantitylabel"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_vertical"
+            android:layout_below="@id/equipment_name"
+            android:text="@string/quantity"
+            />
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_width="35dp"
+            android:ems="10"
+            android:text="1"
+            android:layout_below="@id/equipment_name"
+            android:layout_toRightOf="@id/quantitylabel"
+            android:layout_alignBaseline="@id/quantitylabel"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/quantity"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/quantity"
+            android:text="@string/savelbl"
+            android:onClick="setEquipment"
+
+            />
+
+
+
+        <LinearLayout
+            android:id="@+id/weightgroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantity"
+            android:orientation="horizontal">
+            <TextView android:id="@+id/text1"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_vertical"
+                android:layout_below="@id/quantity"
+                android:text="@string/weight"
+                />
+
+            <EditText android:id="@+id/weight"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:inputType="numberDecimal"
+                android:layout_alignBaseline="@+id/text1"
+                android:layout_alignBottom="@+id/text1"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_toEndOf="@+id/text1"
+                />
+
+            <TextView android:id="@+id/text2"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_vertical"
+                android:layout_below="@id/equipment_name"
+                android:layout_toRightOf="@id/weight"
+                android:layout_alignBaseline="@id/text1"
+                android:text="@string/pound"
+                />
+        </LinearLayout>
+
+
+        <CheckBox
+            android:id="@+id/equippable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/weightgroup"
+            android:text="@string/equipable"
+            android:layout_marginLeft="8dp" />
+
+        <CheckBox
+            android:id="@+id/isequipped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/equippable"
+            android:text="@string/equipped"
+            android:layout_marginLeft="24dp"
+            />
+
+
+        <CheckBox
+            android:id="@+id/attunable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/equippable"
+            android:layout_alignBottom="@id/equippable"
+            android:layout_marginLeft="60dp"
+            android:text="@string/attunable"
+            />
+
+        <CheckBox
+            android:id="@+id/isattuned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attunable"
+            android:layout_toRightOf="@id/isequipped"
+            android:layout_alignLeft="@id/attunable"
+            android:layout_marginLeft="16dp"
+            android:text="@string/attuned"
+            />
+        <LinearLayout
+            android:id="@+id/valuegroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/isattuned">
+            <TextView android:id="@+id/text7"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/value"
+                />
+            <EditText android:id="@+id/value"
+                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:textSize="16sp"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_below="@id/isattuned"
+                android:layout_toRightOf="@id/text7"
+                android:layout_alignBaseline="@id/text7"
+                android:inputType="numberDecimal"
+                />
+            <TextView android:id="@+id/text8"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_vertical"
+                android:layout_below="@id/isattuned"
+                android:layout_toRightOf="@id/value"
+                android:layout_alignBaseline="@id/text7"
+                android:text="GP"
+                />
+        </LinearLayout>
+
+        <TextView android:id="@+id/text9"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_vertical"
+            android:layout_below="@id/valuegroup"
+            android:text="Description: "
+            />
+        <EditText android:id="@+id/description"
+            android:paddingTop="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:text=""
+            android:hint="Enter Description"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/text9"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/text9"
+            android:scaleType="fitCenter"
+            android:onClick="onTrashClicked"
+            android:src="@drawable/trash"
+            />
+
+    </RelativeLayout>
+</ScrollView>

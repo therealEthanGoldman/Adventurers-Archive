@@ -3,4 +3,44 @@
 
     <string name="create_character">Create Character</string>
     <string name="load_character">Load Character</string>
+    <string name="addloot">Add Loot</string>
+    <string name="editwealth">Edit Wealth</string>
+
+    <string name="pplabel">PP: </string>
+    <string name="gplabel">GP: </string>
+    <string name="eplabel">EP: </string>
+    <string name="splabel">SP: </string>
+    <string name="cplabel">CP: </string>
+
+    <string name="addcash">Add</string>
+    <string name="subtractcash">Spend</string>
+
+    <string name="overspend">Spent too much!</string>
+    <string name="equippedlabel">Equipped?</string>
+    <string name="equipped">Equipped</string>
+    <string name="unequipped">Not Equipped</string>
+    <string name="notequippable">   </string>
+    <string name="equipbtnlabel">Equip</string>
+    <string name="unequipbtnlabel">Unquip</string>
+    <string name="attuned"> Attune</string>
+    <string name="notattunable">   </string>
+
+    <string name="weight">Wt. : </string>
+    <string name="pound"> lb</string>
+    <string name="quantity">Quanity: </string>
+    <string name="value">Value: </string>
+    <string name="savelbl">Save</string>
+    <string name="trash">Trash</string>
+    <string name="equipable">Equipable</string>
+    <string name="attunable">Attunable</string>
+    <string name="tot_wt_lbl">Total Weight: </string>
+    <string name="under5str">Light Load</string>
+    <string name="over5str">Encumbered</string>
+    <string name="over10str">H. Encumbered</string>
+    <string name="over15str">Too Heavy</string>
+
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
+    <string name="sure">Are you sure you want to trash this equipment?</string>
+
 </resources>

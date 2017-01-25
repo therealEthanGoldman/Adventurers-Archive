@@ -3,6 +3,7 @@
     package="edu.uml.android.adventurersarchive">
 
     <application
+        android:name=".GlobalState"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,10 +16,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Preferences"
-                  android:parentActivityName=".MainActivity"
-                  android:theme="@android:style/Theme.Holo">
-
-        </activity>
+        <activity
+            android:name=".Preferences"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
+            android:name=".CreateCharacterActivity"
+            android:label="Create Character"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LoadCharacterActivity"
+            android:label="Load Character"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CharacterMainActivity"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CharacterSheetActivity"
+            android:label="Character Sheet"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterEquipmentActivity"
+            android:label="Equipment"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterSpellbookActivity"
+            android:label="Spellbook"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".CharacterSkillsActivity"
+            android:label="Skills"
+            android:parentActivityName=".CharacterMainActivity" />
+        <activity
+            android:name=".UpdateCashActivity"
+            android:label="Modify Wealth"
+            android:parentActivityName=".CharacterEquipmentActivity" />
+        <activity
+            android:name=".EquipmentDetailsActivity"
+            android:label="Equipment Details"
+            android:parentActivityName=".CharacterEquipmentActivity" />
+        <activity
+            android:name=".DisplaySpellActivity"
+            android:label="Spell Details"
+            android:parentActivityName=".CharacterSpellbookActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

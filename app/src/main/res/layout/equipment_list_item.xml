@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingRight="16dp"
+        android:text="0"
+        />
+    <TextView
+        android:id="@+id/equipname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_toRightOf="@id/quantity"
+        android:text="Test Magic Sword of Power"
+        android:layout_alignParentTop="true"
+        />
+    <TextView
+        android:id="@+id/isequipped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantity"
+        android:layout_alignParentLeft="true"
+        android:text="@string/equippedlabel"
+        android:textSize="16sp"
+        android:layout_marginRight="16dp"
+        />
+    <TextView
+        android:id="@+id/isattuned"
+        android:layout_toRightOf="@id/isequipped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantity"
+        android:layout_alignParentLeft="true"
+        android:text="@string/equippedlabel"
+        android:textSize="16sp"
+        android:layout_marginRight="16dp"
+        />
+
+  <!--  <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/trash"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:cropToPadding="true"
+        android:src="@drawable/trash"
+        android:scaleType="centerInside"
+
+        />-->
+
+</RelativeLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/spell_display_level_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/spell_display_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="Spell Level " />
+            <TextView
+                android:id="@+id/spell_display_classes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/spell_display_level"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="( Spell Classes )" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/spell_display_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_level_view"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:text="Casting Time: " />
+        <TextView
+            android:id="@+id/spell_display_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_level_view"
+            android:layout_toRightOf="@id/spell_display_time_label"
+            android:layout_alignBaseline="@id/spell_display_time_label"
+            android:layout_marginRight="8dp"
+            android:text="1 action" />
+
+        <TextView
+            android:id="@+id/spell_display_range_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_time_label"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:text="Range: " />
+        <TextView
+            android:id="@+id/spell_display_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_range_label"
+            android:layout_toRightOf="@id/spell_display_range_label"
+            android:layout_alignBaseline="@id/spell_display_range_label"
+            android:layout_marginRight="8dp"
+            android:text="60 ft." />
+
+        <RelativeLayout
+            android:id="@+id/spell_display_components_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_range_label">
+            <TextView
+                android:id="@+id/spell_display_components_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:text="Components: " />
+            <TextView
+                android:id="@+id/spell_display_components"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/spell_display_components_label"
+                android:layout_alignBaseline="@id/spell_display_components_label"
+                android:layout_marginRight="8dp"
+                android:text="V,S,M" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/spell_display_duration_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_components_view"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:text="Duration: " />
+        <TextView
+            android:id="@+id/spell_display_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_components_view"
+            android:layout_toRightOf="@id/spell_display_duration_label"
+            android:layout_alignBaseline="@id/spell_display_duration_label"
+            android:layout_marginRight="8dp"
+            android:text="Instantaneous" />
+
+        <TextView
+            android:id="@+id/spell_display_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spell_display_duration_label"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Description goes here..." />
+    </RelativeLayout>
+</ScrollView>

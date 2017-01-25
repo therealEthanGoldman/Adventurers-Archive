@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import edu.uml.android.adventurersarchive.database.DBHelper;
+
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -44,10 +46,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createCharacter(View v) {
-
+        Intent intent = new Intent(this, CreateCharacterActivity.class);
+        startActivity(intent);
     }
 
     public void loadCharacter(View v) {
-
+        Intent intent = new Intent(this, LoadCharacterActivity.class);
+        startActivity(intent);
     }
 }
